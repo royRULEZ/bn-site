@@ -23,6 +23,7 @@ export const Rectangle = (props) => {
 // Footer Cluster of Amazon Ad + Square Ad
 // -------------------------------------------------------------------------------------------------------------------------
 export const OfferCluster = (props) => {
+    // CSS
     const Main = styled.div`
         width: 1024px;
         max-width: 95%;
@@ -79,6 +80,8 @@ export const OfferCluster = (props) => {
         position: absolute;
         right: 0;
     `;
+
+    // Return
     return(
         <Main>
             <Offers>
@@ -112,9 +115,10 @@ export const OfferCluster = (props) => {
 }
 
 // -------------------------------------------------------------------------------------------------------------------------
-// Big Banner Ad
+// Big Banner Ad - 970x250
 // -------------------------------------------------------------------------------------------------------------------------
 export const BigBanner = (props) => {
+    // CSS
     const Container = styled.div`
         width: 100%;
         padding: 25px 0;
@@ -128,6 +132,7 @@ export const BigBanner = (props) => {
         margin: 0 auto;
     `;
 
+    // Return
     return(
         <Container>
             <Ad />

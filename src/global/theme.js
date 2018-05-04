@@ -15,7 +15,7 @@ const theme = {
 
     // Fonts
     font_main: "'Muli', sans-serif",
-    font_nixie: "'Nixie One', cursive", // 400
+    font_nixie: "'Nixie One', cursive", // 400 // ${props => props.theme.font_nixie};
 
     // Text Styles
     text_lineheight: '1.4rem'
