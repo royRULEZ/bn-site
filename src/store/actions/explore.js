@@ -24,10 +24,12 @@ export const fetchAllNamesStart = () => {
     };
 };
 
-export const fetchAllNames = () => {
+export const fetchAllNames = (localState) => {
+    let qStr = 'http://localhost:8088/explore-names?p='+localState.popularity+'&g='+localState.gender+'';
     return dispatch => {
+        
         dispatch(fetchAllNamesStart());
-        axios.get( 'http://localhost:8088/explore-names?p=Rare&g=M' )
+        axios.get( qStr )
             .then( res => {
                 const fetchedNames = [];
                 for ( let key in res.data ) {
@@ -43,4 +45,53 @@ export const fetchAllNames = () => {
                 dispatch(fetchAllNamesFail(err));
             } );
     };
+};
+
+export const changeGender = (localState, gender) => {
+    console.log(localState.gender, gender);
+    let qStr = 'http://localhost:8088/explore-names?p='+localState.popularity+'&g='+gender+'';
+    return dispatch => {
+
+
+        dispatch(fetchAllNamesStart());
+        axios.get( qStr )
+            .then( res => {
+                const fetchedNames = [];
+                for ( let key in res.data ) {
+                    fetchedNames.push( {
+                        ...res.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(fetchAllNamesSuccess(fetchedNames));
+            } )
+            .catch( err => {
+                console.log('[FETCH_ALLNAMES_FAIL]', err);
+                dispatch(fetchAllNamesFail(err));
+            } );
+    }
+};
+
+export const changePopularity = (localState, popularity) => {
+    let qStr = 'http://localhost:8088/explore-names?p='+popularity+'&g='+localState.gender+'';
+    return dispatch => {
+
+
+        dispatch(fetchAllNamesStart());
+        axios.get( qStr )
+            .then( res => {
+                const fetchedNames = [];
+                for ( let key in res.data ) {
+                    fetchedNames.push( {
+                        ...res.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(fetchAllNamesSuccess(fetchedNames));
+            } )
+            .catch( err => {
+                console.log('[FETCH_ALLNAMES_FAIL]', err);
+                dispatch(fetchAllNamesFail(err));
+            } );
+    }
 };

@@ -28,7 +28,7 @@ const ToolbarItems = (props) => {
         <Main>
             <ToolbarItem text="Home" exact      link="/"                            ></ToolbarItem>
             <ToolbarItem text="Explore"         link="/explore"                     ></ToolbarItem>
-            <ToolbarItem text="Get Inspired"    link="/inspire"                     ></ToolbarItem>
+            <ToolbarItem text="Get Inspired"    link="/get-inspired"                     ></ToolbarItem>
             <ToolbarItem text="How To"          link="/how-to-choose-a-baby-name"   ></ToolbarItem>
             <ToolbarItem text="Gifts"           link="/gifts"                       ></ToolbarItem>
             <ToolbarItem text="Search"                                              ></ToolbarItem>

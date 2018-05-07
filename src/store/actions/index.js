@@ -3,5 +3,7 @@ export {
 } from './home';
 
 export {
-    fetchAllNames
+    fetchAllNames,
+    changeGender,
+    changePopularity
 } from './explore';

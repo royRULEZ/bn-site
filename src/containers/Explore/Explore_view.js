@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { fetchAllNames } from '../../store/actions/index';
+import { fetchAllNames, changeGender, changePopularity } from '../../store/actions/index';
 
 import Aux from '../../hoc/Aux';
 import { BigBanner as Ad } from '../../components/ad/ad_factory';
@@ -32,9 +32,42 @@ const AllNames = styled.div`
 
 
 class ExploreView extends Component {   
+
+    state = {
+        popularity: "Unique",
+        gender: "F",
+        alpha: "",
+        length: ""
+    }
     
+    changeGenderHandler = (g) => {
+        this.setState({ 
+            gender: g
+        });
+        this.props.onChangeGender(this.state, g);
+    }
+
+    changePopularityHandler = (e) => {
+        this.setState({ 
+            popularity: e.value
+        });
+        this.props.onChangePopularity(this.state, e.value);
+    }
+
+    changeAlphaHandler = (a) => {
+        this.setState({ 
+            alpha: a.value
+        });
+    }
+
+    changeLengthHandler = (l) => {
+        this.setState({ 
+            length: l.value
+        });
+    }
+
     componentDidMount () {
-        this.props.onFetchAllNames();
+        this.props.onFetchAllNames(this.state);
     }
 
     render () {
@@ -52,7 +85,19 @@ class ExploreView extends Component {
                 <Main>
                     <Headline>Find the unqiue name for your child</Headline>
                     <ExploreContainer>
-                        <Filters />
+                        <Filters 
+                            gender={this.changeGenderHandler}
+                            g={this.state.gender}
+
+                            popularity={this.changePopularityHandler}
+                            p={this.state.popularity}
+            
+                            alpha={this.changeAlphaHandler}
+                            a={this.state.alpha}
+
+                            length={this.changeLengthHandler}
+                            l={this.state.length}
+                        />
                         <AllNames>
                             {names}
                         </AllNames>
@@ -71,7 +116,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchAllNames: () => dispatch( fetchAllNames() )
+        onFetchAllNames: (state) => dispatch( fetchAllNames(state) ),
+        onChangeGender: (state, gender) => dispatch( changeGender(state, gender) ),
+        onChangePopularity: (state, popularity) => dispatch( changePopularity(state, popularity) ),
     };
 };
 
