@@ -8,9 +8,9 @@
 const theme = {
     // Colors
     color_primary: '#000000',
-    color_girl: '#d5617f', //d5617f e59db0
-    color_boy: '#4a7f98', //4a7f98 74a4bb
-    color_accent: '#138c85',
+    color_girl: '#d5617f', //d5617f e59db0 //${props => props.theme.color_girl};
+    color_boy: '#4a7f98', //4a7f98 74a4bb //${props => props.theme.color_boy};
+    color_accent: '#138c85', //${props => props.theme.color_accent};
     color_purple: '#8887ca', //http://www.0to255.com/9493CF original: 9493CF
 
     // Fonts

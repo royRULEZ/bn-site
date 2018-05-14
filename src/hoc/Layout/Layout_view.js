@@ -14,6 +14,7 @@ import Explore from '../../containers/Explore/Explore';
 import Name from '../../containers/Name/Name';
 import HowTo from '../../containers/HowTo/HowTo';
 import Inspired from '../../containers/Inspired/Inspired';
+import Collection from '../../containers/Collection/Collection';
 
 // Persistent Page Components 
 import Toolbar from '../../components/toolbar/toolbar';
@@ -27,6 +28,7 @@ class Layout extends Component {
             <div>
                 <Toolbar />
                     <Switch>                            
+                        <Route path="/collection/:c" component={Collection} />
                         <Route path="/get-inspired" component={Inspired} />
                         <Route path="/how-to-choose-a-baby-name" component={HowTo} />
                         <Route path="/name/:n" component={Name} />

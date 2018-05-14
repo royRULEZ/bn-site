@@ -22,6 +22,7 @@ const Main = styled.div`
 `;
 const NamesContainer = styled.div`
     padding: 2rem;
+    box-sizing: border-box;
     width: 50%;
     display: flex;
     flex-wrap: wrap;
@@ -35,6 +36,7 @@ const NamesContainer = styled.div`
         font-weight: 900;
     }
 `;
+
 const Name = styled.div`
     width: 25%;
     padding: .5rem 0;
@@ -100,60 +102,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect( mapStateToProps, mapDispatchToProps )(randomNames);
-
-
-/*
-
-.link-row{
-    @include standard_size(50px, 25px, $max_width: 1024px);
-    border-top: 1px solid $color-lines;
-    .link_row-title{
-        width: 100%;
-        font-size: 18px;
-        padding: 10px 0;
-        font-family: $Nixie;
-        font-weight: 900;
-        color: $color-text;
-    } 
-}
-.random_names{
-    width:50%;
-    float:left;
-    padding: 25px;
-    box-sizing: border-box;
-    .name{
-        width: 25%;
-        float: left;
-        padding: 5px 0;
-        a{
-            text-decoration: underline;
-            color: $color-links;
-        }
-        &.boy{
-            a{
-                color: darken($color-boy, 15%);
-            }
-        }
-        &.girl{
-            a{
-                color: darken($color-girl, 15%);
-            }
-        }            
-    }
-}
-
-<div id="link_row-names" class="link-row clearfix">
-<div class="random_names clearfix">
-    <div class="link_row-title">20 Unique Boy Names</div>
-    <div class="name boy" v-for="b_name in boy_names_20" :key="b_name">
-        <router-link :to="`/name?n=${b_name.name}`">{{b_name.name}}</router-link>
-    </div>
-</div>
-<div class="random_names clearfix">
-    <div class="link_row-title">20 Unique Girl Names</div>
-    <div class="name girl" v-for="g_name in girl_names_20" :key="g_name">
-        <router-link :to="`/name?n=${g_name.name}`">{{g_name.name}}</router-link>
-    </div>
-</div>            
-</div>
-*/
