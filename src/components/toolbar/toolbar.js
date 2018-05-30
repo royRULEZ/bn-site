@@ -5,11 +5,12 @@
 // Top part of the page
 //======================================================================================================================
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Logo from '../logo/logo';
 import ToolbarItems from './toolbar_items';
+import ToolbarSearch from './toolbar_search';
 
 const Main = styled.div`
     width: 100%;
@@ -23,13 +24,28 @@ const Main = styled.div`
     z-index: 10;
 `;
 
-const Toolbar = (props) => {
-    return(
-        <Main>
-            <Logo>Baby<br/>Namr</Logo>
-            <ToolbarItems />
-        </Main>
-    );
+
+class Toolbar extends Component {   
+
+    state = {
+        displaySearch : false
+    }
+
+    ToolbarChangeHandler = () => {
+        this.setState({ 
+            displaySearch: !this.state.displaySearch
+        });
+    }
+
+    render(){
+        return(
+            <Main>
+                <Logo>Baby<br/>Namr</Logo>
+                <ToolbarItems searchClick={this.ToolbarChangeHandler} />
+                <ToolbarSearch display={this.state.displaySearch} searchClick={this.ToolbarChangeHandler} />
+            </Main>
+        )
+    }
 }
 
 export default Toolbar;

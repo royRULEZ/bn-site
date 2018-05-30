@@ -22,15 +22,23 @@ const ToolbarItem = (props) => {
         text-decoration: none;
         color: inherit;
         &:active, &.active{
-            color: red
+            color: ${props => props.theme.color_purple};
         }
+    `;
+    const Search = styled.span`
+        cursor: pointer;
     `;
 
     let navlink = null;
+    
     if(props.text === "Search"){
         navlink =
             <Main>
-                <i className="fas fa-search fa-fw"></i>
+                <Search onClick={props.searchClick}>
+                    Search
+                </Search>
+                
+                {/*<i className="fas fa-search fa-fw"></i>*/}
             </Main>;
     }else{
         navlink =

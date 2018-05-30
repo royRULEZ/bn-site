@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { fetchAllNames, changeGender, changePopularity } from '../../store/actions/index';
+import { fetchAllNames, changeGender, changePopularity, changeAlpha } from '../../store/actions/index';
 
 import Aux from '../../hoc/Aux';
 import { BigBanner as Ad } from '../../components/ad/ad_factory';
@@ -20,6 +20,8 @@ const Headline = styled.h1`
     font-size: 2rem;
     font-weight: normal;
     font-family: ${props => props.theme.font_nixie};
+    text-align: center;
+    padding: 1rem 0;
 `;
 const ExploreContainer = styled.div`
     display: flex;
@@ -28,6 +30,8 @@ const AllNames = styled.div`
     width: 80%;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 0 1rem;
 `;
 
 
@@ -55,9 +59,16 @@ class ExploreView extends Component {
     }
 
     changeAlphaHandler = (a) => {
+        let char = '';
+        if(typeof a === 'object'){
+            char = a.value;
+        }else{
+            char = a;
+        }
         this.setState({ 
-            alpha: a.value
+            alpha: char
         });
+        this.props.onChangeAlpha(this.state, char);
     }
 
     changeLengthHandler = (l) => {
@@ -68,6 +79,20 @@ class ExploreView extends Component {
 
     componentDidMount () {
         this.props.onFetchAllNames(this.state);
+        
+
+        if(this.props.directGender){
+            console.log("IN1");
+            this.changeGenderHandler(this.props.directGender);
+        }
+
+        
+        if(this.props.directAlpha){
+            console.log("IN2", this.props);
+            this.changeAlphaHandler(this.props.directAlpha);
+        }
+        
+
     }
 
     render () {
@@ -76,14 +101,14 @@ class ExploreView extends Component {
         if ( !this.props.loading ) {
             names = this.props.allNames.map( n => (
                 <Name key={n.name}>{n.name}</Name>
-            ) )
+            ))
         }
-
+        
         return (
             <Aux>
                 <Ad/>
                 <Main>
-                    <Headline>Find the unqiue name for your child</Headline>
+                    <Headline>Search unique names for your child</Headline>
                     <ExploreContainer>
                         <Filters 
                             gender={this.changeGenderHandler}
@@ -97,7 +122,7 @@ class ExploreView extends Component {
 
                             length={this.changeLengthHandler}
                             l={this.state.length}
-                        />
+                        />                        
                         <AllNames>
                             {names}
                         </AllNames>
@@ -119,6 +144,7 @@ const mapDispatchToProps = dispatch => {
         onFetchAllNames: (state) => dispatch( fetchAllNames(state) ),
         onChangeGender: (state, gender) => dispatch( changeGender(state, gender) ),
         onChangePopularity: (state, popularity) => dispatch( changePopularity(state, popularity) ),
+        onChangeAlpha: (state, alpha) => dispatch( changeAlpha(state, alpha) ),
     };
 };
 

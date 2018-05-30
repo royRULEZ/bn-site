@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { fetchNames } from '../../../store/actions/index';
 
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // CSS
 const Main = styled.div`
@@ -36,14 +37,10 @@ const NamesContainer = styled.div`
         font-weight: 900;
     }
 `;
-
-const Name = styled.div`
+const Name = styled(Link)`
     width: 25%;
     padding: .5rem 0;
     text-decoration: underline;
-    a{
-        text-decoration: underline; 
-    }
     &.girl{
         color: ${props => props.theme.color_girl};
     }
@@ -65,12 +62,12 @@ class randomNames extends Component {
         let bns = <p>Something went terribly wrong!</p>;
         if ( !this.props.loading ) {
             gns = this.props.girlNames20.map( gn => (
-                <Name className="girl" key={gn.name}>{gn.name}</Name>
+                <Name className="girl" key={gn.name} to={"/name/" + gn.name}>{gn.name}</Name>
             ) )
         }
         if ( !this.props.loading ) {
             bns = this.props.girlNames20.map( bn => (
-                <Name className="boy" key={bn.name}>{bn.name}</Name>
+                <Name className="boy" key={bn.name} to={"/name/" + bn.name}>{bn.name}</Name>
             ) )
         }
         return (

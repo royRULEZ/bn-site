@@ -10,6 +10,8 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 // CSS
 const Main = styled.div`
     border-top: 1px solid #EEE;
@@ -35,7 +37,7 @@ const Container = styled.div`
     }
 `;
 
-const Alpha = styled.div`
+const Alpha = styled(Link)`
     width: 12.5%;
     padding: .5rem 0;
     text-decoration: underline;
@@ -60,10 +62,10 @@ class alphabet extends Component {
         let girls = <p>Something went terribly wrong!</p>;
         let boys = <p>Something went terribly wrong!</p>;
         girls = alpha.map( a => (
-            <Alpha className="girl" key={a}>{a}</Alpha>
+            <Alpha to={{ pathname: '/explore', state: { routeAlpha: a, routeGender: "F"  }}}  className="girl" key={a}>{a}</Alpha>
         ));
         boys = alpha.map( a => (
-            <Alpha className="boy" key={a}>{a}</Alpha>
+            <Alpha to={{ pathname: '/explore', state: { routeAlpha: a, routeGender: "M" }}}  className="boy" key={a}>{a}</Alpha>
         ));
 
         //

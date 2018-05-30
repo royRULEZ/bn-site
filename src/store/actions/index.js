@@ -5,5 +5,10 @@ export {
 export {
     fetchAllNames,
     changeGender,
-    changePopularity
+    changePopularity,
+    changeAlpha
 } from './explore';
+
+export {
+    fetchNameInfo
+} from './name';

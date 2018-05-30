@@ -50,7 +50,7 @@ const Main = styled.div`
             background-color: #FFF !important;
             padding: .625rem .625rem;
             &:hover{
-                color: red !important;
+                color: ${props => props.theme.color_accent} !important;
             }
             &.is-selected {
             }
@@ -84,23 +84,41 @@ const FilterLabel = styled.div`
     text-transform: uppercase;
     color: ${props => props.theme.color_accent};
 `;
-
+const BtnGroup = styled.div`
+    //background-color: #EEE;
+    //box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+`;
+const GenderBtn = styled.button`
+    border: none;
+    width: 33.3333%;
+    background-color: #EEE
+    color: ${props => props.theme.color_accent};
+    font-size: 1rem;
+    padding: .75rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-weight: 300;
+    outline: none;
+    cursor: pointer;
+    &.active{
+        background-color: ${props => props.theme.color_accent};
+        color: #FFF;
+    }
+    &:first-child{
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+    &:last-child{
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+`;
 const OtherFilters = styled.div`
     margin-top: 2rem;  
     background-color: #EEE;
     box-sizing: border-box;
     padding: 0 1rem;
 `;
-/*
-const FilterContainer = styled.div`
-    width: 100%;
-    border-bottom:1px solid #444;
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: #EEE;
-    margin-bottom: 5px;
-`;
-*/
 
 class Filters extends Component {   
 
@@ -139,10 +157,13 @@ class Filters extends Component {
                 </FilterObject>
                 
                 <FilterLabel>Gender</FilterLabel>
-                <button name="gender" value="M" onClick={() => this.props.gender("M")}>Male</button>
-                <button name="gender" value="M" onClick={() => this.props.gender("F")}>Female</button>
-                {this.props.g}
+                <BtnGroup>
+                    <GenderBtn name="gender" value="F" onClick={() => this.props.gender("F")} className={this.props.g === "F" ? "active" : ""}>Girl</GenderBtn>
+                    <GenderBtn name="gender" value="M" onClick={() => this.props.gender("M")} className={this.props.g === "M" ? "active" : ""}>Boy</GenderBtn>
+                    <GenderBtn name="gender" value="U" onClick={() => this.props.gender("U")} className={this.props.g === "U" ? "active" : ""}>Unisex</GenderBtn>
+                </BtnGroup>
 
+                
                 <OtherFilters>
                     <FilterObject>
                         <FilterLabel>A-Z</FilterLabel>

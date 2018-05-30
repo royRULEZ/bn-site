@@ -8,10 +8,12 @@ import { combineReducers } from 'redux';
 //App reducers
 import { homeReducer } from './home';
 import { exploreReducer } from './explore';
+import { nameReducer } from './name';
 
 const rootReducer = combineReducers({
     home: homeReducer,
-    explore: exploreReducer
+    explore: exploreReducer,
+    name: nameReducer
 });
 
 export default rootReducer;

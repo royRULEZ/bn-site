@@ -6,6 +6,7 @@ import Aux from '../../hoc/Aux';
 import { BigBanner as Ad, OfferCluster} from '../../components/ad/ad_factory';
 
 import Hero from './Sections/hero';
+import Popular from './Sections/popular';
 
 //CSS
 const Main = styled.div`
@@ -29,6 +30,7 @@ class InspiredView extends Component {
                     <Headline>Get inspired by our unqiue collections</Headline>
                 </Main>
                 <Hero />
+                <Popular />
                 <OfferCluster/>
             </Aux>
         );

@@ -1,8 +1,8 @@
 //======================================================================================================================
-// Class: randomGNames
+// Class: ___
 //======================================================================================================================
 // Description:
-// 20 Random Girl names from the Sever
+// 
 //======================================================================================================================
 
 // Imports
@@ -10,36 +10,44 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import Template from './blank';
+
 //CSS
-const Main = styled(Link)`
-    padding: 2rem 0 2rem 1rem;
-    width: 25%;
-    font-size: 1.5rem;
+const Main = styled.div`
+    padding: 1rem;
+`;
+const Origin = styled(Link)`
+    padding: 0 0 .5rem 0;
+    display: block;
+    font-size: 1.25rem;
     font-weight: 300;
-    box-sizing: border-box;
     text-decoration: none;
     color: #444;
-    border-bottom: 1px dashed #EEE;
-    
     &:hover{
         text-decoration: underline;
     }
 `;
 
-const Name = (props) => {    
-    
-    let linkURL = "/name/" + props.children;
-    return(
-        <Main
-            to={linkURL}
-        >
-            {props.children}
-        </Main>
-    );
+// Component
+class Origins extends Component {   
+
+    render () {
+
+        const label = "Origin of '"+ this.props.name +"'";
+        return(
+            <Template
+                label={label}
+                width="25%">
+                <Main>
+                    <Origin to="/">Scottish</Origin>
+                    <Origin to="/">Irish</Origin>
+                </Main>
+            </Template>
+        );
+    }
 }
 
-
-export default Name;
+export default Origins;
 
 
 

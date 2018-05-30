@@ -31,7 +31,7 @@ const ToolbarItems = (props) => {
             <ToolbarItem text="Get Inspired"    link="/get-inspired"                     ></ToolbarItem>
             <ToolbarItem text="How To"          link="/how-to-choose-a-baby-name"   ></ToolbarItem>
             {/*<ToolbarItem text="Gifts"           link="/gifts"                       ></ToolbarItem>*/}
-            <ToolbarItem text="Search"                                              ></ToolbarItem>
+            <ToolbarItem text="Search"          searchClick={props.searchClick}     ></ToolbarItem>
         </Main>
     );
 }

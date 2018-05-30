@@ -95,3 +95,26 @@ export const changePopularity = (localState, popularity) => {
             } );
     }
 };
+
+export const changeAlpha = (localState, alpha) => {
+    let qStr = 'http://localhost:8088/explore-names?p='+localState.popularity+'&g='+localState.gender+'&a='+alpha+'';
+    return dispatch => {
+
+        dispatch(fetchAllNamesStart());
+        axios.get( qStr )
+            .then( res => {
+                const fetchedNames = [];
+                for ( let key in res.data ) {
+                    fetchedNames.push( {
+                        ...res.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(fetchAllNamesSuccess(fetchedNames));
+            } )
+            .catch( err => {
+                console.log('[FETCH_ALLNAMES_FAIL]', err);
+                dispatch(fetchAllNamesFail(err));
+            } );
+    }
+};
