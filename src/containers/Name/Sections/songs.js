@@ -25,7 +25,8 @@ class Songs extends Component {
         return(
             <Template
                 label={label}
-                width="25%">
+                width="25%"
+                height="300px">
                 <Main>
                     Songs
                 </Main>

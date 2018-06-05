@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Template from './blank';
-import Chart from '../../../components/charts/nameHistory';
+import Chart from '../../../components/charts/recentHistory';
 
 //CSS
 const Container = styled.div`
@@ -26,7 +26,8 @@ class GoogleChart extends Component {
         return(
             <Template
                 label={label}
-                width="100%">
+                width="100%"
+                height="300px">
                 <Container>
                     <Chart color="#DDD" girlColor="rgba(136,135,202,0.9)"  />
                 </Container>

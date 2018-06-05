@@ -35,19 +35,19 @@ const Name = styled(Link)`
 class Variations extends Component {   
 
     render () {
-
-        let namesArr = ["Isabella", "Isabelle", "Isabel", "Isabela", "Isabell", "Isabellah", "Isabellarose", "Isabellagrace", "Isabele", "Isabellamarie"];
+    
         let names = <p>Oops</p>;
         if ( !this.props.loading ) {
-            names = namesArr.map( n => (
-                <Name to="/" key={n}>{n}</Name>
+            names = this.props.variations.splice(1).map( n => (
+                <Name to="/" key={n.name}>{n.name}</Name>
             ) )
         }
 
         return(
             <Template
                 label="Variations"
-                width="25%">
+                width="25%"
+                height="300px">
                 <Main>
                     {names}
                 </Main>

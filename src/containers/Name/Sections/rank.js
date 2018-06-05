@@ -73,7 +73,7 @@ class Rank extends Component {
         let occurrences = null;
         occurrences = this.props.occurrences.map( o => (
             <div key={o.Gender} className="r_num">
-                {o.Occurrences}
+                {o.Occurrences.toLocaleString()}
                 <div>{o.Gender}s last year</div>
             </div>
         ))
@@ -83,7 +83,7 @@ class Rank extends Component {
                 <Inner>
                     <Label>How unique is '{this.props.name}'?</Label>
                     <div className="r_rank">
-                        #{this.props.rank}
+                        #{this.props.rank.toLocaleString()}
                         <div>on our list of most common names</div>
                     </div>
                     <div className="r_number">

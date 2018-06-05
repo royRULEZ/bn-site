@@ -65,7 +65,8 @@ class Known extends Component {
         return(
             <Template
                 label={label}
-                width="25%">
+                width="25%"
+                height="300px">
                 <Main>
                     {known}
                 </Main>

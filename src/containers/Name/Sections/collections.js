@@ -37,7 +37,8 @@ class Collections extends Component {
         return(
             <Template
                 label={label}
-                width="25%">
+                width="25%"
+                height="300px">
                 <Main>
                     <Collection to="/">Famous People with a really long title</Collection>
                     <Collection to="/">Famous People with a really long title</Collection>

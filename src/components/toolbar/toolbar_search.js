@@ -45,8 +45,6 @@ const ToolbarSearch = (props) => {
         cursor: pointer;
     `;
 
-    console.log(props.display);
-
     return(
         <Main>
             <Search type="text"/>

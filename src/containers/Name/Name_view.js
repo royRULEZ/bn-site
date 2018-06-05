@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Rectangle as Ad } from '../../components/ad/ad_factory';
 import Rank from './Sections/rank';
-import HistoryChart from './Sections/historyChart';
+import RecentHistory from './Sections/recentHistory';
 import GoogleChart from './Sections/googleChart';
 import Variations from './Sections/variations';
 import Known from './Sections/knownFor';
@@ -13,6 +13,7 @@ import Collections from './Sections/collections';
 import Origin from './Sections/origin';
 import Personalized from './Sections/personalized';
 import Amazon from './Sections/amazon';
+import FullHistory from './Sections/fullHistory';
 
 
 //CSS
@@ -69,14 +70,16 @@ class NameView extends Component {
                 <Info>
                     <Rank name={this.props.name} rank={this.props.rank} occurrences={this.props.occurrences} gender={this.props.gender}/>
                     <Known name={this.props.name} />
-                    <HistoryChart />
+                    <RecentHistory name={this.props.name} gender={this.props.gender} recentHistory={this.props.recentHistory} />
                     
+                    <FullHistory name={this.props.name} gender={this.props.gender} history={this.props.history}  />    
+    
                     <Origin name={this.props.name} />
-                    <Variations />
+                    <Variations name={this.props.name} variations={this.props.variations} />
                     <Song name={this.props.name} />
                     <Collections name={this.props.name} />
 
-                    <GoogleChart name={this.props.name} />
+                    {/* <GoogleChart name={this.props.name} /> */}
 
                     <Personalized name={this.props.name} />
 
@@ -88,3 +91,14 @@ class NameView extends Component {
 }
 
 export default NameView;
+
+/*
+SELECT 
+	name, 
+    `2016`, 
+    @curRank := @curRank + 1 
+AS rank 
+FROM names_occurence p, (SELECT @curRank := 0) r 
+ORDER BY `2016` DESC
+LIMIT 20
+*/

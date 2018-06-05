@@ -10,5 +10,8 @@ export {
 } from './explore';
 
 export {
-    fetchNameInfo
+    fetchNameInfo,
+    fetchRecentHistory,
+    fetchHistory,
+    fetchVariations
 } from './name';

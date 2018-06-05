@@ -16,7 +16,7 @@ class Template extends Component {
         //CSS
         const Main = styled.div`
             width: ${this.props.width};
-            height: 300px;
+            height: ${this.props.height};
             padding: .25rem;
             box-sizing: border-box;
         `;

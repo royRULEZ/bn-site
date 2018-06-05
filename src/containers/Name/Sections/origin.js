@@ -37,7 +37,8 @@ class Origins extends Component {
         return(
             <Template
                 label={label}
-                width="25%">
+                width="25%"
+                height="300px">
                 <Main>
                     <Origin to="/">Scottish</Origin>
                     <Origin to="/">Irish</Origin>
