@@ -1,5 +1,7 @@
 export {
-    fetchNames
+    fetchNames,
+    fetchNames_B,
+    fetchRandom
 } from './home';
 
 export {
@@ -13,5 +15,14 @@ export {
     fetchNameInfo,
     fetchRecentHistory,
     fetchHistory,
-    fetchVariations
+    fetchVariations,
+    fetchSongs,
+    fetchTrends,
+    fetchOrigins
 } from './name';
+
+export {
+    fetchCollection,
+    fetchCollectionNames,
+    fetchCollectionProfiles
+} from './collection';

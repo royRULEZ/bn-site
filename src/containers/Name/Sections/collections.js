@@ -17,12 +17,16 @@ const Main = styled.div`
     padding: 1rem;
 `;
 const Collection = styled(Link)`
-    padding: 0 0 .5rem 0;
+    padding: .5rem 0;
     display: block;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 300;
     text-decoration: none;
     color: #444;
+    border-bottom: 1px solid #EEE;
+    &:last-child{
+        border-bottom: none;
+    }
     &:hover{
         text-decoration: underline;
     }

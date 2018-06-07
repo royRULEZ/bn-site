@@ -31,16 +31,20 @@ const Name = styled(Link)`
     }
 `;
 
+// TODO: Breaks on Sawyer
+
 // Component
 class Variations extends Component {   
 
     render () {
-    
-        let names = <p>Oops</p>;
+
+        let names = null;
+        let namesArr = null;
+        namesArr = this.props.variations.splice(0, 1);
         if ( !this.props.loading ) {
-            names = this.props.variations.splice(1).map( n => (
-                <Name to="/" key={n.name}>{n.name}</Name>
-            ) )
+            names = this.props.variations.map( n => (
+                <Name to={"/name/" + n.name} key={n.name}>{n.name}</Name>
+            ) );
         }
 
         return(

@@ -165,3 +165,122 @@ export const fetchVariations = (name) => {
             } );
     };
 };
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Songs
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchSongsSuccess = ( songs ) => {
+    return {
+        type: actionTypes.FETCH_SONGS_SUCCESS,
+        songs: songs
+    };
+};
+
+export const fetchSongsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_SONGS_FAIL,
+        error: error
+    };
+};
+
+export const fetchSongsStart = () => {
+    return {
+        type: actionTypes.FETCH_SONGS_START
+    };
+};
+
+export const fetchSongs = (name) => {
+    let qStr = 'https://itunes.apple.com/search?term='+name+'&entity=song&limit=5';
+    return dispatch => {
+        
+        dispatch(fetchSongsStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchSongsSuccess(res.data.results));
+            } )
+            .catch( err => {
+                console.log('[FETCH_SONGS_FAIL]', err);
+                dispatch(fetchSongsFail(err));
+            } );
+    };
+};
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Trends
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchTrendsSuccess = ( trends ) => {
+    return {
+        type: actionTypes.FETCH_TRENDS_SUCCESS,
+        trends: trends
+    };
+};
+
+export const fetchTrendsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_TRENDS_FAIL,
+        error: error
+    };
+};
+
+export const fetchTrendsStart = () => {
+    return {
+        type: actionTypes.FETCH_TRENDS_START
+    };
+};
+
+export const fetchTrends = (name) => {
+    let qStr = 'http://localhost:8088/google-trends/'+name+''; 
+    return dispatch => {
+        
+        dispatch(fetchTrendsStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchTrendsSuccess(res.data.default.timelineData));
+            } )
+            .catch( err => {
+                console.log('[FETCH_TRENDS_FAIL]', err);
+                dispatch(fetchTrendsFail(err));
+            } );
+    };
+};
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Origins
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchOriginsSuccess = ( origins ) => {
+    return {
+        type: actionTypes.FETCH_ORIGINS_SUCCESS,
+        origins: origins
+    };
+};
+
+export const fetchOriginsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_ORIGINS_FAIL,
+        error: error
+    };
+};
+
+export const fetchOriginsStart = () => {
+    return {
+        type: actionTypes.FETCH_ORIGINS_START
+    };
+};
+
+export const fetchOrigins = (name) => {
+    let qStr = 'http://localhost:8088/origin/'+name+''; 
+    return dispatch => {
+        
+        dispatch(fetchOriginsStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchOriginsSuccess(res.data));
+            } )
+            .catch( err => {
+                console.log('[FETCH_ORIGINS_FAIL]', err);
+                dispatch(fetchOriginsFail(err));
+            } );
+    };
+};

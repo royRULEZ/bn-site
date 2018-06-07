@@ -4,39 +4,11 @@ import { Line } from 'react-chartjs-2';
 
 const LineChart = (props) => { 
 
-
-    /*
-
-    <line-chart :chart-data="GoogleChart_data" :options="{responsive: true, maintainAspectRatio: false, legend: { display: false }, scales:{yAxes:[{ticks:{suggestedMax:100,suggestedMin:0}}], xAxes:[{display:true, gridLines: {display: false}}]}}"></line-chart>
-    var options = { 
-    responsive: true, 
-    maintainAspectRatio: false, 
-    legend: { display: false },
-    scales: { 
-        yAxes: [{ 
-            display: true,
-            gridLines: {
-                display: true 
-            },
-            ticks: {
-                display: false
-            }
-        }], 
-        xAxes: [{
-            display: true,
-            gridLines: {
-                display: true 
-            },  
-        }] 
-    } 
-    this.History_data = {labels: years,"datasets":[{"label": "Boys ", "backgroundColor":"rgba(74,124,152,.9)", "borderColor": "rgba(0,0,0,0)","data":boyHistory},{"label": "Girls ", "backgroundColor":"rgba(213,97,127,.9)", "borderColor": "rgba(0,0,0,0)","data":girlHistory}]};
-};
-
-
-    */
+    let dataArr = Object.values(props.data);
+    dataArr = dataArr.slice(0, -2);
 
     const data = {
-        labels: ['2001', '2002', '2003', '2004', '2005', '2006', '2007'],
+        labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017'],
         datasets: [
             {
                 label: '# of occurences',
@@ -63,7 +35,7 @@ const LineChart = (props) => {
                 pointRadius: 1,
                 pointHitRadius: 10,
                 
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: dataArr
             }
         ],
     };

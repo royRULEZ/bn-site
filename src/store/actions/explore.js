@@ -25,7 +25,7 @@ export const fetchAllNamesStart = () => {
 };
 
 export const fetchAllNames = (localState) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+localState.popularity+'&g='+localState.gender+'';
+    let qStr = 'http://localhost:8088/explore-names?p='+localState.popularity+'&g='+localState.gender+'&a='+localState.alpha+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());

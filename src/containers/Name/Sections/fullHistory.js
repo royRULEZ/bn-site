@@ -30,6 +30,7 @@ class RecentHistory extends Component {
 
     render () {
         
+        /*
         let data1 = [];
         let d1Max = null;
         let data2 = [];
@@ -42,6 +43,37 @@ class RecentHistory extends Component {
             data1 = data1.slice(0, -3);
             d1Max = Math.max(...data1);
         }
+        */
+
+        let data = [];
+        let dataObj = {};
+        let dMax = 0;
+        const girlColor = "rgba(213, 97, 127, 0.8)";
+        const boyColor = "rgba(74, 127, 152, 0.8)";
+        const label = "How has '" + this.props.name + "' trended since the year 1880?";
+
+        if(this.props.history[0]){
+            let dataTemp = null;
+            dataTemp = Object.values(this.props.history[0]);
+            dataTemp = dataTemp.slice(0, -6);
+            dataObj.data = dataTemp;
+            dataObj.gender = this.props.history[0].gender;
+            dataObj.color = (this.props.history[0].gender === "M" ? boyColor : girlColor);
+            data.push(dataObj);
+            dataObj = {};
+            dMax = Math.max(...dataTemp);
+            
+        }
+        if(this.props.history[1]){
+            let dataTemp = null;
+            dataTemp = Object.values(this.props.history[1]);
+            dataTemp = dataTemp.slice(0, -6);
+            dataObj.data = dataTemp;
+            dataObj.gender = this.props.history[1].gender;
+            dataObj.color = (this.props.history[1].gender === "F" ? girlColor : boyColor);
+            data.push(dataObj);
+            dataObj = {};
+        }
         
         return(
             <Template
@@ -50,8 +82,8 @@ class RecentHistory extends Component {
                 height="450px"
                 backgroundColor="#FFFFFF">
                 <Container>
-                    <Max>(Max: {d1Max.toLocaleString()})</Max>
-                    <Chart gender={this.props.gender} data={data1} color="#FFF" girlColor={girlColor} boyColor={boyColor}  />
+                    <Max>(Max: {dMax})</Max>
+                    <Chart gender={this.props.gender} dataset={data} color="#f6f6f6" girlColor={girlColor} boyColor={boyColor}  />
                 </Container>
             </Template>
         );

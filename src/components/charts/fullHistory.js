@@ -9,52 +9,46 @@ const LineChart = (props) => {
         labels.push(i);
     }
     
-    // TODO Make this color work
-    let color = "";
-    switch (props.gender) {
-        case 'U':
-            color = props.boyColor;
-            break;
-        case 'M':
-            color = props.boyColor;
-            break;
-        case 'F':
-            color = props.girlColor;
-            break;
-      }
+    let dataArr = [];
+    let dataTmpObj = {};
+    for (var i = 0, len = props.dataset.length; i < len; i++) {
+        dataTmpObj = {
+            label: '# of occurences',
+            fill: true,
+            lineTension: 0,
 
+            backgroundColor: props.dataset[i].color,
+            
+            borderColor: 'rgba(0,0,0,0)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+
+            pointBorderColor: props.dataset[i].color,
+            pointBackgroundColor: props.dataset[i].color,
+            pointBorderWidth: 4,
+            
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: props.dataset[i].color,
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            
+            pointRadius: 0,
+            pointHitRadius: 10,
+            
+            data: props.dataset[i].data
+
+        }
+        dataArr.push(dataTmpObj);
+        dataTmpObj = {};
+    }
+   
     const data = {
         labels: labels,
-        datasets: [
-            {
-                label: '# of occurences',
-                fill: true,
-                lineTension: 0,
-
-                backgroundColor: color,
-                
-                borderColor: 'rgba(0,0,0,0)',
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-    
-                pointBorderColor: color,
-                pointBackgroundColor: color,
-                pointBorderWidth: 4,
-                
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: color,
-                pointHoverBorderColor: 'rgba(220,220,220,1)',
-                pointHoverBorderWidth: 2,
-                
-                pointRadius: 0,
-                pointHitRadius: 10,
-                
-                data: props.data
-            }
-        ],
+        datasets: dataArr,
     };
+
     const options = {
         responsive: true, 
         maintainAspectRatio: false, 
@@ -79,6 +73,7 @@ const LineChart = (props) => {
                 gridLines: {
                     color: props.color,
                     drawTicks: true,
+                    display: false
                 },                
                 ticks: { 
                     padding: 10,

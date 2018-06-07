@@ -8,6 +8,7 @@
 // Imports
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // CSS
 const Main = styled.div`
@@ -32,13 +33,13 @@ const Container = styled.div`
         font-weight: 900;
     }
 `;
-
-const Origin = styled.div`
+const Origin = styled(Link)`
     width: 16.6667%;
     padding: .75rem 0;
-    text-decoration: underline;
-    a{
-        text-decoration: underline; 
+    text-decoration: none;
+    color: inherit;
+    &:hover{
+        text-decoration: underline;
     }
 `;
 
@@ -48,10 +49,11 @@ class alphabet extends Component {
 
     render () {
         //
-        let oArr = ["African", "American", "Arabic", "Celtic", "Chinese", "Czech", "Danish", "Dutch", "Egyptian", "English", "Finnish", "French", "German", "Greek", "Hebrew", "Hungarian", "Irish", "Italian", "Japanese", "Latin", "Native American", "Norse", "Polish", "Portuguese", "Russian", "Scandinavian", "Scottish", "Slavic", "Spanish", "Swedish", "Welsh", "Yiddish"];
+        //TODO: Add Native American
+        let oArr = ["African", "American", "Arabic", "Celtic", "Chinese", "Czech", "Danish", "Dutch", "Egyptian", "English", "Finnish", "French", "German", "Greek", "Hebrew", "Hungarian", "Irish", "Italian", "Japanese", "Latin", "Norse", "Polish", "Portuguese", "Russian", "Scandinavian", "Scottish", "Slavic", "Spanish", "Swedish", "Welsh", "Yiddish"];
         let origins = <p>Something went terribly wrong!</p>;
         origins = oArr.map( o => (
-            <Origin key={o}>{o}</Origin>
+            <Origin key={o} to={"/collection/"+o}>{o}</Origin>
         ));
 
         //

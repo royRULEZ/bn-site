@@ -9,9 +9,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import axios from '../../../global/axios';
 
-import LineChart from '../../../components/charts/line';
+import { connect } from 'react-redux';
+import { fetchRandom } from '../../../store/actions/index';
+
+import LineChart from '../../../components/charts/random';
 
 import bck_img from '../../../assets/hero_bck.jpg';
 
@@ -111,42 +113,24 @@ const Circle = styled(Link)`
 // Component
 class Hero extends Component {   
 
-    state = {
-        randomName: ''
-    }
-
     componentDidMount () {
-        axios.get("http://localhost:8088/random-name")
-            .then( res => {
-                this.setState({
-                    randomName: res.data[0].name
-                });
-            })
-            .catch( err => {
-                console.log('Error', err);
-            });
+        this.props.onFetchRandom();
     }
-
 
     render () {
+
         return(
             
             <Main>
                 <HeroNames>
                     <div className="SectionTitle">Random Name</div>
-                    <div className="Name">{this.state.randomName}</div>
+                    <div className="Name">{this.props.randomName.name}</div>
                     <div className="Graph">
-                        <LineChart color="#a09fd4" lineColor="#FFFFFF"  />
+                        <LineChart data={this.props.randomName} color="#a09fd4" lineColor="#FFFFFF"  />
                     </div>
                     <div className="Info">
                         <div>
-                            Popularity:
-                            2,176 baby girls were named {this.state.randomName} last year.
-                        </div>
-                        <div>
-                            Google Trends:
-                            Catwoman: Fictional character, 
-                            Selina Jen: Taiwanese singer
+                            Popularity: {this.props.randomName['2017']} babies named {this.props.randomName.name} last year.
                         </div>
                     </div>
 
@@ -168,7 +152,20 @@ class Hero extends Component {
     }
 }
 
-export default Hero;
+const mapStateToProps = state => {
+    return {
+        randomName: state.home.randomName,
+        loading: state.home.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchRandom: () => dispatch ( fetchRandom() ),
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )(Hero);
 
 
 

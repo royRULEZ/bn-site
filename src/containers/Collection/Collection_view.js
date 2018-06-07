@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { Rectangle as Ad, OfferCluster} from '../../components/ad/ad_factory';
-import { Profiles, Names } from './Sections/List_factory';
+import Names from './Sections/names';
+import Profiles from  './Sections/profiles';
 
 import Aux from '../../hoc/Aux';
 
@@ -47,13 +48,13 @@ class CollectionView extends Component {
     
     render () {
 
+        console.log("TYPE", this.props.type);
+
         let names = <div>Waiting for Names</div>;
         if(this.props.type === "profiles"){
-            names = <Profiles data={this.props.data} />
-        }else if(this.props.type === "names"){
-            names = <Names data={this.props.data} />
+            names = <Profiles name={this.props.collection} id={this.props.id} />
         }else{
-            names = <div>Something happened.</div>
+            names = <Names name={this.props.collection} id={this.props.id} />
         }
 
         return (
@@ -65,7 +66,7 @@ class CollectionView extends Component {
                     <Hero />
                     <Description>
                         <div className="c_descriptor">Background</div>
-                        The concept of the hero can be found in classical literature. It is the main or revered character in heroic epic poetry celebrated through ancient legends of a people, often striving for military conquest and living by a continually flawed personal honor code. The definition of a hero has changed throughout time. Merriam Webster dictionary defines a hero as "a person who is admired for great or brave acts or fine qualities.
+                        {this.props.description}
                     </Description>
                 </Main>
                 {names}

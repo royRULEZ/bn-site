@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Rectangle as Ad } from '../../components/ad/ad_factory';
+import { Rectangle as Ad, OfferCluster } from '../../components/ad/ad_factory';
 import Rank from './Sections/rank';
 import RecentHistory from './Sections/recentHistory';
 import GoogleChart from './Sections/googleChart';
@@ -66,24 +66,27 @@ class NameView extends Component {
             <Main>
                 <Ad />
                 <Name>{this.props.name}</Name>
-                <Description>This name is so uncommon, we don't even know what it means yet!</Description>
+                <Description>{this.props.meaning}</Description>
                 <Info>
-                    <Rank name={this.props.name} rank={this.props.rank} occurrences={this.props.occurrences} gender={this.props.gender}/>
+                    <Rank name={this.props.name} rank={this.props.rank} occurrences={this.props.occurrences} gender={this.props.gender} sum={this.props.sum} />
                     <Known name={this.props.name} />
                     <RecentHistory name={this.props.name} gender={this.props.gender} recentHistory={this.props.recentHistory} />
                     
                     <FullHistory name={this.props.name} gender={this.props.gender} history={this.props.history}  />    
     
                     <Origin name={this.props.name} />
-                    <Variations name={this.props.name} variations={this.props.variations} />
-                    <Song name={this.props.name} />
+                    {/*<Variations name={this.props.name} variations={this.props.variations} />*/}
+                    <Song name={this.props.name} /> 
                     <Collections name={this.props.name} />
 
-                    {/* <GoogleChart name={this.props.name} /> */}
+                    <GoogleChart name={this.props.name}/>
 
                     <Personalized name={this.props.name} />
 
                     <Amazon name={this.props.name} />
+
+                    <OfferCluster />
+
                 </Info>
             </Main>
         );
@@ -91,14 +94,3 @@ class NameView extends Component {
 }
 
 export default NameView;
-
-/*
-SELECT 
-	name, 
-    `2016`, 
-    @curRank := @curRank + 1 
-AS rank 
-FROM names_occurence p, (SELECT @curRank := 0) r 
-ORDER BY `2016` DESC
-LIMIT 20
-*/

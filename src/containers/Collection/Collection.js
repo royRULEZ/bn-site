@@ -1,11 +1,56 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import CollectionView from './Collection_view';
+import Aux from '../../hoc/Aux';
 
+import { connect } from 'react-redux';
+import { fetchCollection } from '../../store/actions/index';
 
 class Collection extends Component {   
-    
+
+    componentDidMount () {
+        this.props.onFetchCollection(this.props.match.params.c);
+    }
+
     render () {
 
+        let view = <div>Loading</div>; //TODO Fix
+        if(this.props.collection[0]){
+            view = 
+            <CollectionView
+                collection={this.props.collection[0].name}
+                description={this.props.collection[0].description}
+                type={this.props.collection[0].type}
+                id={this.props.collection[0].id}
+            />;
+
+        }
+        return (
+           <Aux>
+               {view}
+           </Aux>
+        );
+    }
+}
+
+
+const mapStateToProps = state => {
+    return {
+        collection: state.collection.collection,
+        loading: state.collection.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchCollection: (url) => dispatch( fetchCollection(url) ),
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )(Collection);
+
+
+/*
         let profiles = [
             {
                 name: "Name1",
@@ -53,15 +98,4 @@ class Collection extends Component {
                 gender: "M"
             }
         ];
-
-        return (
-            <CollectionView
-                collection={this.props.match.params.c}
-                type="names"
-                data={names}
-            />
-        );
-    }
-}
-
-export default Collection;
+*/

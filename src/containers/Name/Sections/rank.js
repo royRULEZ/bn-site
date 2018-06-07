@@ -41,7 +41,7 @@ class Rank extends Component {
             padding: .5rem;
             box-sizing: border-box;
             .r_rank{
-                padding-top: 2rem;
+                padding-top: 1.5rem;
                 text-align: center;
                 font-size: 4rem;
                 font-weight: 900;
@@ -67,6 +67,21 @@ class Rank extends Component {
                     
                 }
             }
+            .r_sum{
+                padding: 0rem 2rem; 
+                font-size: .875rem;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                .r_num{
+                    width: 100%;
+                    font-size: 1.5rem;
+                    div{
+                        font-size: .75rem;
+                    }
+                    
+                }
+            }
         `;
 
 
@@ -76,7 +91,15 @@ class Rank extends Component {
                 {o.Occurrences.toLocaleString()}
                 <div>{o.Gender}s last year</div>
             </div>
-        ))
+        ));
+
+        let sum = null;
+        sum = (
+            <div className="r_num">
+                {this.props.sum.toLocaleString()}
+                <div>Baby's named {this.props.name} since 1880</div>
+            </div>
+        );
 
         return(
             <Main>
@@ -84,10 +107,13 @@ class Rank extends Component {
                     <Label>How unique is '{this.props.name}'?</Label>
                     <div className="r_rank">
                         #{this.props.rank.toLocaleString()}
-                        <div>on our list of most common names</div>
+                        <div>on our list of most common names from last year</div>
                     </div>
                     <div className="r_number">
                         {occurrences}
+                    </div>
+                    <div className="r_sum">
+                        {sum}
                     </div>
                 </Inner>
             </Main>

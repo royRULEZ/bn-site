@@ -19,6 +19,18 @@ import {
     FETCH_VARIATIONS_START,
     FETCH_VARIATIONS_SUCCESS,
     FETCH_VARIATIONS_FAIL,
+    //
+    FETCH_SONGS_START,
+    FETCH_SONGS_SUCCESS,
+    FETCH_SONGS_FAIL,
+    //
+    FETCH_TRENDS_START,
+    FETCH_TRENDS_SUCCESS,
+    FETCH_TRENDS_FAIL,
+    //
+    FETCH_ORIGINS_START,
+    FETCH_ORIGINS_SUCCESS,
+    FETCH_ORIGINS_FAIL,
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
 
@@ -28,6 +40,9 @@ const initialState = {
     recentHistory: [],
     history: [],
     variations: [],
+    songs: [],
+    trends: [],
+    origins: [],
     loading: false
 };
 
@@ -121,6 +136,74 @@ const fetchVariationsFail = ( state, action ) => {
 };
 
 // --------------------------------------------------------------------------------------------------------------------------
+// Variations
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchSongsStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchSongsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        songs: action.songs,
+        loading: false
+    });
+};
+
+const fetchSongsFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Trends
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchTrendsStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchTrendsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        trends: action.trends,
+        loading: false
+    });
+};
+
+const fetchTrendsFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Variations
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchOriginsStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchOriginsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        origins: action.origins,
+        loading: false
+    });
+};
+
+const fetchOriginsFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
+
+
+// --------------------------------------------------------------------------------------------------------------------------
 // Main Reducer
 // --------------------------------------------------------------------------------------------------------------------------
 export const nameReducer = ( state = initialState, action ) => {
@@ -144,6 +227,21 @@ export const nameReducer = ( state = initialState, action ) => {
         case FETCH_VARIATIONS_START: return fetchVariationsStart( state, action );
         case FETCH_VARIATIONS_SUCCESS: return fetchVariationsSuccess( state, action );
         case FETCH_VARIATIONS_FAIL: return fetchVariationsFail( state, action );
+        //
+        //
+        case FETCH_SONGS_START: return fetchSongsStart( state, action );
+        case FETCH_SONGS_SUCCESS: return fetchSongsSuccess( state, action );
+        case FETCH_SONGS_FAIL: return fetchSongsFail( state, action );
+        //
+        //
+        case FETCH_TRENDS_START: return fetchTrendsStart( state, action );
+        case FETCH_TRENDS_SUCCESS: return fetchTrendsSuccess( state, action );
+        case FETCH_TRENDS_FAIL: return fetchTrendsFail( state, action );
+        //
+        //
+        case FETCH_ORIGINS_START: return fetchOriginsStart( state, action );
+        case FETCH_ORIGINS_SUCCESS: return fetchOriginsSuccess( state, action );
+        case FETCH_ORIGINS_FAIL: return fetchOriginsFail( state, action );
         //
         default: return state;
     }

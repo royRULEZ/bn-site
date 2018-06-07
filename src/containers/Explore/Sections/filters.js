@@ -137,7 +137,7 @@ class Filters extends Component {
     render () {
 
         //Create Options
-        const popularities =  ['Popular','Unique','Uncommon','Rare','Obscure','Original'];
+        const popularities =  ['Popular','Unique','Uncommon','Rare','Obscure','Original','Forgotten'];
         const alphabet =  ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         const lengths =  ['2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
     

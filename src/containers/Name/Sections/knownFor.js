@@ -52,6 +52,8 @@ class Known extends Component {
     render () {
         
         let known = <div>Loading...</div>;        
+        const label = "What is '"+ this.props.name +"' best known for?";
+        
         if(this.state.knownFor.length != 0){
             known = this.state.knownFor.map( k => (
                 <Container key={k.mid}>
@@ -60,7 +62,7 @@ class Known extends Component {
                 </Container>
             ));
         }
-        const label = "What is '"+ this.props.name +"' best known for?";
+        
         
         return(
             <Template

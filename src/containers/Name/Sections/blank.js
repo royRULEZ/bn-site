@@ -26,6 +26,8 @@ class Template extends Component {
             height 100%;
             padding: .5rem;
             box-sizing: border-box;
+            overflow-y: scroll;
+            overflow-y: ${this.props.scroll ? 'scroll' : "initial"};
         `;
 
 

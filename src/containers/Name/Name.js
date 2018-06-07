@@ -3,41 +3,12 @@ import styled from 'styled-components';
 import NameView from './Name_view';
 
 import { connect } from 'react-redux';
-import { fetchNameInfo, fetchRecentHistory, fetchHistory, fetchVariations } from '../../store/actions/index';
+import { fetchNameInfo, fetchRecentHistory, fetchHistory, fetchVariations, fetchTrends } from '../../store/actions/index';
 
 
 //CSS
 const Spinner = styled.div`
 `;
-
-/*
-[
-    {
-        "id": 22,
-        "name": "Riley",
-        "gender": "F",
-        "occurrences": 7110,
-        "rank": 22,
-        "year": 2016,
-        "syllables": 0,
-        "meaning": "",
-        "origin": "",
-        "unisex": 1
-    },
-    {
-        "id": 18982,
-        "name": "Riley",
-        "gender": "M",
-        "occurrences": 1706,
-        "rank": 222,
-        "year": 2016,
-        "syllables": 0,
-        "meaning": "",
-        "origin": "",
-        "unisex": 1
-    }
-]
-*/
 
 class Name extends Component {   
 
@@ -48,37 +19,44 @@ class Name extends Component {
         this.props.onFetchVariations(this.props.match.params.n);
     }
 
+    //TODO Rerender the component from within.
+
     render () {
         
-        //TODO - I don't like this. Feels Hacky.
+        //TODO - I don't like this. Feels Hacky. -- SOLUTION is to move everything to the components so each one loads and one component can't crash the whole system.
         let container = <Spinner/>;
         if(this.props.info[0] && this.props.recentHistory[0] && this.props.history[0] && this.props.variations[0]){
             
             //GENDER
-            let gender = this.props.info[0].unisex === 1 ? "U" : this.props.info[0].gender;
+            let gender = this.props.info[0].gender;
             let colorGender = this.props.info[0].gender;
+            let sum = this.props.info[0].sum;
 
             //OCCURENCES
-            
             let occurrencesArr = [];
             occurrencesArr = this.props.info.map( i => ({
                 "Gender": i.gender === "M" ? "Boy" : "Girl",
                 "Occurrences": i['2017']
             }));
-  
-            
 
+            let meaning = "This name is so uncommon, we don't even know what it means yet!";
+            if(this.props.info[0].meaning != ""){
+                meaning = this.props.info[0].meaning;
+            }
+            
             container = <NameView 
                             name={this.props.match.params.n} 
+                            meaning={meaning}
                             gender={gender}
+                            sum={sum}
                             rank={this.props.info[0].rank_2017}
                             occurrences={occurrencesArr}
                             recentHistory={this.props.recentHistory}
                             history={this.props.history}
                             variations={this.props.variations}
+                            trends={this.props.trends}
                         />
         }
-
         return (
             container
         );
@@ -105,3 +83,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect( mapStateToProps, mapDispatchToProps )(Name);
+
+

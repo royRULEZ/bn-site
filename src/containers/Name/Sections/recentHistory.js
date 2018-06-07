@@ -61,9 +61,6 @@ class RecentHistory extends Component {
             data.push(dataObj);
             dataObj = {};
         }
-
-        console.log("Data Array", data);
-        //console.log(this.props.recentHistory);
         
         return(
             <Template

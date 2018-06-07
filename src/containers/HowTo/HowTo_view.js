@@ -21,7 +21,14 @@ const Title = styled.h1`
     font-family: ${props => props.theme.font_nixie};
     text-align: center;
     font-weight: 100;
+    background: linear-gradient(to right, #d5617f 0%, #4a7f98 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `;
+
+let girlColor = "rgba(213, 97, 127, 0.8)";
+let boyColor = "rgba(74, 127, 152, 0.8)";
+
 const Section = styled.div`
     margin-top: 3rem;
     padding-right: 3rem;
@@ -62,10 +69,10 @@ class HowToView extends Component {
                     <Section>
                         <h2>1. Don't start with a list of no's</h2>
                         <div className="ht-quote">
-                            "I got hung up on worrying about names that didn't end up mattering"
+                            "I got hung up on worrying about names that we never even considered. I was wasting all of this energy on a name that we didn't even consider."
                         </div>
                         <div className="ht-text">
-                            Don't start with a list of no's just yet. It will be important to veto that horrible first date, embarassing ex, or just weird vibe you have wit have with a name. There's no need to rush into shutting each toher down. Start the name selection process open to the idea that you will find a name you both love. There's plenty of time for criteria and plenty of capability for your to use your veto power.
+                            Don't start with a list of no's... just yet. While it will be important to veto that horrible first date, forget the awful ex, or just avoid the weird vibe you have with a name. When coming up with new ideas, shutting down options is the worst way to start. We recommend that you start the name selection process open to the idea that you will find a name you both love. There's plenty of time for criteria and plenty of capability for your to use your veto power. So don’t worry about names your partner won’t love, focus on names you’ll love. 
                         </div>
                     </Section>
 

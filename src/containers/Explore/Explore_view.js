@@ -80,19 +80,16 @@ class ExploreView extends Component {
     componentDidMount () {
         this.props.onFetchAllNames(this.state);
         
-
         if(this.props.directGender){
             console.log("IN1");
             this.changeGenderHandler(this.props.directGender);
         }
 
-        
         if(this.props.directAlpha){
             console.log("IN2", this.props);
             this.changeAlphaHandler(this.props.directAlpha);
         }
-        
-
+    
     }
 
     render () {

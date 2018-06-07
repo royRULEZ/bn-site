@@ -8,7 +8,7 @@
 // Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNames } from '../../../store/actions/index';
+import { fetchNames, fetchNames_B } from '../../../store/actions/index';
 
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -55,6 +55,7 @@ class randomNames extends Component {
 
     componentDidMount () {
         this.props.onFetchNames();
+        this.props.onFetchNames_B();
     }
 
     render () {
@@ -66,7 +67,7 @@ class randomNames extends Component {
             ) )
         }
         if ( !this.props.loading ) {
-            bns = this.props.girlNames20.map( bn => (
+            bns = this.props.boyNames20.map( bn => (
                 <Name className="boy" key={bn.name} to={"/name/" + bn.name}>{bn.name}</Name>
             ) )
         }
@@ -94,7 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchNames: () => dispatch( fetchNames() )
+        onFetchNames: () => dispatch( fetchNames() ),
+        onFetchNames_B: () => dispatch( fetchNames_B() )
     };
 };
 
