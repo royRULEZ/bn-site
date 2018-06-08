@@ -15,7 +15,6 @@ import Personalized from './Sections/personalized';
 import Amazon from './Sections/amazon';
 import FullHistory from './Sections/fullHistory';
 
-
 //CSS
 const Main = styled.div`
 `;
@@ -87,6 +86,7 @@ class NameView extends Component {
 
                     <OfferCluster />
 
+                    
                 </Info>
             </Main>
         );

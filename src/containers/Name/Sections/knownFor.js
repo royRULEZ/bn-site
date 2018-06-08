@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import axios from '../../../global/axios';
 
 import Template from './blank';
+import Spinner from '../../../components/spinner/spinner';
 
 //CSS
 const Main = styled.div`
@@ -51,7 +52,7 @@ class Known extends Component {
 
     render () {
         
-        let known = <div>Loading...</div>;        
+        let known = <Spinner/>;        
         const label = "What is '"+ this.props.name +"' best known for?";
         
         if(this.state.knownFor.length != 0){
