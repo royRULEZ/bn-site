@@ -284,3 +284,43 @@ export const fetchOrigins = (name) => {
             } );
     };
 };
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Origins
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchNameCollectionsSuccess = ( nameCollections ) => {
+    return {
+        type: actionTypes.FETCH_NAMECOLLECTIONS_SUCCESS,
+        nameCollections: nameCollections
+    };
+};
+
+export const fetchNameCollectionsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_NAMECOLLECTIONS_FAIL,
+        error: error
+    };
+};
+
+export const fetchNameCollectionsStart = () => {
+    return {
+        type: actionTypes.FETCH_NAMECOLLECTIONS_START
+    };
+};
+
+export const fetchNameCollections = (name) => {
+    let qStr = 'http://localhost:8088/get-collections/'+name+''; 
+    return dispatch => {
+        
+        dispatch(fetchNameCollectionsStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchNameCollectionsSuccess(res.data));
+            } )
+            .catch( err => {
+                console.log('[FETCH_NAMECOLLECTIONS_FAIL]', err);
+                dispatch(fetchNameCollectionsFail(err));
+            } );
+    };
+};

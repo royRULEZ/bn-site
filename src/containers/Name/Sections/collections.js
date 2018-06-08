@@ -10,6 +10,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { fetchNameCollections } from '../../../store/actions/index';
+
 import Template from './blank';
 
 //CSS
@@ -23,6 +26,7 @@ const Collection = styled(Link)`
     font-weight: 300;
     text-decoration: none;
     color: #444;
+    color: ${props => props.theme.color_accent};
     border-bottom: 1px solid #EEE;
     &:last-child{
         border-bottom: none;
@@ -35,24 +39,52 @@ const Collection = styled(Link)`
 // Component
 class Collections extends Component {   
 
+    componentDidMount () {
+        this.props.onFetchNameCollections(this.props.name);
+    }
+
     render () {
 
         const label = "Collections with '"+ this.props.name +"' in them?";
+
+        let nameCollections = "We're still searching!";
+        if(this.props.nameCollections[0]){
+            nameCollections = this.props.nameCollections.map( nc => (
+                <Collection key={nc.name} to={"/collection/"+nc.url}>
+                    {nc.name}
+                </Collection>
+            ));
+        }
+
+
+
         return(
             <Template
                 label={label}
                 width="25%"
                 height="300px">
                 <Main>
-                    <Collection to="/">Famous People with a really long title</Collection>
-                    <Collection to="/">Famous People with a really long title</Collection>
+                    {nameCollections}
                 </Main>
             </Template>
         );
     }
 }
 
-export default Collections;
+const mapStateToProps = state => {
+    return {
+        nameCollections: state.name.nameCollections,
+        loading: state.name.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchNameCollections: (name) => dispatch ( fetchNameCollections(name) ),
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )(Collections);
 
 
 

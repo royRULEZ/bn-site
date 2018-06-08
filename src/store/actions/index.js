@@ -18,7 +18,8 @@ export {
     fetchVariations,
     fetchSongs,
     fetchTrends,
-    fetchOrigins
+    fetchOrigins,
+    fetchNameCollections
 } from './name';
 
 export {

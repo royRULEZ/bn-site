@@ -9,6 +9,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { connect } from 'react-redux';
+import { fetchVariations } from '../../../store/actions/index';
+
 import Template from './blank';
 import { Link } from 'react-router-dom';
 
@@ -36,12 +39,16 @@ const Name = styled(Link)`
 // Component
 class Variations extends Component {   
 
+    componentDidMount () {
+        this.props.onFetchVariations(this.props.name);
+    }
+
     render () {
 
-        let names = null;
+        let names = "No Variations";
         let namesArr = null;
         namesArr = this.props.variations.splice(0, 1);
-        if ( !this.props.loading ) {
+        if ( this.props.variations[0] ) {
             names = this.props.variations.map( n => (
                 <Name to={"/name/" + n.name} key={n.name}>{n.name}</Name>
             ) );
@@ -60,7 +67,20 @@ class Variations extends Component {
     }
 }
 
-export default Variations;
+const mapStateToProps = state => {
+    return {
+        variations: state.name.variations,
+        loading: state.name.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchVariations: (name) => dispatch ( fetchVariations(name) )
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )(Variations);
 
 
 

@@ -31,6 +31,10 @@ import {
     FETCH_ORIGINS_START,
     FETCH_ORIGINS_SUCCESS,
     FETCH_ORIGINS_FAIL,
+    //
+    FETCH_NAMECOLLECTIONS_START,
+    FETCH_NAMECOLLECTIONS_SUCCESS,
+    FETCH_NAMECOLLECTIONS_FAIL,
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
 
@@ -43,6 +47,7 @@ const initialState = {
     songs: [],
     trends: [],
     origins: [],
+    nameCollections: [],
     loading: false
 };
 
@@ -181,7 +186,7 @@ const fetchTrendsFail = ( state, action ) => {
 
 
 // --------------------------------------------------------------------------------------------------------------------------
-// Variations
+// Origins
 // --------------------------------------------------------------------------------------------------------------------------
 const fetchOriginsStart = ( state, action ) => {
     return updateObject( state, { 
@@ -202,6 +207,28 @@ const fetchOriginsFail = ( state, action ) => {
     });
 };
 
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Name Collections
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchNameCollectionsStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchNameCollectionsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        nameCollections: action.nameCollections,
+        loading: false
+    });
+};
+
+const fetchNameCollectionsFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
 
 // --------------------------------------------------------------------------------------------------------------------------
 // Main Reducer
@@ -242,6 +269,11 @@ export const nameReducer = ( state = initialState, action ) => {
         case FETCH_ORIGINS_START: return fetchOriginsStart( state, action );
         case FETCH_ORIGINS_SUCCESS: return fetchOriginsSuccess( state, action );
         case FETCH_ORIGINS_FAIL: return fetchOriginsFail( state, action );
+        //
+        //
+        case FETCH_NAMECOLLECTIONS_START: return fetchNameCollectionsStart( state, action );
+        case FETCH_NAMECOLLECTIONS_SUCCESS: return fetchNameCollectionsSuccess( state, action );
+        case FETCH_NAMECOLLECTIONS_FAIL: return fetchNameCollectionsFail( state, action );
         //
         default: return state;
     }

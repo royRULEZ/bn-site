@@ -75,7 +75,7 @@ class NameView extends Component {
                     <FullHistory name={this.props.name} gender={this.props.gender} history={this.props.history}  />    
     
                     <Origin name={this.props.name} />
-                    {/*<Variations name={this.props.name} variations={this.props.variations} />*/}
+                    <Variations name={this.props.name} />
                     <Song name={this.props.name} /> 
                     <Collections name={this.props.name} />
 
