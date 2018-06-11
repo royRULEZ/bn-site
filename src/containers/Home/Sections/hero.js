@@ -141,8 +141,8 @@ class Hero extends Component {
                         A different kind of baby name site. Through data we help you discover, find and explore unique and uncommon names for your child.
                     </div>
                     <div className="Circles">
-                        <Circle to={{ pathname: '/explore', state: { routeGender: "F" }}} className="Girl">Girl</Circle>
-                        <Circle to={{ pathname: '/explore', state: { routeGender: "M" }}} className="Boy">Boy</Circle>
+                        <Circle to={{ pathname: '/explore', direct: { routeGender: "F" }}} className="Girl">Girl</Circle>
+                        <Circle to={{ pathname: '/explore', direct: { routeGender: "M" }}} className="Boy">Boy</Circle>
                         {/*<Circle to={{ pathname: '/explore', state: { routeGender: "U" }}} className="Unisex">Unisex</Circle>*/}
                     </div>
 

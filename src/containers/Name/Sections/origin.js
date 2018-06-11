@@ -44,7 +44,7 @@ class Origins extends Component {
 
     render () {
 
-        let origins = "We're still searching!";
+        let origins = "We haven't found it yet...";
         if(this.props.origins[0]){
             origins = this.props.origins.map( o => (
                 <Origin key={o.name} to={"/collection/"+o.name}>

@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Aux from  '../../../hoc/Aux';
+import Spinner from '../../../components/spinner/spinner';
 
 import { connect } from 'react-redux';
 import { fetchCollectionProfiles } from '../../../store/actions/index';
@@ -66,7 +66,7 @@ class CollectionProfiles extends Component {
     render () {
 
         console.log(this.props.collectionProfiles);
-        let profiles = "Loading...";
+        let profiles = <Spinner/>;
         // Array of Names
         profiles = this.props.collectionProfiles.map( p => (
             <ListItem key={p.id}>

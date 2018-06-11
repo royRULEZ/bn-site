@@ -97,7 +97,7 @@ class Rank extends Component {
         sum = (
             <div className="r_num">
                 {this.props.sum.toLocaleString()}
-                <div>Baby's named {this.props.name} since 1880</div>
+                <div>Babies named {this.props.name} since 1880</div>
             </div>
         );
 

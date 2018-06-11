@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import CollectionView from './Collection_view';
 import Aux from '../../hoc/Aux';
+import Spinner from '../../components/spinner/spinner';
 
 import { connect } from 'react-redux';
 import { fetchCollection } from '../../store/actions/index';
@@ -14,7 +15,7 @@ class Collection extends Component {
 
     render () {
 
-        let view = <div>Loading</div>; //TODO Fix
+        let view = <Spinner/>; //TODO Fix
         if(this.props.collection[0]){
             view = 
             <CollectionView

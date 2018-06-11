@@ -34,13 +34,13 @@ export const fetchNameInfo = (name) => {
         axios.get( qStr )
             .then( res => {
                 const nameInfo = [];
-                for ( let key in res.data ) {
-                    nameInfo.push( {
-                        ...res.data[key],
-                        id: key
-                    } );
-                }
-                dispatch(fetchNameInfoSuccess(nameInfo));
+                    for ( let key in res.data ) {
+                        nameInfo.push( {
+                            ...res.data[key],
+                            id: key
+                        } );
+                    }
+                    dispatch(fetchNameInfoSuccess(nameInfo));
             } )
             .catch( err => {
                 console.log('[FETCH_NAMEINFO_FAIL]', err);

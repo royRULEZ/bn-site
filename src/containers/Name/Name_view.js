@@ -69,7 +69,7 @@ class NameView extends Component {
                 <Info>
                     <Rank name={this.props.name} rank={this.props.rank} occurrences={this.props.occurrences} gender={this.props.gender} sum={this.props.sum} />
                     <Known name={this.props.name} />
-                    <RecentHistory name={this.props.name} gender={this.props.gender} recentHistory={this.props.recentHistory} />
+                    <RecentHistory name={this.props.name} gender={this.props.gender} />
                     
                     <FullHistory name={this.props.name} gender={this.props.gender} history={this.props.history}  />    
     

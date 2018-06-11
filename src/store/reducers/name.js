@@ -48,7 +48,8 @@ const initialState = {
     trends: [],
     origins: [],
     nameCollections: [],
-    loading: false
+    loading: false,
+    noFind: false
 };
 
 
@@ -70,7 +71,7 @@ const fetchNameInfoSuccess = ( state, action ) => {
 
 const fetchNameInfoFail = ( state, action ) => {
     return updateObject( state, { 
-        loading: false 
+        loading: false
     });
 };
 

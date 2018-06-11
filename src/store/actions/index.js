@@ -1,14 +1,17 @@
 export {
     fetchNames,
     fetchNames_B,
-    fetchRandom
+    fetchRandom,
+    fetchHCollections
 } from './home';
 
 export {
     fetchAllNames,
     changeGender,
     changePopularity,
-    changeAlpha
+    changeAlpha,
+    changeLength,
+    changePage
 } from './explore';
 
 export {

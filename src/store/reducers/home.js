@@ -17,7 +17,12 @@ import {
     //
     FETCH_RANDOM_START,
     FETCH_RANDOM_SUCCESS,
-    FETCH_RANDOM_FAIL
+    FETCH_RANDOM_FAIL,
+    //
+    //
+    FETCH_HCOLLECTIONS_START,
+    FETCH_HCOLLECTIONS_SUCCESS,
+    FETCH_HCOLLECTIONS_FAIL
     //
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
@@ -27,6 +32,7 @@ const initialState = {
     girlNames20: [],
     boyNames20: [],
     randomName: [],
+    HCollections: [],
     loading: false
 };
 
@@ -85,6 +91,23 @@ const fetchRandomFail = ( state, action ) => {
     return updateObject( state, { loading: false } );
 };
 
+// --------------------------------------------------------------------------------------------------------------------------
+// Random Name
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchHCollectionsStart = ( state, action ) => {
+    return updateObject( state, { loading: true } );
+};
+
+const fetchHCollectionsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        HCollections: action.HCollections,
+        loading: false
+    } );
+};
+
+const fetchHCollectionsFail = ( state, action ) => {
+    return updateObject( state, { loading: false } );
+};
 
 // --------------------------------------------------------------------------------------------------------------------------
 // Main Reducer
@@ -105,6 +128,11 @@ export const homeReducer = ( state = initialState, action ) => {
         case FETCH_RANDOM_START: return fetchRandomStart( state, action );
         case FETCH_RANDOM_SUCCESS: return fetchRandomSuccess( state, action );
         case FETCH_RANDOM_FAIL: return fetchRandomFail( state, action );
+        //
+        //
+        case FETCH_HCOLLECTIONS_START: return fetchHCollectionsStart( state, action );
+        case FETCH_HCOLLECTIONS_SUCCESS: return fetchHCollectionsSuccess( state, action );
+        case FETCH_HCOLLECTIONS_FAIL: return fetchHCollectionsFail( state, action );
         //
         default: return state;
     }

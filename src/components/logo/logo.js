@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Main = styled.div`
+const Main = styled(Link)`
     box-sizing: border-box;
     padding: 0 25px;
     font-weight: 700;
@@ -13,7 +14,7 @@ const Main = styled.div`
 `;
 
 const logo = (props) => (
-    <Main>
+    <Main to="/">
         {props.children}
     </Main>
 );

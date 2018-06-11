@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Aux from  '../../../hoc/Aux';
+import Spinner from '../../../components/spinner/spinner';
 
 import { connect } from 'react-redux';
 import { fetchCollectionNames } from '../../../store/actions/index';
@@ -36,25 +36,19 @@ const Names = styled.div`
     display: flex;
     flex-wrap: wrap;
 `;
-const Name = styled.div`
+const Name = styled(Link)`
     width: 25%;
     padding: 1.6rem 0;
     box-sizing: border-box;
     text-align: left;
-    a{
-        text-decoration: none;
-        font-weight: 300;
-        font-size: 1.5rem;
-        &.M{
-            color: ${props => props.theme.color_boy};
-        }
-        &.F{
-            color: ${props => props.theme.color_girl};
-        }
-        &:hover{
-            text-decoration: underline;
-        }
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: inherit;
+    &:hover{
+        text-decoration: underline;
     }
+    
 `;
 
 // Component
@@ -67,11 +61,11 @@ class CollectionNames extends Component {
     render () {
 
 
-        let names = "Loading...";
+        let names = <Spinner/>;
         if(this.props.collectionNames[0]){
             names = this.props.collectionNames.map( n => (
-                <Name key={n.id}>
-                    <a href={"/name/"+n.name} className="M">{n.name}</a>
+                <Name key={n.id} to={"/name/"+n.name} >
+                    {n.name}
                 </Name>
             ));
         }

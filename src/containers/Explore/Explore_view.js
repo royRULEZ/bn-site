@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { fetchAllNames, changeGender, changePopularity, changeAlpha } from '../../store/actions/index';
+import { fetchAllNames, changeGender, changePopularity, changeAlpha, changeLength, changePage } from '../../store/actions/index';
 
 import Aux from '../../hoc/Aux';
 import { BigBanner as Ad } from '../../components/ad/ad_factory';
 import Name from './Sections/name';
 import Filters from './Sections/filters';
+
+import Spinner from '../../components/spinner/spinner';
+import { Pagination } from '../../components/pagination/pagination';
 
 //CSS
 const Main = styled.div`
@@ -25,6 +28,7 @@ const Headline = styled.h1`
 `;
 const ExploreContainer = styled.div`
     display: flex;
+    margin-bottom: 2rem;
 `;
 const AllNames = styled.div`
     width: 80%;
@@ -34,64 +38,47 @@ const AllNames = styled.div`
     padding: 0 1rem;
 `;
 
-
 class ExploreView extends Component {   
 
-    state = {
-        popularity: "Unique",
-        gender: "F",
-        alpha: "",
-        length: ""
-    }
     
     changeGenderHandler = (g) => {
-        this.setState({ 
-            gender: g
-        });
-        this.props.onChangeGender(this.state, g);
+        this.props.onChangeGender(this.props.bundle, g);
     }
 
     changePopularityHandler = (e) => {
-        this.setState({ 
-            popularity: e.value
-        });
-        this.props.onChangePopularity(this.state, e.value);
+        this.props.onChangePopularity(this.props.bundle, e.value);
     }
 
     changeAlphaHandler = (a) => {
         let char = '';
-        if(typeof a === 'object'){
-            char = a.value;
-        }else{
-            char = a;
-        }
-        this.setState({ 
-            alpha: char
-        });
-        this.props.onChangeAlpha(this.state, char);
+        typeof a === 'object' ? char = a.value : char = a;
+        char === "Clear" ? char = "" : "";
+        this.props.onChangeAlpha(this.props.bundle, char);
     }
 
     changeLengthHandler = (l) => {
-        this.setState({ 
-            length: l.value
-        });
+        this.props.onChangeLength(this.props.bundle, l.value);
+    }
+
+    changePageHandler = (p) => {
+        this.props.onChangePage(this.props.bundle, p);
     }
 
     componentDidMount () {
-        this.props.onFetchAllNames(this.state);
+        this.props.onFetchAllNames(this.props.bundle);
         
         if(this.props.directGender){
-            console.log("IN1");
+            console.log("Direct Gender");
             this.changeGenderHandler(this.props.directGender);
         }
 
         if(this.props.directAlpha){
-            console.log("IN2", this.props);
+            console.log("Direct Gender", this.props);
             this.changeAlphaHandler(this.props.directAlpha);
         }
     
     }
-
+    
     render () {
 
         let names = <p>Something went terribly wrong!</p>;
@@ -106,24 +93,35 @@ class ExploreView extends Component {
                 <Ad/>
                 <Main>
                     <Headline>Search unique names for your child</Headline>
+                    <Pagination
+                        pageCount = {this.props.pageCount}
+                        changePage = {this.changePageHandler}
+                        page = {this.props.bundle.page}
+                    />
                     <ExploreContainer>
                         <Filters 
                             gender={this.changeGenderHandler}
-                            g={this.state.gender}
+                            g={this.props.bundle.gender}
 
                             popularity={this.changePopularityHandler}
-                            p={this.state.popularity}
+                            p={this.props.bundle.popularity}
             
                             alpha={this.changeAlphaHandler}
-                            a={this.state.alpha}
+                            a={this.props.bundle.alpha}
 
                             length={this.changeLengthHandler}
-                            l={this.state.length}
+                            l={this.props.bundle.length}
                         />                        
-                        <AllNames>
+                        <AllNames> 
                             {names}
                         </AllNames>
                     </ExploreContainer>
+                    <Pagination
+                        pageCount = {this.props.pageCount}
+                        changePage = {this.changePageHandler}
+                        page = {this.props.bundle.page}
+                    />
+
                 </Main>
             </Aux>
         );
@@ -131,17 +129,30 @@ class ExploreView extends Component {
 }
 
 const mapStateToProps = state => {
+    
+    let bundle = {
+        "gender": state.explore.gender,
+        "popularity": state.explore.popularity,
+        "alpha": state.explore.alpha,
+        "length": state.explore.length,
+        "page": state.explore.page,
+    }
+
     return {
-        allNames: state.explore.allNames
+        allNames: state.explore.allNames,
+        pageCount: state.explore.pageCount,
+        bundle: bundle
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onFetchAllNames: (state) => dispatch( fetchAllNames(state) ),
-        onChangeGender: (state, gender) => dispatch( changeGender(state, gender) ),
-        onChangePopularity: (state, popularity) => dispatch( changePopularity(state, popularity) ),
-        onChangeAlpha: (state, alpha) => dispatch( changeAlpha(state, alpha) ),
+        onChangeGender: (bundle, gender) => dispatch( changeGender(bundle, gender) ),
+        onChangePopularity: (bundle, popularity) => dispatch( changePopularity(bundle, popularity) ),
+        onChangeAlpha: (bundle, alpha) => dispatch( changeAlpha(bundle, alpha) ),
+        onChangeLength: (bundle, length) => dispatch( changeLength(bundle, length) ),
+        onChangePage: (bundle, page) => dispatch( changePage(bundle, page) ),
     };
 };
 

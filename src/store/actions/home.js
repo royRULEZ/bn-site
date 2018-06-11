@@ -129,3 +129,40 @@ export const fetchRandom = () => {
     };
 };
 
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Collections
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchHCollectionsSuccess = ( HCollections ) => {
+    return {
+        type: actionTypes.FETCH_HCOLLECTIONS_SUCCESS,
+        HCollections: HCollections
+    };
+};
+
+export const fetchHCollectionsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_HCOLLECTIONS_FAIL,
+        error: error
+    };
+};
+
+export const fetchHCollectionsStart = () => {
+    return {
+        type: actionTypes.FETCH_HCOLLECTIONS_START
+    };
+};
+
+export const fetchHCollections = () => {
+    return dispatch => {
+        dispatch(fetchHCollectionsStart());
+        axios.get( '/collection-featured' )
+            .then( res => {   
+                dispatch(fetchHCollectionsSuccess(res.data));
+            } )
+            .catch( err => {
+                console.log('[Fetch_HCOLLECTIONS_Names]', err);
+                dispatch(fetchHCollectionsFail(err));
+            } );
+    };
+};

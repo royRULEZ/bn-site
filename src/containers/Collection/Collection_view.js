@@ -48,8 +48,6 @@ class CollectionView extends Component {
     
     render () {
 
-        console.log("TYPE", this.props.type);
-
         let names = <div>Waiting for Names</div>;
         if(this.props.type === "profiles"){
             names = <Profiles name={this.props.collection} id={this.props.id} />

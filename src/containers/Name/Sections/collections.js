@@ -47,7 +47,7 @@ class Collections extends Component {
 
         const label = "Collections with '"+ this.props.name +"' in them?";
 
-        let nameCollections = "We're still searching!";
+        let nameCollections = "Nothing yet";
         if(this.props.nameCollections[0]){
             nameCollections = this.props.nameCollections.map( nc => (
                 <Collection key={nc.name} to={"/collection/"+nc.url}>
