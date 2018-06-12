@@ -50,7 +50,7 @@ const BigNext = styled.div`
     width: auto;
     padding: 0 2rem;
     height: 2rem;
-    font-size: .75rem;
+    font-size: 1rem;
     border: 1px solid #DDD;
     color: #666;
     border-radius: 2px;
@@ -108,9 +108,14 @@ const PageNumInput = styled.input`
     outline: 0;
     display: block;
     font-size: .875rem;
-    width: 2rem;
+    width: 1.5rem;
     padding: .25rem;
     font-family: ${props => props.theme.font_main};
+    &::-webkit-inner-spin-button, 
+    &::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
 `;
 
 
@@ -122,6 +127,7 @@ export class Pagination extends Component {
             console.log("Num: ", num);
             this.props.changePage(num-1);
         }
+        window.scrollTo(0, 0);
     }
 
     goForward = () => {
@@ -131,16 +137,14 @@ export class Pagination extends Component {
             console.log(this.props.pageCount);
             this.props.changePage(page+1);
         }
+        window.scrollTo(0, 0);
     }
 
     onKeyPress = (e) => {
         if(e.key === 'Enter'){
-            this.props.changePage(e.target.value)
+            this.props.changePage(parseInt(e.target.value))
         }
-    }
-
-    updateInput = (val) => {
-        return val;
+        
     }
 
     render(){
@@ -171,7 +175,7 @@ export class Pagination extends Component {
 
         let previous = <Direction onClick={() => this.goBackward()}><i className="fas fa-angle-left"></i></Direction>;
         let next = <Direction onClick={() => this.goForward()}><i className="fas fa-angle-right"></i></Direction>;
-        let bigNext = <BigNext onClick={() => this.goForward()}>Next Page</BigNext>;
+        let bigNext = <BigNext onClick={() => this.goForward()}>Next Page ></BigNext>;
 
         return(
             <Container>
@@ -181,10 +185,10 @@ export class Pagination extends Component {
                 <Lower>
                     <PageNumText>
                         <PageNumInput 
-                            type='text'
+                            type='number'
                             value={this.props.page}
-                            onChange={() => this.updateInput(this.props.page)}
-                            onKeyPress={this.onKeyPress}
+                            onChange={this.onKeyPress}
+                            //onKeyPress={this.onKeyPress}
                         />
                         <div className="slash">/</div>
                         <div className="pagecount">{this.props.pageCount}</div>
@@ -198,6 +202,16 @@ export class Pagination extends Component {
 
 
 /*
+
+
+<input
+    className="form-control"
+    type="text" value={this.state.name}
+    id={'todoName' + this.props.id}
+    onChange={e => this.onTodoChange(e.target.value)}
+/>
+
+
 const Container = styled.div`
     width: 100%;
     display: flex;

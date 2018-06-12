@@ -9,7 +9,7 @@ class Explore extends Component {
         let directGender = null;
         let directAlpha = null;
 
-        console.log("Expore.js PROPS", this.props.location);
+        //console.log("Expore.js PROPS", this.props.location);
         if(this.props.location.direct){
             directGender =  this.props.location.direct.routeGender;
             directAlpha =  this.props.location.direct.routeAlpha;

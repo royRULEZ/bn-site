@@ -57,6 +57,7 @@ class ExploreView extends Component {
     }
 
     changeLengthHandler = (l) => {
+        l.value === "Clear" ? l.value = "" : "";
         this.props.onChangeLength(this.props.bundle, l.value);
     }
 
@@ -93,11 +94,6 @@ class ExploreView extends Component {
                 <Ad/>
                 <Main>
                     <Headline>Search unique names for your child</Headline>
-                    <Pagination
-                        pageCount = {this.props.pageCount}
-                        changePage = {this.changePageHandler}
-                        page = {this.props.bundle.page}
-                    />
                     <ExploreContainer>
                         <Filters 
                             gender={this.changeGenderHandler}
@@ -121,7 +117,6 @@ class ExploreView extends Component {
                         changePage = {this.changePageHandler}
                         page = {this.props.bundle.page}
                     />
-
                 </Main>
             </Aux>
         );
