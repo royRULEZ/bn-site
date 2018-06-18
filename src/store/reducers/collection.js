@@ -16,6 +16,10 @@ import {
     FETCH_COLLECTIONPROFILES_SUCCESS,
     FETCH_COLLECTIONPROFILES_FAIL,
     //
+    FETCH_COLLECTIONS_START,
+    FETCH_COLLECTIONS_SUCCESS,
+    FETCH_COLLECTIONS_FAIL,
+    //
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
 
@@ -24,6 +28,7 @@ const initialState = {
     collection: [],
     collectionNames: [],
     collectionProfiles: [],
+    collections: [],
     loading: false
 };
 
@@ -97,6 +102,28 @@ const fetchCollectionProfilesFail = ( state, action ) => {
 };
 
 // --------------------------------------------------------------------------------------------------------------------------
+// Collections
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchCollectionsStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchCollectionsSuccess = ( state, action ) => {
+    return updateObject( state, {
+        collections: action.collections,
+        loading: false
+    });
+};
+
+const fetchCollectionsFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
+
+// --------------------------------------------------------------------------------------------------------------------------
 // Main Reducer
 // --------------------------------------------------------------------------------------------------------------------------
 export const collectionReducer = ( state = initialState, action ) => {
@@ -115,6 +142,11 @@ export const collectionReducer = ( state = initialState, action ) => {
         case FETCH_COLLECTIONPROFILES_START: return fetchCollectionProfilesStart( state, action );
         case FETCH_COLLECTIONPROFILES_SUCCESS: return fetchCollectionProfilesSuccess( state, action );
         case FETCH_COLLECTIONPROFILES_FAIL: return fetchCollectionProfilesFail( state, action );
+        //
+        //
+        case FETCH_COLLECTIONS_START: return fetchCollectionsStart( state, action );
+        case FETCH_COLLECTIONS_SUCCESS: return fetchCollectionsSuccess( state, action );
+        case FETCH_COLLECTIONS_FAIL: return fetchCollectionsFail( state, action );
         //
         default: return state;
     }

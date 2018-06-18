@@ -28,5 +28,6 @@ export {
 export {
     fetchCollection,
     fetchCollectionNames,
-    fetchCollectionProfiles
+    fetchCollectionProfiles,
+    fetchCollections
 } from './collection';

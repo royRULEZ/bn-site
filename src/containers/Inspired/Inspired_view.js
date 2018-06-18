@@ -6,7 +6,10 @@ import Aux from '../../hoc/Aux';
 import { BigBanner as Ad, OfferCluster} from '../../components/ad/ad_factory';
 
 import Hero from './Sections/hero';
+import Eight from './Sections/eight';
 import Popular from './Sections/popular';
+import List from './Sections/list';
+import Origins from '../Home/Sections/origin';
 
 //CSS
 const Main = styled.div`
@@ -19,6 +22,13 @@ const Headline = styled.h1`
     font-weight: normal;
     font-family: ${props => props.theme.font_nixie};
 `;
+const Body = styled.div`
+    width: 1100px;
+    margin: 0 auto;
+    max-width: 95%;
+    display: flex;
+    flex-direction: row;
+`;
 
 class InspiredView extends Component {   
 
@@ -30,7 +40,11 @@ class InspiredView extends Component {
                     <Headline>Get inspired by our unqiue collections</Headline>
                 </Main>
                 <Hero />
-                <Popular />
+                <Body>
+                    <List/>
+                    <Popular/>
+                </Body>
+                <Origins/>                
                 <OfferCluster/>
             </Aux>
         );

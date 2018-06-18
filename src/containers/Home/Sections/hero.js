@@ -130,7 +130,7 @@ class Hero extends Component {
                     </div>
                     <div className="Info">
                         <div>
-                            Popularity: {this.props.randomName['2017']} babies named {this.props.randomName.name} last year.
+                            Popularity: {this.props.randomName['2017'] ? this.props.randomName['2017'].toLocaleString() : ""} babies named {this.props.randomName.name} last year.
                         </div>
                     </div>
 

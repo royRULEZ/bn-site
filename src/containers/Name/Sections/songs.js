@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { fetchSongs } from '../../../store/actions/index';
 
 import Template from './blank';
+import Spinner from '../../../components/spinner/spinner';
 
 //CSS
 const Main = styled.div`
@@ -41,12 +42,16 @@ class Songs extends Component {
 
     render () {
 
-        let songs = this.props.songs.map( s => (
-            <Container key={s.trackId}>
-                <div className="s-title">{s.trackCensoredName}</div>
-                <div className="s-artist">{s.artistName}</div>
-            </Container>
-        ));
+        let songs = <Spinner/>
+
+        if(this.props.songs[0]){
+            songs = this.props.songs.map( s => (
+                <Container key={s.trackId}>
+                    <div className="s-title">{s.trackCensoredName}</div>
+                    <div className="s-artist">{s.artistName}</div>
+                </Container>
+            ));
+        }
 
         //URL : trackViewUrl
         //Artwork : artworkUrl30

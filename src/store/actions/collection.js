@@ -121,3 +121,44 @@ export const fetchCollectionProfiles = (id) => {
             } );
     };
 };
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Collection Profiles
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchCollectionsSuccess = ( collections ) => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONS_SUCCESS,
+        collections: collections
+    };
+};
+
+export const fetchCollectionsFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONS_FAIL,
+        error: error
+    };
+};
+
+export const fetchCollectionsStart = () => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONS_START
+    };
+};
+
+export const fetchCollections = () => {
+    let qStr = 'http://localhost:8088/collections/';
+    return dispatch => {
+        
+        dispatch(fetchCollectionsStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchCollectionsSuccess(res.data));
+            } )
+            .catch( err => {
+                console.log('[FETCH_COLLECTIONS_FAIL]', err);
+                dispatch(fetchCollectionsFail(err));
+            } );
+    };
+};
+
