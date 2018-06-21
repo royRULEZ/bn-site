@@ -124,7 +124,7 @@ export const fetchCollectionProfiles = (id) => {
 
 
 // --------------------------------------------------------------------------------------------------------------------------
-// Collection Profiles
+// Collections
 // --------------------------------------------------------------------------------------------------------------------------
 export const fetchCollectionsSuccess = ( collections ) => {
     return {
@@ -146,8 +146,8 @@ export const fetchCollectionsStart = () => {
     };
 };
 
-export const fetchCollections = () => {
-    let qStr = 'http://localhost:8088/collections/';
+export const fetchCollections = (a) => {
+    let qStr = a ? 'http://localhost:8088/collections/'+a : 'http://localhost:8088/collections/';
     return dispatch => {
         
         dispatch(fetchCollectionsStart());
@@ -162,3 +162,41 @@ export const fetchCollections = () => {
     };
 };
 
+// --------------------------------------------------------------------------------------------------------------------------
+// Collections Popular
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchCollectionsPopularSuccess = ( collectionpopular ) => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONSPOPULAR_SUCCESS,
+        collectionpopular: collectionpopular
+    };
+};
+
+export const fetchCollectionsPopularFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONSPOPULAR_FAIL,
+        error: error
+    };
+};
+
+export const fetchCollectionsPopularStart = () => {
+    return {
+        type: actionTypes.FETCH_COLLECTIONSPOPULAR_START
+    };
+};
+
+export const fetchCollectionsPopular = () => {
+    let qStr = 'http://localhost:8088/collections-popular/';
+    return dispatch => {
+        
+        dispatch(fetchCollectionsPopularStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchCollectionsPopularSuccess(res.data));
+            } )
+            .catch( err => {
+                console.log('[FETCH_COLLECTIONSPOPULAR_FAIL]', err);
+                dispatch(fetchCollectionsPopularFail(err));
+            } );
+    };
+};

@@ -16,6 +16,7 @@ class Name extends Component {
     }
 
     // TODO: Fix, this is very hacky (I think)
+    
     componentDidUpdate () {
         if(this.props.info[0]){
             if(this.props.info[0].name != this.props.match.params.n){
@@ -25,12 +26,18 @@ class Name extends Component {
             }
         }
     }
+    
 
     render () {
         
         //TODO - I don't like this. Feels Hacky. -- SOLUTION is to move everything to the components so each one loads and one component can't crash the whole system.
         let container = <Spinner/>;
+
+        //if(this.props.info[0] === undefined){console.log("Didn't Find")}else{console.log("Found")}
         
+        //if(this.props.info[0] === undefined){console.log("HEY")}
+        //console.log(this.props.nofind);
+
         if(this.props.info[0] && this.props.history[0] && (this.props.info[0].name === this.props.match.params.n)){
             
             //GENDER
@@ -60,8 +67,10 @@ class Name extends Component {
                             recentHistory={this.props.recentHistory}
                             history={this.props.history}
                             trends={this.props.trends}
+                            key={this.props.match.params.n}
                         />
         }
+
         return (
             container
         );
@@ -72,6 +81,7 @@ const mapStateToProps = state => {
     return {
         info: state.name.nameInfo,
         history: state.name.history,
+        nofind: state.name.noFind,
         loading: state.name.loading
     };
 };

@@ -25,7 +25,7 @@ const Main = styled.div`
         display: block;
         width: 100%;
         font-size: 1.25rem;
-        padding: 0;
+        padding: 0 1rem;
         margin: .75rem 0;
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
@@ -56,7 +56,7 @@ const ListContainer = styled.div`
         const ListItem = styled(Link)`
             display: block;
             width: 100%;
-            padding: 1rem 0.5rem;
+            padding: 1rem 1rem;
             border-bottom: 1px solid #DDD;
             text-decoration: none;
             color: inherit;
@@ -77,6 +77,11 @@ class List extends Component {
         this.props.onFetchCollections();
     }
 
+    listTypeHandler = (e) => {
+        console.log(e.target.value);
+        this.props.onFetchCollections(e.target.value);
+    }
+
     render () {
         let collections = <Spinner/>;        
         if(this.props.collections[0]){
@@ -88,12 +93,12 @@ class List extends Component {
         }
 
         return(
-                /* Title: Recently Added Collections */
                 <Main>
-                    <h2>Headline 2</h2>
+                    <h2>Search Collections</h2>
                     <ListContainer>
                         <ListSearch
                             placeholder="Search..."
+                            onKeyUp={this.listTypeHandler}
                         />
                         <ListItems>
                             {collections}
@@ -113,7 +118,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchCollections: () => dispatch ( fetchCollections() ),
+        onFetchCollections: (a) => dispatch ( fetchCollections(a) ),
     };
 };
 

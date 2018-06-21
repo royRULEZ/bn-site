@@ -51,24 +51,25 @@ const PopularItems = styled.div`
 class Eight extends Component {   
 
     render () {
-    return(
-            /* Title: Recently Added Collections */
-            <Main>
-                <h2>Headline 2</h2>
-                <PopularItems>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                    <PopularItem></PopularItem>
-                </PopularItems> 
-            </Main>  
-        );
+
+        return(
+                /* Title: Recently Added Collections */
+                <Main>
+                    <h2>Headline 3</h2>
+                    <PopularItems>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                        <PopularItem></PopularItem>
+                    </PopularItems> 
+                </Main>  
+            );
+        }
     }
-}
 
 export default Eight;
 

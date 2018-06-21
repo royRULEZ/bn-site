@@ -7,6 +7,11 @@ import {
     FETCH_NAMEINFO_START,
     FETCH_NAMEINFO_SUCCESS,
     FETCH_NAMEINFO_FAIL,
+    FETCH_NAMEINFO_NOTFOUND,
+    //
+    FETCH_IMDB_START,
+    FETCH_IMDB_SUCCESS,
+    FETCH_IMDB_FAIL,
     //
     FETCH_RECENTHISTORY_START,
     FETCH_RECENTHISTORY_SUCCESS,
@@ -48,6 +53,7 @@ const initialState = {
     trends: [],
     origins: [],
     nameCollections: [],
+    imdb: [],
     loading: false,
     noFind: false
 };
@@ -70,6 +76,35 @@ const fetchNameInfoSuccess = ( state, action ) => {
 };
 
 const fetchNameInfoFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false
+    });
+};
+
+const fetchNameInfoNotFound = ( state, action ) => {
+    return updateObject( state, { 
+        noFind: action.noFind,
+        loading: false
+    });
+};
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Meaning
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchImdbStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchImdbSuccess = ( state, action ) => {
+    return updateObject( state, {
+        imdb: action.imdb,
+        loading: false
+    });
+};
+
+const fetchImdbFail = ( state, action ) => {
     return updateObject( state, { 
         loading: false
     });
@@ -240,6 +275,12 @@ export const nameReducer = ( state = initialState, action ) => {
         case FETCH_NAMEINFO_START: return fetchNameInfoStart( state, action );
         case FETCH_NAMEINFO_SUCCESS: return fetchNameInfoSuccess( state, action );
         case FETCH_NAMEINFO_FAIL: return fetchNameInfoFail( state, action );
+        case FETCH_NAMEINFO_NOTFOUND: return fetchNameInfoNotFound( state, action );
+        //
+        //
+        case FETCH_IMDB_START: return fetchImdbStart( state, action );
+        case FETCH_IMDB_SUCCESS: return fetchImdbSuccess( state, action );
+        case FETCH_IMDB_FAIL: return fetchImdbFail( state, action );
         //
         //
         case FETCH_RECENTHISTORY_START: return fetchRecentHistoryStart( state, action );

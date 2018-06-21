@@ -22,3 +22,13 @@ const theme = {
 };
 
 export default theme;
+
+/* 
+
+General Information:
+Large Image: 1100 x 500
+Medium Image: 385 x 195
+Profiles: 600 x 350
+
+
+*/

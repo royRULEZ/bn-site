@@ -83,7 +83,7 @@ class Collections extends Component {
         
         if ( !this.props.loading ) {
             collections = this.props.HCollections.map( hc => (
-                <Collection key={hc.name} to={"/collection/"+hc.url} backgroundimage={require('../../../assets/collections/'+hc.id+'_s.jpg')}>
+                <Collection key={hc.name} to={"/collection/"+hc.url} backgroundimage={require('../../../assets/collections/'+hc.id+'_400.jpg')}>
                     <div>{hc.name}</div>
                 </Collection>
             ) )

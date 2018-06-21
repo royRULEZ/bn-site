@@ -19,12 +19,6 @@ import { fetchCollectionProfiles } from '../../../store/actions/index';
 const ListItem = styled.div`
     display: flex;
     flex-direction: row;
-    .c_Photo{
-        float: left;
-        width: 50%;
-        height: 350px;
-        background-color: #444;
-    }
     .c_Bio{
         float: left;
         width: 50%;
@@ -65,12 +59,20 @@ class CollectionProfiles extends Component {
 
     render () {
 
+        const ListPhoto = styled.div`
+            float: left;
+            width: 50%;
+            height: 350px;
+            background: url('${props => props.backgroundimage}') no-repeat center center; 
+            background-size: cover;
+        `;
+
         console.log(this.props.collectionProfiles);
         let profiles = <Spinner/>;
         // Array of Names
         profiles = this.props.collectionProfiles.map( p => (
             <ListItem key={p.id}>
-                <div className="c_Photo"></div>
+                <ListPhoto backgroundimage={require('../../../assets/collections/profiles/'+this.props.id+'/1.jpg')}  />
                 <div className="c_Bio">
                     <div className="c_Bio-name"><FirstName to={"/name/"+p.firstname}>{p.firstname}</FirstName> {p.lastname}</div>
                     <div className="c_Bio-bio">{p.description}</div>

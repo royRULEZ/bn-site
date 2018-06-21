@@ -14,6 +14,8 @@ import Origin from './Sections/origin';
 import Personalized from './Sections/personalized';
 import Amazon from './Sections/amazon';
 import FullHistory from './Sections/fullHistory';
+import Imdb from './Sections/imdb';
+
 
 //CSS
 const Main = styled.div`
@@ -73,6 +75,7 @@ class NameView extends Component {
                     
                     <FullHistory name={this.props.name} gender={this.props.gender} history={this.props.history}  />    
     
+                    <Imdb name={this.props.name} />
                     <Origin name={this.props.name} />
                     <Variations name={this.props.name} />
                     <Song name={this.props.name} /> 

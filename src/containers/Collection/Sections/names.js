@@ -31,8 +31,6 @@ const Container = styled.div`
         font-family: ${props => props.theme.font_nixie};
         font-size: 2rem;
     }
-`;
-const Names = styled.div`
     display: flex;
     flex-wrap: wrap;
 `;
@@ -40,7 +38,7 @@ const Name = styled(Link)`
     width: 25%;
     padding: 1.6rem 0;
     box-sizing: border-box;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     font-weight: 300;
     font-size: 1.5rem;
@@ -59,8 +57,7 @@ class CollectionNames extends Component {
     }
 
     render () {
-
-
+   
         let names = <Spinner/>;
         if(this.props.collectionNames[0]){
             names = this.props.collectionNames.map( n => (
@@ -73,10 +70,7 @@ class CollectionNames extends Component {
         return(
             <NamesContainer>
                 <Container>
-                    <div className="c_Label">Names</div>
-                    <Names>
-                        {names}
-                    </Names>
+                    {names}
                 </Container>
             </NamesContainer>
         );

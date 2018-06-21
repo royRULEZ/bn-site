@@ -22,12 +22,14 @@ export {
     fetchSongs,
     fetchTrends,
     fetchOrigins,
-    fetchNameCollections
+    fetchNameCollections,
+    fetchImdb
 } from './name';
 
 export {
     fetchCollection,
     fetchCollectionNames,
     fetchCollectionProfiles,
-    fetchCollections
+    fetchCollections,
+    fetchCollectionsPopular
 } from './collection';

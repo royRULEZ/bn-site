@@ -43,7 +43,7 @@ class Hero extends Component {
                 float: left;
                 margin-right: 1%;
                 transition: .3s cubic-bezier(.25,.8,.5,1);
-                background: url('${props => props.backgroundimage}') no-repeat center center; 
+                background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('${props => props.backgroundimage}') no-repeat center center; 
                 background-size: cover;
                 color: #FFF;
                 font-size: 3rem;
@@ -69,10 +69,11 @@ class Hero extends Component {
                     height: 195px;
                     margin-bottom: 10px;
                     transition: .3s cubic-bezier(.25,.8,.5,1);
-                    background: url('${props => props.backgroundimage}') no-repeat center center; 
+                    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('${props => props.backgroundimage}') no-repeat center center; 
                     background-size: cover;
                     color: #FFF;
                     font-size: 2rem;
+                    line-height: 2rem;
                     font-weight: 900;
                     display: flex;
                     text-align: center; 
@@ -86,10 +87,10 @@ class Hero extends Component {
 
             collections = 
                 <Aux>
-                    <Primary to={"/collection/"+this.props.HCollections[0].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[0].id+'.jpg')} >{this.props.HCollections[0].name}</Primary>
+                    <Primary to={"/collection/"+this.props.HCollections[0].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[0].id+'_1100.jpg')} >{this.props.HCollections[0].name}</Primary>
                     <Secondary>
-                        <SecondaryItem to={"/collection/"+this.props.HCollections[1].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[1].id+'.jpg')} >{this.props.HCollections[1].name}</SecondaryItem>
-                        <SecondaryItem to={"/collection/"+this.props.HCollections[2].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[2].id+'.jpg')} >{this.props.HCollections[2].name}</SecondaryItem>
+                        <SecondaryItem to={"/collection/"+this.props.HCollections[1].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[1].id+'_1100.jpg')} >{this.props.HCollections[1].name}</SecondaryItem>
+                        <SecondaryItem to={"/collection/"+this.props.HCollections[2].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[2].id+'_1100.jpg')} >{this.props.HCollections[2].name}</SecondaryItem>
                     </Secondary>
                 </Aux>
             ;

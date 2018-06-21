@@ -20,6 +20,10 @@ import {
     FETCH_COLLECTIONS_SUCCESS,
     FETCH_COLLECTIONS_FAIL,
     //
+    FETCH_COLLECTIONSPOPULAR_START,
+    FETCH_COLLECTIONSPOPULAR_SUCCESS,
+    FETCH_COLLECTIONSPOPULAR_FAIL,
+    //
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
 
@@ -29,6 +33,7 @@ const initialState = {
     collectionNames: [],
     collectionProfiles: [],
     collections: [],
+    collectionspopular: [],
     loading: false
 };
 
@@ -124,6 +129,28 @@ const fetchCollectionsFail = ( state, action ) => {
 };
 
 // --------------------------------------------------------------------------------------------------------------------------
+// Collections Popular
+// --------------------------------------------------------------------------------------------------------------------------
+const fetchCollectionsPopularStart = ( state, action ) => {
+    return updateObject( state, { 
+        loading: true 
+    });
+};
+
+const fetchCollectionsPopularSuccess = ( state, action ) => {
+    return updateObject( state, {
+        collectionpopular: action.collectionpopular,
+        loading: false
+    });
+};
+
+const fetchCollectionsPopularFail = ( state, action ) => {
+    return updateObject( state, { 
+        loading: false 
+    });
+};
+
+// --------------------------------------------------------------------------------------------------------------------------
 // Main Reducer
 // --------------------------------------------------------------------------------------------------------------------------
 export const collectionReducer = ( state = initialState, action ) => {
@@ -147,6 +174,11 @@ export const collectionReducer = ( state = initialState, action ) => {
         case FETCH_COLLECTIONS_START: return fetchCollectionsStart( state, action );
         case FETCH_COLLECTIONS_SUCCESS: return fetchCollectionsSuccess( state, action );
         case FETCH_COLLECTIONS_FAIL: return fetchCollectionsFail( state, action );
+        //
+        //
+        case FETCH_COLLECTIONSPOPULAR_START: return fetchCollectionsPopularStart( state, action );
+        case FETCH_COLLECTIONSPOPULAR_SUCCESS: return fetchCollectionsPopularSuccess( state, action );
+        case FETCH_COLLECTIONSPOPULAR_FAIL: return fetchCollectionsPopularFail( state, action );
         //
         default: return state;
     }

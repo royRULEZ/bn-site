@@ -26,6 +26,12 @@ export const fetchNameInfoStart = () => {
     };
 };
 
+export const fetchNameInfoNotFound = () => {
+    return {
+        type: actionTypes.FETCH_NAMEINFO_NOTFOUND,
+        noFind: true
+    };
+};
 export const fetchNameInfo = (name) => {
     let qStr = 'http://localhost:8088/name?n='+name+'';
     return dispatch => {
@@ -33,7 +39,11 @@ export const fetchNameInfo = (name) => {
         dispatch(fetchNameInfoStart());
         axios.get( qStr )
             .then( res => {
-                const nameInfo = [];
+                if(!res.data[0]){
+                    console.log("Didn't Find");
+                    dispatch(fetchNameInfoNotFound());
+                }else{
+                    const nameInfo = [];
                     for ( let key in res.data ) {
                         nameInfo.push( {
                             ...res.data[key],
@@ -41,10 +51,51 @@ export const fetchNameInfo = (name) => {
                         } );
                     }
                     dispatch(fetchNameInfoSuccess(nameInfo));
+                }
             } )
             .catch( err => {
                 console.log('[FETCH_NAMEINFO_FAIL]', err);
                 dispatch(fetchNameInfoFail(err));
+            } );
+    };
+};
+
+
+// --------------------------------------------------------------------------------------------------------------------------
+// Name Meaning
+// --------------------------------------------------------------------------------------------------------------------------
+export const fetchImdbSuccess = ( imdb ) => {
+    return {
+        type: actionTypes.FETCH_IMDB_SUCCESS,
+        imdb: imdb
+    };
+};
+
+export const fetchImdbFail = ( error ) => {
+    return {
+        type: actionTypes.FETCH_IMDB_FAIL,
+        error: error
+    };
+};
+
+export const fetchImdbStart = () => {
+    return {
+        type: actionTypes.FETCH_IMDB_START
+    };
+};
+
+export const fetchImdb = (name) => {
+    let qStr = 'http://localhost:8088/imdb/'+name+'';
+    return dispatch => {
+        
+        dispatch(fetchImdbStart());
+        axios.get( qStr )
+            .then( res => {
+                dispatch(fetchImdbSuccess(res.data.d));
+            } )
+            .catch( err => {
+                console.log('[FETCH_IMDB_FAIL]', err);
+                dispatch(fetchImdbFail(err));
             } );
     };
 };
