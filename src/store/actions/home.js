@@ -28,7 +28,7 @@ export const fetchNamesStart_G = () => {
 export const fetchNames = () => {
     return dispatch => {
         dispatch(fetchNamesStart_G());
-        axios.get( '/20-girl-names' )
+        axios.get( '20-girl-names' )
             .then( res => {
                 const fetchedNames = [];
                 for ( let key in res.data ) {
@@ -73,7 +73,7 @@ export const fetchNamesStart_B = () => {
 export const fetchNames_B = () => {
     return dispatch => {
         dispatch(fetchNamesStart_B());
-        axios.get( '/20-boy-names' )
+        axios.get( '20-boy-names' )
             .then( res => {
                 const fetchedNames = [];
                 for ( let key in res.data ) {
@@ -118,7 +118,7 @@ export const fetchRandomStart = () => {
 export const fetchRandom = () => {
     return dispatch => {
         dispatch(fetchRandomStart());
-        axios.get( '/random-name' )
+        axios.get( 'random-name' )
             .then( res => {   
                 dispatch(fetchRandomSuccess(res.data[0]));
             } )
@@ -156,7 +156,7 @@ export const fetchHCollectionsStart = () => {
 export const fetchHCollections = () => {
     return dispatch => {
         dispatch(fetchHCollectionsStart());
-        axios.get( '/collection-featured' )
+        axios.get( 'collection-featured' )
             .then( res => {   
                 dispatch(fetchHCollectionsSuccess(res.data));
             } )

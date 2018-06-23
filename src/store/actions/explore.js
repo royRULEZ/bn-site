@@ -60,7 +60,7 @@ export const updatePage = ( page ) => {
     };
 };
 export const fetchAllNames = (bundle) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());
@@ -88,7 +88,7 @@ export const fetchAllNames = (bundle) => {
 };
 
 export const changeGender = (bundle, gender) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+bundle.popularity+'&g='+gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());
@@ -116,7 +116,7 @@ export const changeGender = (bundle, gender) => {
 };
 
 export const changePopularity = (bundle, popularity) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
+    let qStr = 'explore-names?p='+popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());
@@ -146,7 +146,7 @@ export const changePopularity = (bundle, popularity) => {
 };
 
 export const changeAlpha = (bundle, alpha) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+alpha+'&l='+bundle.length+'';
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+alpha+'&l='+bundle.length+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());
@@ -175,7 +175,7 @@ export const changeAlpha = (bundle, alpha) => {
 };
 
 export const changeLength = (bundle, length) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+length+'';
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+length+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());
@@ -204,7 +204,7 @@ export const changeLength = (bundle, length) => {
 };
 
 export const changePage = (bundle, page) => {
-    let qStr = 'http://localhost:8088/explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'&page='+page+'';
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'&page='+page+'';
     return dispatch => {
         
         dispatch(fetchAllNamesStart());

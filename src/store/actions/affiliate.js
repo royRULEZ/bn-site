@@ -27,7 +27,8 @@ export const fetchAdClusterStart = () => {
 };
 
 export const fetchAdCluster = (name) => {
-    let qStr = 'http://localhost:8088/ad-cluster';
+    let qStr = 'ad-cluster';
+    console.log(qStr);
     return dispatch => {
         
         dispatch(fetchAdClusterStart());

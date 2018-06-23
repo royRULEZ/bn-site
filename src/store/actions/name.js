@@ -33,7 +33,7 @@ export const fetchNameInfoNotFound = () => {
     };
 };
 export const fetchNameInfo = (name) => {
-    let qStr = 'http://localhost:8088/name?n='+name+'';
+    let qStr = 'name?n='+name+'';
     return dispatch => {
         
         dispatch(fetchNameInfoStart());
@@ -85,7 +85,7 @@ export const fetchImdbStart = () => {
 };
 
 export const fetchImdb = (name) => {
-    let qStr = 'http://localhost:8088/imdb/'+name+'';
+    let qStr = 'imdb/'+name+'';
     return dispatch => {
         
         dispatch(fetchImdbStart());
@@ -124,7 +124,7 @@ export const fetchRecentHistoryStart = () => {
 };
 
 export const fetchRecentHistory = (name) => {
-    let qStr = 'http://localhost:8088/namehistory20/'+name+'';
+    let qStr = 'namehistory20/'+name+'';
     return dispatch => {
         
         dispatch(fetchRecentHistoryStart());
@@ -163,7 +163,7 @@ export const fetchHistoryStart = () => {
 };
 
 export const fetchHistory = (name) => {
-    let qStr = 'http://localhost:8088/namehistory/'+name+'';
+    let qStr = 'namehistory/'+name+'';
     return dispatch => {
         
         dispatch(fetchHistoryStart());
@@ -202,7 +202,7 @@ export const fetchVariationsStart = () => {
 };
 
 export const fetchVariations = (name) => {
-    let qStr = 'http://localhost:8088/variations/'+name+'';
+    let qStr = 'variations/'+name+'';
     return dispatch => {
         
         dispatch(fetchVariationsStart());
@@ -281,7 +281,7 @@ export const fetchTrendsStart = () => {
 };
 
 export const fetchTrends = (name) => {
-    let qStr = 'http://localhost:8088/google-trends/'+name+''; 
+    let qStr = 'google-trends/'+name+''; 
     return dispatch => {
         
         dispatch(fetchTrendsStart());
@@ -321,7 +321,7 @@ export const fetchOriginsStart = () => {
 };
 
 export const fetchOrigins = (name) => {
-    let qStr = 'http://localhost:8088/origin/'+name+''; 
+    let qStr = 'origin/'+name+''; 
     return dispatch => {
         
         dispatch(fetchOriginsStart());
@@ -361,7 +361,7 @@ export const fetchNameCollectionsStart = () => {
 };
 
 export const fetchNameCollections = (name) => {
-    let qStr = 'http://localhost:8088/get-collections/'+name+''; 
+    let qStr = 'get-collections/'+name+''; 
     return dispatch => {
         
         dispatch(fetchNameCollectionsStart());

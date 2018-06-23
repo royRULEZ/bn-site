@@ -27,7 +27,7 @@ export const fetchCollectionStart = () => {
 };
 
 export const fetchCollection = (name) => {
-    let qStr = 'http://localhost:8088/collection/'+name+'';
+    let qStr = 'collection/'+name+'';
     return dispatch => {
         
         dispatch(fetchCollectionStart());
@@ -67,7 +67,7 @@ export const fetchCollectionNamesStart = () => {
 };
 
 export const fetchCollectionNames = (id) => {
-    let qStr = 'http://localhost:8088/collection-names/'+id+'';
+    let qStr = 'collection-names/'+id+'';
     return dispatch => {
         
         dispatch(fetchCollectionNamesStart());
@@ -107,7 +107,7 @@ export const fetchCollectionProfilesStart = () => {
 };
 
 export const fetchCollectionProfiles = (id) => {
-    let qStr = 'http://localhost:8088/collection-profiles/'+id+'';
+    let qStr = 'collection-profiles/'+id+'';
     return dispatch => {
         
         dispatch(fetchCollectionProfilesStart());
@@ -147,7 +147,7 @@ export const fetchCollectionsStart = () => {
 };
 
 export const fetchCollections = (a) => {
-    let qStr = a ? 'http://localhost:8088/collections/'+a : 'http://localhost:8088/collections/';
+    let qStr = a ? 'collections/'+a : 'collections/';
     return dispatch => {
         
         dispatch(fetchCollectionsStart());
@@ -186,7 +186,7 @@ export const fetchCollectionsPopularStart = () => {
 };
 
 export const fetchCollectionsPopular = () => {
-    let qStr = 'http://localhost:8088/collections-popular/';
+    let qStr = 'collections-popular/';
     return dispatch => {
         
         dispatch(fetchCollectionsPopularStart());
