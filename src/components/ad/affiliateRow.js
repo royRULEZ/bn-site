@@ -7,6 +7,11 @@
 // Imports
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { fetchAFRow } from '../../store/actions/index';
+import Spinner from '../../components/spinner/spinner';
 
 
 //CSS
@@ -55,22 +60,34 @@ const AmazonItems = styled.div`
 `;
 
 // Component
-class Amazon extends Component {   
+class AffiliateRow extends Component {   
+
+    componentDidMount () {
+        this.props.onFetchAFRow();
+    }
 
     render () {
     
-        const itemsArr = [1,2,3,4,5,6];
-        const items = itemsArr.map( i => (
-            <div key={i} className="n_amazon">
-                <div className="n_amazon_gift-photo">
-                    <img src={require('../../../assets/temp/amazon_1.jpg')}></img>
-                </div>
-                <div className="n_amazon_gift-description">Gerber Baby Girls' 4 Pack Flannel Burp Cloths</div>
-                <div className="n_amazon_gift-price">$10.99</div>
-            </div> 
-        ));
+        const AmazonImage = styled.div`
+            background: url('${props => props.backgroundimage}') no-repeat center center; 
+            background-size: cover;
+            display: block;
+            height: 155px;
+            width: 100%; 
+            margin: 0 auto;
+        `;
 
-
+        let affiliates = <Spinner/>;
+        console.log(this.props.afrow);
+        if ( !this.props.loading ) {
+            affiliates = this.props.afrow.map( a => (
+                <div key={a.id} className="n_amazon">
+                    <AmazonImage backgroundimage={a.image}/>
+                    <div className="n_amazon_gift-description">{a.name}</div>
+                    <div className="n_amazon_gift-price">${a.price.toFixed(2)}</div>
+                </div> 
+            ))
+        }
 
         return(
             <Container>
@@ -78,13 +95,26 @@ class Amazon extends Component {
                     Popular baby gifts on Amazon
                 </ContainerTitle>
                 <AmazonItems>
-                    {items}
+                    {affiliates}
                 </AmazonItems>
             </Container>
         );
     }
 }
 
-export default Amazon;
+const mapStateToProps = state => {
+    return {
+        afrow: state.affiliate.afrow,
+        loading: state.affiliate.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchAFRow: () => dispatch( fetchAFRow() ),
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )(AffiliateRow);
 
 

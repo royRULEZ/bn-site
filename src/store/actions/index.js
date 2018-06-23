@@ -36,5 +36,6 @@ export {
 
 
 export {
-    fetchAdCluster
+    fetchAdCluster,
+    fetchAFRow
 } from './affiliate';

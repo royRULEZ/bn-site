@@ -49,7 +49,9 @@ class ToolbarSearch extends Component {
 
     onKeyPress = (e) => {
         if(e.key === 'Enter'){
-            const url = '/name/'+e.target.value;
+            let name = e.target.value;
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            const url = '/name/'+name;
             this.props.history.push(url);
             this.props.searchClick();
         }

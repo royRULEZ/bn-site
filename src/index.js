@@ -8,6 +8,10 @@ import App from './App';
 import Store from './store/store';
 import registerServiceWorker from './registerServiceWorker';
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-9726036-2');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 const app = (
     <Provider store={Store}>
         <BrowserRouter>

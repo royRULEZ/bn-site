@@ -5,6 +5,8 @@
 // 20 Random Girl names from the Sever
 //======================================================================================================================
 
+//TODO FIX THIS
+
 // Imports
 import React, { Component } from 'react';
 import styled from 'styled-components';
@@ -38,7 +40,7 @@ class Known extends Component {
     }
 
     componentDidMount () {
-        axios.get("http://localhost:8088/google-autocomplete/"+this.props.name)
+        axios.get("http://52.15.54.43:8088/google-autocomplete/"+this.props.name)
             .then( res => {
                 this.setState({
                     knownFor: res.data.default.topics

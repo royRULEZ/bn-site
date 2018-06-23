@@ -13,7 +13,7 @@ import Song from './Sections/songs';
 import Collections from './Sections/collections';
 import Origin from './Sections/origin';
 import Personalized from './Sections/personalized';
-import Amazon from './Sections/amazon';
+import Amazon from '../../components/ad/affiliateRow';
 import FullHistory from './Sections/fullHistory';
 import Imdb from './Sections/imdb';
 

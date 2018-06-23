@@ -63,7 +63,6 @@ class Imdb extends Component {
         `;
 
         let imdb = <Spinner/>
-        console.log(this.props.imdb);
         // i[image, w h]
         if(this.props.imdb[0]){
             imdb = this.props.imdb.map( i => (

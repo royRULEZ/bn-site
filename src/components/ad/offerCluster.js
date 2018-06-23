@@ -51,7 +51,7 @@ const AmazonItem = styled(Link)`
     const AmazonDescription = styled.div`
         padding-top: .5rem;
         font-weight: 300;
-        font-size: .875rem;
+        font-size: 1rem;
         padding-top: 10px;
     `;
     const AmazonPrice = styled.div`
@@ -77,7 +77,8 @@ class OfferCluster extends Component {
             background-size: cover;
             display: block;
             height: 125px;
-            width: 100%; 
+            width: 125px; 
+            margin: 0 auto;
         `;
 
                 
