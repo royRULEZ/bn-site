@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Rectangle as Ad, OfferCluster } from '../../components/ad/ad_factory';
+import { Rectangle as Ad} from '../../components/ad/ad_factory';
+import OfferCluster from '../../components/ad/offerCluster';
 import Rank from './Sections/rank';
 import RecentHistory from './Sections/recentHistory';
 import GoogleChart from './Sections/googleChart';

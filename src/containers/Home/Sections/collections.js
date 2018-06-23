@@ -54,10 +54,11 @@ class Collections extends Component {
 
         const Collection = styled(Link)`
             width: 32.6666%;
+            margin-bottom: 1%;
             height: 200px;
             font-size: 2rem;
-            font-weight: 700;
-            background: url('${props => props.backgroundimage}') no-repeat center center; 
+            font-weight: 100;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${props => props.backgroundimage}') no-repeat center center; 
             background-size: cover;
             boxing-sizing: border-box;
             color: #FFF;
@@ -75,7 +76,7 @@ class Collections extends Component {
             &:hover{
                 box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
                 cursor: pointer;
-                text-decoration: underline;
+                //text-decoration: underline;
             }
         `;
         

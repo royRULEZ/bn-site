@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Aux from '../../hoc/Aux';
-import { Rectangle as Ad, OfferCluster} from '../../components/ad/ad_factory';
+import { Rectangle as Ad} from '../../components/ad/ad_factory';
+import OfferCluster from '../../components/ad/offerCluster';
+
 //CSS
 const Main = styled.article`
     max-width: 768px;

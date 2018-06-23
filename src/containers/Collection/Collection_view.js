@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Rectangle as Ad, OfferCluster} from '../../components/ad/ad_factory';
+import { Rectangle as Ad} from '../../components/ad/ad_factory';
+import OfferCluster from '../../components/ad/offerCluster';
 import Names from './Sections/names';
 import Profiles from  './Sections/profiles';
 
@@ -21,16 +22,6 @@ const Main = styled.div`
     }
 `;
 
-const Description = styled.div`
-    margin: 4rem auto;
-    max-width: 768px;
-    line-height: 1.5rem;
-    div{
-        padding-bottom: 1rem;
-    }
-`;
-
-
 class CollectionView extends Component {   
     
     render () {
@@ -47,8 +38,17 @@ class CollectionView extends Component {
             font-size: ${props => props.size};
             text-transform: capitalize;
             font-family: ${props => props.theme.font_nixie};
-            padding: 0 0 1rem 0;
+            ${this.props.type != 'origin' ? "padding: 0 0 1rem 0;" : "padding-top: 1rem"};
+            ${this.props.type != 'origin' ? "" : "margin: 0"};
             font-weight: 100;
+        `;
+        const Description = styled.div`
+            ${this.props.type != 'origin' ? "margin: 4rem auto;" : "margin: 2rem auto 4rem auto;"};
+            max-width: 768px;
+            line-height: 1.5rem;
+            div{
+                padding-bottom: 1rem;
+            }
         `;
 
         let names = <Spinner/>;
@@ -64,7 +64,7 @@ class CollectionView extends Component {
             <Aux>
                 <Main>
                     <Ad />
-                    <div className="c_descriptor">Collection</div>
+                    <div className="c_descriptor">{this.props.type === 'origin' ? "Origin" : "Collection"}</div>
                     <Name size={size}>{this.props.collection}</Name>
                     {this.props.type != 'origin' ?  <Hero backgroundimage={require('../../assets/collections/'+this.props.id+'_1100.jpg')} /> : "" }
                     <Description>

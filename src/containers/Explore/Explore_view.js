@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchAllNames, changeGender, changePopularity, changeAlpha, changeLength, changePage } from '../../store/actions/index';
 
 import Aux from '../../hoc/Aux';
-import { BigBanner as Ad } from '../../components/ad/ad_factory';
+import { BigBanner as Ad, Rectangle } from '../../components/ad/ad_factory';
 import Name from './Sections/name';
 import Filters from './Sections/filters';
 
@@ -84,8 +84,11 @@ class ExploreView extends Component {
 
         let names = <p>Something went terribly wrong!</p>;
         if ( !this.props.loading ) {
-            names = this.props.allNames.map( n => (
-                <Name key={n.name}>{n.name}</Name>
+            names = this.props.allNames.map( (n, i) => (
+                <Aux>
+                    <Name key={n.name}>{n.name}</Name>
+                    {(i===51)?<Rectangle/>:""}
+                </Aux>
             ))
         }
         

@@ -69,7 +69,7 @@ const HeroMenu = styled.div`
         */
     .Title{
         color: #FFF;
-        font-size: 4rem;
+        font-size: 5rem;
         font-weight: 900;
         letter-spacing: -1px;
     }
@@ -108,6 +108,19 @@ const Circle = styled(Link)`
     &.Unisex{
         color: #a19587
     }
+    &:hover{
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+    }
+`;
+const MoreInfo = styled(Link)`
+    color: inherit;
+`;
+const NameLink = styled(Link)`
+    color: inherit;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
+    }
 `;
 
 // Component
@@ -124,13 +137,14 @@ class Hero extends Component {
             <Main>
                 <HeroNames>
                     <div className="SectionTitle">Random Name</div>
-                    <div className="Name">{this.props.randomName.name}</div>
+                    <div className="Name"><NameLink to={"/name/"+this.props.randomName.name}>{this.props.randomName.name}</NameLink></div>
                     <div className="Graph">
                         <LineChart data={this.props.randomName} color="#a09fd4" lineColor="#FFFFFF"  />
                     </div>
                     <div className="Info">
                         <div>
                             Popularity: {this.props.randomName['2017'] ? this.props.randomName['2017'].toLocaleString() : ""} babies named {this.props.randomName.name} last year.
+                            <div><MoreInfo to={"/name/"+this.props.randomName.name}>Learn more about the name '{this.props.randomName.name}'</MoreInfo></div>
                         </div>
                     </div>
 

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Aux from '../../hoc/Aux';
-import { BigBanner as Ad, OfferCluster} from '../../components/ad/ad_factory';
+import { BigBanner as Ad} from '../../components/ad/ad_factory';
+import OfferCluster from '../../components/ad/offerCluster';
 
 import Hero from './Sections/hero';
 import Eight from './Sections/eight';

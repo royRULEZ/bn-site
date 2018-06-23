@@ -33,3 +33,8 @@ export {
     fetchCollections,
     fetchCollectionsPopular
 } from './collection';
+
+
+export {
+    fetchAdCluster
+} from './affiliate';

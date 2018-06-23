@@ -35,7 +35,7 @@ const Main = styled.div`
 const ListContainer = styled.div`
     width: 100%;
     flex-direction: column;
-    border: 1px solid #BBB;
+    //border: 1px solid #BBB;
 `;
     const ListSearch = styled.input`
         border: 0;
