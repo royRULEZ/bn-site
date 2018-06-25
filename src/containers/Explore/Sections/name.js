@@ -20,9 +20,13 @@ const Main = styled(Link)`
     text-decoration: none;
     color: #444;
     border-bottom: 1px dashed #EEE;
-    
     &:hover{
         text-decoration: underline;
+    }
+    @media (max-width: ${props => props.theme.phone}) {
+        padding: 1rem 0 1rem 0;
+        width: 50%;
+        text-align: center;
     }
 `;
 

@@ -39,6 +39,9 @@ const Main = styled.div`
             text-align: center;
         }
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        padding: 2rem 0 0 0;
+    }  
 `;
 const Container = styled.div`
     display: flex;

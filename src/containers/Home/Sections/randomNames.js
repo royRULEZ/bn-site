@@ -46,6 +46,10 @@ const NamesContainer = styled.div`
             text-align: center;
         }
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        padding: 2rem 0;
+        text-align: center;
+    }    
 `;
 const Name = styled(Link)`
     width: 25%;

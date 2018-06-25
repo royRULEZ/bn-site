@@ -38,7 +38,6 @@ const Container = styled.div`
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
     }
-}
     @media (max-width: ${props => props.theme.phone}) {
         width: 100%;
         padding: 1rem 0;
@@ -46,6 +45,11 @@ const Container = styled.div`
             text-align: center;
         }
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        padding: 2rem 0;
+        text-align: center;
+    }  
+
 `;
 
 const Alpha = styled(Link)`
@@ -65,6 +69,7 @@ const Alpha = styled(Link)`
         padding: .75rem 0;
         text-align: center;
     }
+
 `;
 
 

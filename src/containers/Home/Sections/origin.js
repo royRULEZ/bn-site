@@ -39,6 +39,10 @@ const Container = styled.div`
             text-align: center;
         }
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        padding: 2rem 0;
+        text-align: center;
+    }  
 `;
 const Origin = styled(Link)`
     width: 16.6667%;

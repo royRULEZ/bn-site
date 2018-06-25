@@ -73,8 +73,17 @@ const Main = styled.div`
             line-height: 40px !important;
         }
     }
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+    }
 `;
 const FilterObject = styled.div`
+    padding: 1rem 0;
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 50%;
+    }
+`;
+const FilterObject_Popularity = styled.div`
     padding: 1rem 0;
 `;
 const FilterLabel = styled.div`
@@ -90,7 +99,7 @@ const BtnGroup = styled.div`
 `;
 const GenderBtn = styled.button`
     border: none;
-    width: 33.3333%;
+    width: 50%;
     background-color: #EEE
     color: ${props => props.theme.color_accent};
     font-size: 1rem;
@@ -118,6 +127,10 @@ const OtherFilters = styled.div`
     background-color: #EEE;
     box-sizing: border-box;
     padding: 0 1rem;
+    @media (max-width: ${props => props.theme.phone}) {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 
 class Filters extends Component {   
@@ -143,7 +156,7 @@ class Filters extends Component {
     
         return(
             <Main>
-                <FilterObject>
+                <FilterObject_Popularity>
                     <FilterLabel>Popularity</FilterLabel>
                     <Select
                         clearable={false}
@@ -154,13 +167,13 @@ class Filters extends Component {
                         options={this.createOptions(popularities)}
                         className="select-primary"
                     />
-                </FilterObject>
+                </FilterObject_Popularity>
                 
                 <FilterLabel>Gender</FilterLabel>
                 <BtnGroup>
                     <GenderBtn name="gender" value="F" onClick={() => this.props.gender("F")} className={this.props.g === "F" ? "active" : ""}>Girl</GenderBtn>
                     <GenderBtn name="gender" value="M" onClick={() => this.props.gender("M")} className={this.props.g === "M" ? "active" : ""}>Boy</GenderBtn>
-                    <GenderBtn name="gender" value="U" onClick={() => this.props.gender("U")} className={this.props.g === "U" ? "active" : ""}>Unisex</GenderBtn>
+                    {/*<GenderBtn name="gender" value="U" onClick={() => this.props.gender("U")} className={this.props.g === "U" ? "active" : ""}>Unisex</GenderBtn>*/}
                 </BtnGroup>
 
                 

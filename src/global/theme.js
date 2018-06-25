@@ -23,6 +23,8 @@ const theme = {
     // Media Queries
     phone: '414px',
     tablet: '768px',
+    big_tablet: '1024px',
+    big: '1280px'
 };
 
 export default theme;

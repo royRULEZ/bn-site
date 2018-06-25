@@ -25,10 +25,16 @@ const Headline = styled.h1`
     font-family: ${props => props.theme.font_nixie};
     text-align: center;
     padding: 1rem 0;
+    @media (max-width: ${props => props.theme.phone}) {
+        font-size: 1.5rem;
+    }
 `;
 const ExploreContainer = styled.div`
     display: flex;
     margin-bottom: 2rem;
+    @media (max-width: ${props => props.theme.phone}) {
+        flex-direction: column;
+    }
 `;
 const AllNames = styled.div`
     width: 80%;
@@ -36,6 +42,10 @@ const AllNames = styled.div`
     flex-wrap: wrap;
     box-sizing: border-box;
     padding: 0 1rem;
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+        padding: 0;
+    }
 `;
 
 class ExploreView extends Component {   
