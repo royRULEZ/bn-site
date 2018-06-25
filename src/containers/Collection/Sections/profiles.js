@@ -19,6 +19,7 @@ import { fetchCollectionProfiles } from '../../../store/actions/index';
 const ListItem = styled.div`
     display: flex;
     flex-direction: row;
+    margin-bottom: 3rem;
     .c_Bio{
         float: left;
         width: 50%;
@@ -72,7 +73,7 @@ class CollectionProfiles extends Component {
         // Array of Names
         profiles = this.props.collectionProfiles.map( p => (
             <ListItem key={p.id}>
-                <ListPhoto backgroundimage={require('../../../assets/collections/profiles/'+this.props.id+'/1.jpg')}  />
+                <ListPhoto backgroundimage={require('../../../assets/collections/profiles/'+this.props.id+'/'+p.image+'.jpg')}  />
                 <div className="c_Bio">
                     <div className="c_Bio-name"><FirstName to={"/name/"+p.firstname}>{p.firstname}</FirstName> {p.lastname}</div>
                     <div className="c_Bio-bio">{p.description}</div>

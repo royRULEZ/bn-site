@@ -19,6 +19,7 @@ const Main = styled.div`
         text-align: center;
         font-family: ${props => props.theme.font_nixie};
         font-size: 0.8rem;
+        color: #888;
     }
 `;
 

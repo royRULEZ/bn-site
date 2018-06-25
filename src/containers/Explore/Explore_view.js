@@ -85,8 +85,8 @@ class ExploreView extends Component {
         let names = <p>Something went terribly wrong!</p>;
         if ( !this.props.loading ) {
             names = this.props.allNames.map( (n, i) => (
-                <Aux>
-                    <Name key={n.name}>{n.name}</Name>
+                <Aux key={n.name}>
+                    <Name>{n.name}</Name>
                     {(i===51)?<Rectangle/>:""}
                 </Aux>
             ))

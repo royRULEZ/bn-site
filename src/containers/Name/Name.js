@@ -52,7 +52,7 @@ class Name extends Component {
                 "Occurrences": i['2017']
             }));
 
-            let meaning = "This name is so uncommon, we don't even know what it means yet!";
+            let meaning = "";
             if(this.props.info[0].meaning != ""){
                 meaning = this.props.info[0].meaning;
             }

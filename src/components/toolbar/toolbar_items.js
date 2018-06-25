@@ -22,6 +22,9 @@ const ToolbarItems = (props) => {
         align-content: space-between;
         padding-right: 5px;
         color: #444;
+        @media (max-width: 768px) {
+            display: none;
+        }
     `;
 
     return(

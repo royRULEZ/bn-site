@@ -78,7 +78,6 @@ class AffiliateRow extends Component {
         `;
 
         let affiliates = <Spinner/>;
-        console.log(this.props.afrow);
         if ( !this.props.loading ) {
             affiliates = this.props.afrow.map( a => (
                 <div key={a.id} className="n_amazon">
@@ -88,16 +87,19 @@ class AffiliateRow extends Component {
                 </div> 
             ))
         }
+        /*
+                    <Container>
+                        <ContainerTitle>
+                            Popular baby gifts on Amazon
+                        </ContainerTitle>
+                        <AmazonItems>
+                            {affiliates}
+                        </AmazonItems>
+                    </Container>
+        */
 
         return(
-            <Container>
-                <ContainerTitle>
-                    Popular baby gifts on Amazon
-                </ContainerTitle>
-                <AmazonItems>
-                    {affiliates}
-                </AmazonItems>
-            </Container>
+            ""
         );
     }
 }

@@ -30,6 +30,19 @@ const PageInfo = styled.div`
         padding-top: 1rem;
         line-height: 1.6rem;
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        margin: 2rem auto;
+        .h_InfoTitle{
+            font-size: 1.5rem;
+            padding-bottom: 0;
+        }
+        .h_Info{
+            padding: 1rem 1rem 0 1rem;
+            box-sizing: border-box;
+            font-size: .875rem
+            line-height: 1.5rem;
+        }
+    }
 `;
 class HomeView extends Component {   
     
@@ -40,7 +53,7 @@ class HomeView extends Component {
                 <Ad />
                 <PageInfo>
                     <div className="h_InfoTitle">A Unique Name.</div>
-                    <div className="h_Info">We've taken a different approach to building a Baby Name website. We're focusing on the uncommon, original, and unique names. It's hard to choose a name for your child that fits your aspirations and your family identity. There are the names that are a little more original and unique - the names that fit your child.</div>
+                    <div className="h_Info">We've taken a different approach to creating a Baby Name website. We're focused on the uncommon, original, and unique names. It can be hard to select a name for your child that fits your aspirations and your family identity. We've designed a site to help you learn more about the names you’ve selected and discover that one name to fit your child best.</div>
                 </PageInfo>
                 <Collections />
                 <RandomNames />

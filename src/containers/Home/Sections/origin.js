@@ -32,6 +32,13 @@ const Container = styled.div`
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
     }
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+        padding: 1rem 0;
+        h2{
+            text-align: center;
+        }
+    }
 `;
 const Origin = styled(Link)`
     width: 16.6667%;
@@ -40,6 +47,11 @@ const Origin = styled(Link)`
     color: inherit;
     &:hover{
         text-decoration: underline;
+    }
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 25%;
+        padding: .75rem 0;
+        text-align: center;
     }
 `;
 

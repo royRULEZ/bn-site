@@ -98,15 +98,18 @@ class OfferCluster extends Component {
         }
 
         // Return
+        /*
+                    <Main>
+                        <Offers>
+                            {affiliates}
+                        </Offers>
+                        <Ad>
+                            Ad
+                        </Ad>
+                    </Main>
+        */
         return(
-            <Main>
-                <Offers>
-                    {affiliates}
-                </Offers>
-                <Ad>
-                    Ad
-                </Ad>
-            </Main>
+            ""
         );
     }
 }

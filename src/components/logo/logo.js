@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Main = styled(Link)`
+    display: block;
     box-sizing: border-box;
     padding: 0 25px;
     font-weight: 700;

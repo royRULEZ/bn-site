@@ -23,7 +23,24 @@ const Main = styled.div`
     position: relative;
     z-index: 10;
 `;
-
+const SideBarToggle = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem 0 1rem;
+    box-sizing: border-box;
+    color: #444;
+    @media (min-width: 769px) {
+        display: none;
+    }
+    .burger{
+        font-size: 2rem !important;
+    }
+    span{
+        font-size: .75rem;
+        
+    }
+`;
 
 class Toolbar extends Component {   
 
@@ -43,6 +60,12 @@ class Toolbar extends Component {
                 <Logo>Baby<br/>Namr</Logo>
                 <ToolbarItems searchClick={this.ToolbarChangeHandler} />
                 <ToolbarSearch display={this.state.displaySearch} searchClick={this.ToolbarChangeHandler} />
+                <SideBarToggle
+                    onClick={this.props.drawerToggleClicked}
+                    >
+                    <i className="fas fa-bars burger"></i>
+                    <span>Menu</span>
+                </SideBarToggle>
             </Main>
         )
     }

@@ -23,7 +23,6 @@ const Main = styled.div`
     margin: 2rem auto;
     padding: 2rem;
     box-sizing: border-box;
-    
     h2{
         display: block;
         width: 100%;
@@ -32,6 +31,13 @@ const Main = styled.div`
         margin: .75rem 0;
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
+    }
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+        padding: 1rem 0 0 0;
+        h2{
+            text-align: center;
+        }
     }
 `;
 const Container = styled.div`
@@ -77,6 +83,12 @@ class Collections extends Component {
                 box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
                 cursor: pointer;
                 //text-decoration: underline;
+            }
+            @media (max-width: ${props => props.theme.phone}) {
+                width: 49.5%;
+                height: 180px;
+                font-size: 1.5rem;
+                
             }
         `;
         

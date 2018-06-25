@@ -14,8 +14,9 @@ export const Rectangle = (props) => {
         margin: 2rem auto;
     `;
 
+    //    <RectangleAd></RectangleAd>
     return(
-        <RectangleAd></RectangleAd>
+        ""
     );
 }
 
@@ -29,6 +30,7 @@ export const BigBanner = (props) => {
         padding: 25px 0;
         margin-bottom: 25px;
         background-color: #EEE;
+        display: none;
     `;
     const Ad = styled.div`
         width: 970px;
@@ -38,9 +40,12 @@ export const BigBanner = (props) => {
     `;
 
     // Return
+    /*
+            <Container>
+                <Ad />
+            </Container>
+    */
     return(
-        <Container>
-            <Ad />
-        </Container>
+        ""
     );
 }

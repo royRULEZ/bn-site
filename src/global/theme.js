@@ -18,7 +18,11 @@ const theme = {
     font_nixie: "'Nixie One', cursive", // 400 // ${props => props.theme.font_nixie};
 
     // Text Styles
-    text_lineheight: '1.4rem'
+    text_lineheight: '1.4rem',
+
+    // Media Queries
+    phone: '414px',
+    tablet: '768px',
 };
 
 export default theme;

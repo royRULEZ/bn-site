@@ -19,6 +19,9 @@ const Main = styled.div`
     max-width 90%;
     margin: 2rem auto;
     display: flex;
+    @media (max-width: ${props => props.theme.phone}) {
+        flex-direction: column;
+    }
 `;
 const Container = styled.div`
     padding: 2rem;
@@ -35,6 +38,14 @@ const Container = styled.div`
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
     }
+}
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+        padding: 1rem 0;
+        h2{
+            text-align: center;
+        }
+    }
 `;
 
 const Alpha = styled(Link)`
@@ -49,6 +60,10 @@ const Alpha = styled(Link)`
     }
     &.boy{
         color: ${props => props.theme.color_boy};
+    }
+    @media (max-width: ${props => props.theme.phone}) {
+        padding: .75rem 0;
+        text-align: center;
     }
 `;
 

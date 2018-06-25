@@ -19,14 +19,32 @@ import Collection from '../../containers/Collection/Collection';
 // Persistent Page Components 
 import Toolbar from '../../components/toolbar/toolbar';
 import Footer from '../../components/footer/footer';
+import SideDrawer from '../../components/sideDrawer/sideDrawer';
 
 class Layout extends Component {
+
+    state = {
+        showSideDrawer: false
+    }
+
+    SideDrawerClosedHandler = () => {
+        this.setState({showSideDrawer: false});
+    }
+
+    sideDrawerToggleHandler = () => {
+        this.setState((prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer};
+        });
+    }
 
     render () {
         // Return
         return(
             <div>
-                <Toolbar />
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <SideDrawer 
+                    open={this.state.showSideDrawer}
+                    closed ={this.SideDrawerClosedHandler} />
                     <Switch>                            
                         <Route path="/collection/:c" component={Collection} />
                         <Route path="/get-inspired" component={Inspired} />

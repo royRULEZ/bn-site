@@ -36,7 +36,7 @@ class Hero extends Component {
         
         if(this.props.HCollections[0]){
 
-            const Primary = styled.div`
+            const Primary = styled(Link)`
                 background-color: #EEE;
                 width: 64%;
                 height: 400px;
@@ -52,6 +52,7 @@ class Hero extends Component {
                 text-align: center; 
                 align-items: center;
                 justify-content: center;
+                text-decoration: none; 
                 &:hover{
                     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
                     cursor: pointer;
@@ -63,7 +64,7 @@ class Hero extends Component {
                 height: 400px;
                 float: left;
             `;
-                const SecondaryItem = styled.div`
+                const SecondaryItem = styled(Link)`
                     background-color: #EEE;
                     width: 100%;
                     height: 195px;
@@ -79,6 +80,7 @@ class Hero extends Component {
                     text-align: center; 
                     align-items: center;
                     justify-content: center;
+                    text-decoration: none;
                     &:hover{
                         box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
                         cursor: pointer;

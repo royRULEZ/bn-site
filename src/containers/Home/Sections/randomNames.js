@@ -20,6 +20,9 @@ const Main = styled.div`
     max-width 90%;
     margin: 2rem auto;
     display: flex;
+    @media (max-width: ${props => props.theme.phone}) {
+        flex-direction: column;
+    }
 `;
 const NamesContainer = styled.div`
     padding: 2rem;
@@ -36,6 +39,13 @@ const NamesContainer = styled.div`
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
     }
+    @media (max-width: ${props => props.theme.phone}) {
+        width: 100%;
+        padding: 1rem 0;
+        h2{
+            text-align: center;
+        }
+    }
 `;
 const Name = styled(Link)`
     width: 25%;
@@ -46,6 +56,10 @@ const Name = styled(Link)`
     }
     &.boy{
         color: ${props => props.theme.color_boy};
+    }
+    @media (max-width: ${props => props.theme.phone}) {
+        padding: .75rem 0;
+        text-align: center;
     }
 `;
 

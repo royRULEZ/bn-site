@@ -21,6 +21,9 @@ import bck_img from '../../../assets/hero_bck.jpg';
 //CSS
 const Main = styled.div`
     display: flex;
+    @media (max-width: ${props => props.theme.phone}) {
+        flex-direction: column;
+    }
 `;
 const HeroNames = styled.div`
     width: 40%;
@@ -47,6 +50,25 @@ const HeroNames = styled.div`
         padding-top:1rem;
         font-size: .75rem;
         color: #7d7bc5;
+    }
+    order: 0;
+    @media (max-width: ${props => props.theme.tablet}) {
+        width: 100%;
+        order: 1;
+        padding: 1rem;
+        height: auto;
+        text-align: center;
+        .Name{
+            font-size: 2.5rem;
+            padding: 0 0 .75rem 0;
+        }
+        .Graph{
+            width: 100%;
+            height: 150px;
+        }
+        .SectionTitle{
+            font-size: .5rem;
+        }
     }
 `;
 // 9493CF, c3c2e4 - Purple
@@ -82,6 +104,26 @@ const HeroMenu = styled.div`
     .Circles{
         display: flex;
     }
+    order: 1;
+    @media (max-width: ${props => props.theme.tablet}) {
+        width: 100%;
+        order: 0;
+        padding: 2rem 1rem;
+        height: auto;
+        text-align: center;
+        .Title{
+            font-size: 3rem;
+        }
+        .Description{
+            margin-top: 1rem;
+            font-weight: 100;
+            font-size: 1rem;
+        }
+        .Circles{
+            display: flex;
+            justify-content: center;
+        }
+    }
 `;
 const Circle = styled(Link)`
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -111,9 +153,17 @@ const Circle = styled(Link)`
     &:hover{
         box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
     }
+    @media (max-width: ${props => props.theme.tablet}) {
+        &:last-child{
+            margin-right: 0;
+        }
+    }
 `;
 const MoreInfo = styled(Link)`
     color: inherit;
+    @media (max-width: ${props => props.theme.tablet}) {
+        display: none
+    }
 `;
 const NameLink = styled(Link)`
     color: inherit;
