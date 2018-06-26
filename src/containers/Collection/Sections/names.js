@@ -18,8 +18,12 @@ import { fetchCollectionNames } from '../../../store/actions/index';
  // CSS
  const NamesContainer = styled.div`
     background-color: #f7f7f7;
-    padding: 4rem 0;
+    padding: 2rem 0;
     box-sizing: border-box;
+    margin-bottom: 1rem;
+    @media (min-width: ${props => props.theme.tablet}) {
+        padding: 4rem 0;
+    }
 `;
 const Container = styled.div`
     width: 960px;
@@ -35,7 +39,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 `;
 const Name = styled(Link)`
-    width: 25%;
+    width: 50%;
     padding: 1.6rem 0;
     box-sizing: border-box;
     text-align: center;
@@ -46,7 +50,9 @@ const Name = styled(Link)`
     &:hover{
         text-decoration: underline;
     }
-    
+    @media (min-width: ${props => props.theme.tablet}) {
+        width: 25%;
+    }
 `;
 
 // Component

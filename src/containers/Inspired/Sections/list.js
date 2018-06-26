@@ -17,10 +17,13 @@ import { fetchCollections } from '../../../store/actions/index';
 
 //CSS
 const Main = styled.div`
-    width: 1100px;
-    margin: 0 auto;
-    max-width: 95%;
-    padding: 2rem 0;
+    order: 1;
+    width: 100%;
+    padding: 1rem 0 2rem;
+    box-sizing: border-box;
+    border-top: 5px solid #DDD;
+    border-bottom: 5px solid #DDD;
+    margin: 1rem 0;
     h2{
         display: block;
         width: 100%;
@@ -29,13 +32,22 @@ const Main = styled.div`
         margin: .75rem 0;
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
+        box-sizing: border-box;
+    }
+    @media (min-width: ${props => props.theme.tablet}) {
+        order: 0;
+        padding: 2rem 0;
+        width: 1100px;
+        margin: 0 auto;
+        max-width: 95%;
+        border: none;
+        margin: 0;
     }
 `;
 
 const ListContainer = styled.div`
     width: 100%;
     flex-direction: column;
-    //border: 1px solid #BBB;
 `;
     const ListSearch = styled.input`
         border: 0;
@@ -49,9 +61,12 @@ const ListContainer = styled.div`
     `;
     const ListItems = styled.div`
         width: 100%;
-        height: 618px;
+        height: 300px;
         overflow-y: scroll;
         flex-direction: column;
+        @media (min-width: ${props => props.theme.tablet}) {
+            height: 618px;
+        }
     `;
         const ListItem = styled(Link)`
             display: block;

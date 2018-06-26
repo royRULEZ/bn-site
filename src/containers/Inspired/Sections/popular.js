@@ -17,10 +17,9 @@ import { fetchCollectionsPopular } from '../../../store/actions/index';
 
 //CSS
 const Main = styled.div`
-    width: 1100px;
-    margin: 0 auto;
-    max-width: 95%;
-    padding: 2rem 0;
+    order: 0;
+    width: 100%;
+    padding: 1rem 0;
     box-sizing: border-box;
     h2{
         display: block;
@@ -30,15 +29,25 @@ const Main = styled.div`
         margin: .75rem 0;
         font-family: ${props => props.theme.font_nixie};
         font-weight: 900;
+        box-sizing: border-box;
+    }
+    @media (min-width: ${props => props.theme.tablet}) {
+        order: 1;
+        padding: 2rem 0;
+        width: 1100px;
+        margin: 0 auto;
+        max-width: 95%;
     }
 `;
 
 const PopularItems = styled.div`
     width: 100%;
-    padding: 0 1rem;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
+    @media (min-width: ${props => props.theme.tablet}) {
+        padding: 0 1rem;
+    }
 `;
 
 

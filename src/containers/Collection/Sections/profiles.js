@@ -18,13 +18,13 @@ import { fetchCollectionProfiles } from '../../../store/actions/index';
 // CSS
 const ListItem = styled.div`
     display: flex;
-    flex-direction: row;
-    margin-bottom: 3rem;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-bottom: 5rem;
     .c_Bio{
-        float: left;
-        width: 50%;
-        height: 350px;
-        padding: 3rem;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
         box-sizing: border-box;
         .c_Bio-name{
             font-size: 2rem;
@@ -32,11 +32,33 @@ const ListItem = styled.div`
         .c_Bio-bio{
             padding-top: .25rem;
             font-size: .875rem;
-            line-height: 1.5rem;
+            line-height: 1.25rem;
         }            
     }
-    &:nth-child(odd){
-        flex-direction: row-reverse;
+    @media (min-width: ${props => props.theme.tablet}) {
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin-bottom: 4rem;
+        .c_Bio{
+            width: 50%;
+            padding: 0 3rem 3rem 3rem;
+            height: 350px;
+            .c_Bio-bio{
+                line-height: 1.5rem;
+            }     
+        } 
+        &:nth-child(odd){
+            flex-direction: row-reverse;
+        }   
+    }
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        margin-bottom: 3rem;
+        .c_Bio{
+            padding: 3rem;
+            .c_Bio-bio{
+                line-height: 1.5rem;
+            }     
+        }
     }
 `;
 const Container = styled.div`
@@ -45,7 +67,7 @@ const Container = styled.div`
 `;
 const FirstName = styled(Link)`
     color: ${props => props.theme.color_accent};
-    text-decoration: none;
+    text-decoration: underline;
     &:hover{
         text-decoration: underline;
     }
@@ -61,11 +83,17 @@ class CollectionProfiles extends Component {
     render () {
 
         const ListPhoto = styled.div`
-            float: left;
-            width: 50%;
-            height: 350px;
+            width: 100%;
+            height: 200px;
             background: url('${props => props.backgroundimage}') no-repeat center center; 
             background-size: cover;
+            @media (min-width: ${props => props.theme.tablet}) {
+                width: 50%;
+                height: 275px;              
+            }
+            @media (min-width: ${props => props.theme.big_tablet}) {
+                height: 350px;              
+            }
         `;
 
         console.log(this.props.collectionProfiles);

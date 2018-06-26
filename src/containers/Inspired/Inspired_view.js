@@ -19,16 +19,23 @@ const Main = styled.div`
     max-width: 95%;
 `;
 const Headline = styled.h1`
-    font-size: 2rem;
+    font-size: 1.5rem;
+    padding: 1rem 0;
     font-weight: normal;
     font-family: ${props => props.theme.font_nixie};
+    @media (min-width: ${props => props.theme.big_phone}) {
+        font-size: 2rem;
+    }
 `;
-const Body = styled.div`
+const Section = styled.div`
     width: 1100px;
     margin: 0 auto;
     max-width: 95%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @media (min-width: ${props => props.theme.big_phone}) {
+        flex-direction: row;
+    }
 `;
 
 class InspiredView extends Component {   
@@ -41,12 +48,14 @@ class InspiredView extends Component {
                     <Headline>Get inspired by our unqiue collections</Headline>
                 </Main>
                 <Hero />
-                <Body>
+                <Section>
                     <List/>
                     <Popular/>
-                </Body>
+                </Section>
+                                {/*}
                 <Origins/>                
                 <OfferCluster/>
+        */}
             </Aux>
         );
     }
