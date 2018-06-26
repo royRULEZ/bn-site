@@ -57,8 +57,12 @@ class Variations extends Component {
         return(
             <Template
                 label="Variations"
-                width="25%"
-                height="300px">
+                big_width="25%"
+                tablet_width="50%"
+                phone_width="100%"
+                tablet_height="300px"
+                phone_height="auto"
+                >
                 <Main>
                     {names}
                 </Main>

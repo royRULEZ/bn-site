@@ -15,6 +15,8 @@ import Name from '../../containers/Name/Name';
 import HowTo from '../../containers/HowTo/HowTo';
 import Inspired from '../../containers/Inspired/Inspired';
 import Collection from '../../containers/Collection/Collection';
+import About from '../../components/pages/aboutus';
+import Contact from '../../components/pages/contact';
 
 // Persistent Page Components 
 import Toolbar from '../../components/toolbar/toolbar';
@@ -51,6 +53,8 @@ class Layout extends Component {
                         <Route path="/how-to-choose-a-baby-name" component={HowTo} />
                         <Route path="/name/:n" component={Name} />
                         <Route path="/explore" component={Explore} />
+                        <Route path="/about" component={About} />
+                        <Route path="/contact" component={Contact} />
                         <Route path="/" exact component={Home} />
                     </Switch>
                 <Footer />

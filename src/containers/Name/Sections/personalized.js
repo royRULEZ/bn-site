@@ -12,9 +12,13 @@ import styled from 'styled-components';
 //CSS
 const Container = styled.div`
     width: 100%;
-    border-top: 1px solid #EEE;
-    margin: 2rem auto 0 auto;
-    padding: 0 0 2rem 0; 
+    background-color: #EEE;
+    margin: 1rem auto 0 auto;
+    padding: 0 2% 1rem 2%; 
+    @media (min-width: ${props => props.theme.tablet}) {
+        margin: 2rem auto 0 auto;
+        padding: 0 0 2rem 0;        
+    }
 `;
 const ContainerTitle = styled.div`
     padding: 2rem 0;
@@ -26,13 +30,16 @@ const ContainerTitle = styled.div`
 `;
 const Gifts = styled.div`
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     .n_gift{
-        width: 24.25%;
+        width: 49.5%;
         margin-right: 1%;
+        margin-bottom: 1%;
+        background-color: #FFF;
+        padding: 1rem;
+        box-sizing: border-box;
         .n_gift-photo{
-            padding: 20px;
-            background-color: #EEE;
-            box-sizing: border-box;
             width: 100%;
             img{
                 width: 100%;
@@ -40,6 +47,7 @@ const Gifts = styled.div`
             }
         }
         .n_gift-description{
+            font-family: ${props => props.theme.font_nixie};
             font-weight: 300;
             font-size: 1rem;
             padding: .25rem 0;
@@ -47,12 +55,26 @@ const Gifts = styled.div`
         }
         .n_gift-price{
             color: #709A42;
-            font-weight: 700;
+            font-weight: 100;
             font-size: 1rem;
         }
-        &:last-child{
+        &:nth-child(even){
             margin-right: 0;
         }
+        @media (min-width: ${props => props.theme.tablet}) {
+            width: 24.25%;
+            &:nth-child(2){
+                margin-right: 1%;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+    @media (min-width: ${props => props.theme.tablet}) {
+        flex-wrap: nowrap;
+        padding: 1rem;
+        box-sizing: border-box;
     }
 `;
 

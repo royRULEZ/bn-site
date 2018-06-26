@@ -15,10 +15,18 @@ class Template extends Component {
     render () {
         //CSS
         const Main = styled.div`
-            width: ${this.props.width};
-            height: ${this.props.height};
+            width: ${this.props.phone_width};
+            height: ${this.props.phone_height};
             padding: .25rem;
             box-sizing: border-box;
+            @media (min-width: ${props => props.theme.tablet}) {
+                width: ${this.props.tablet_width};
+                height: ${this.props.height};
+            }
+            @media (min-width: ${props => props.theme.big}) {
+                width: ${this.props.big_width};
+                height: ${this.props.height};
+            }
         `;
         const Inner = styled.div`
             background-color: ${this.props.backgroundColor ? this.props.backgroundColor : "#f5f5f5"};

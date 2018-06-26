@@ -62,7 +62,10 @@ class RecentHistory extends Component {
         return(
             <Template
                 label={label}
-                width="100%"
+                tablet_width="100%"
+                tablet_width="100%"
+                phone_width="100%"
+                phone_height="300px"
                 height="450px"
                 backgroundColor="#FFFFFF">
                 <Container>

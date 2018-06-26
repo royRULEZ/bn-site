@@ -19,7 +19,6 @@ import Spinner from '../../../components/spinner/spinner';
 const Main = styled.div`
     padding-top: 1rem;
 `;
-//TODO Make this scrollable in case you get lots of words
 const Container = styled.div`
     padding: .375rem .25rem;
     .k-title{
@@ -70,7 +69,9 @@ class Known extends Component {
         return(
             <Template
                 label={label}
-                width="25%"
+                big_width="25%"
+                tablet_width="50%"
+                phone_width="100%"
                 height="300px">
                 <Main>
                     {known}

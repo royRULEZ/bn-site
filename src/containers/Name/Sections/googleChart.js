@@ -16,9 +16,12 @@ import Chart from '../../../components/charts/trends';
 
 //CSS
 const Container = styled.div`
-    padding: 1rem;
+    padding: 1rem 0;
     box-sizing: border-box;
     height: 100%;
+    @media (min-width: ${props => props.theme.tablet}) {
+        padding: 1rem;
+    }
 `;
 // Component
 class GoogleChart extends Component {   
@@ -50,8 +53,12 @@ class GoogleChart extends Component {
         return(
             <Template
                 label={label}
-                width="100%"
-                height="400px">
+                big_width="100%"
+                tablet_width="100%"
+                phone_width="100%"
+                tablet_height="400px"
+                phone_height="300px"
+                >
                 <Container>
                     {chart}
                 </Container>

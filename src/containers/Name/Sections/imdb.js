@@ -8,7 +8,6 @@
 // Imports
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Spinner from '../../../components/spinner/spinner';
 
 import { connect } from 'react-redux';
@@ -18,25 +17,43 @@ import Template from './blank';
 
 //CSS
 const Main = styled.div`
-    padding: 1rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        padding: 1rem;
+        flex-wrap: nowrap;
+    }
 `;
 const Container = styled.div`
-    width: 16.6666%;
+    width: 50%;
     padding: 1rem;
     box-sizing: border-box;
-    height: 280px;
+    height: 250px;
     overflow: hidden;
     .i-title{
-        font-size: 1rem;
+        font-size: .875rem;
         padding-top: .5rem;
     }  
     .i-artist{
-        font-size: .75rem;
+        font-size: .625rem;
         font-style: italic;
         font-weight: 100;
         color: #999;
+    }
+    @media (min-width: ${props => props.theme.big_phone}) {
+        width: 25%;
+        height: 280px;
+        .i-title{
+            font-size: 1rem;
+        }  
+        .i-artist{
+            font-size: .75rem;
+        }
+    }
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        width: 16.6666%;
     }
 `;
 
@@ -77,8 +94,12 @@ class Imdb extends Component {
         return(
             <Template
                 label={label}
-                width="100%"
-                height="325px">
+                big_width="100%"
+                tablet_width="100%"
+                phone_width="100%"
+                phone_height="auto"
+                tablet_height="auto"
+                >
                 <Main>
                     {imdb}
                 </Main>

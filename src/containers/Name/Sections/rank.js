@@ -12,12 +12,17 @@ import styled from 'styled-components';
 
 //CSS
 const Main = styled.div`
-    width: 25%;
+    width: 100%;
     height: 300px;
     padding: .25rem;
     box-sizing: border-box;
+    @media (min-width: ${props => props.theme.tablet}) {
+        width: 50%;
+    }
+    @media (min-width: ${props => props.theme.big}) {
+        width: 25%;
+    }
 `;
-
 const Label = styled.h2`
     margin: 0;
     font-size: .625rem;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Hero from './Sections/hero';
 import { Rectangle as Ad} from '../../components/ad/ad_factory';
-import OfferCluster from '../../components/ad/offerCluster';
+import AmazonFour from '../../components/ad/amazonFour';
 import RandomNames from './Sections/randomNames';
 import Collections from './Sections/collections';
 import Alphabet from './Sections/alphabet';
@@ -59,7 +59,7 @@ class HomeView extends Component {
                 <RandomNames />
                 <Alphabet />
                 <Origins />
-                <OfferCluster />
+                <AmazonFour />
             </Main>
         );
     }

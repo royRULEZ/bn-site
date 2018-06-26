@@ -18,8 +18,8 @@ import Spinner from '../../components/spinner/spinner';
 const Container = styled.div`
     width: 100%;
     border-top: 1px solid #DDD;
-    margin: 25px auto 0 auto;
-    padding: 0 0 25px 0; 
+    margin: 1.5rem auto 0 auto;
+    padding: 0 0 1.5rem 0; 
 `;
 const ContainerTitle = styled.div`
     padding: 2rem 0;
@@ -31,34 +31,64 @@ const ContainerTitle = styled.div`
 `;
 const AmazonItems = styled.div`
     display: flex;
-    .n_amazon{
-        width: 15.8333%;
-        margin-right: 1%;
-        border: 1px solid #CCC;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        flex-wrap: nowrap;
         padding: 1rem;
-        background-color: #FFF;
         box-sizing: border-box;
-        .n_amazon_gift-photo{
-            img{
-                width: 100%;
-            }
+    }
+`;
+const AmazonItem = styled(Link)`
+    width: 49.5%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    border: 1px solid #CCC;
+    padding: 1rem;
+    background-color: #FFF;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    .n_amazon_gift-description{
+        font-weight: 300;
+        font-size: 1rem;
+        padding: .5rem 0;
+        color: #444;
+        font-family: ${props => props.theme.font_nixie};
+    }
+    .n_amazon_gift-price{
+        color: #709A42;
+        font-weight: 100;
+        font-size: .875rem;
+        padding-top: .25rem;
+    }
+    &:nth-child(even){
+        margin-right: 0;
+    }
+    @media (min-width: ${props => props.theme.tablet}) {
+        width: 32.6666%;
+        &:nth-child(even){
+            margin-right: 1%;
         }
+        &:nth-child(3){
+            margin-right: 0;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        width: 15.8333%;
         .n_amazon_gift-description{
-            font-weight: 300;
-            font-size: 14px;
-            padding-top: 10px;
+            padding: 1rem 0;
         }
-        .n_amazon_gift-price{
-            color: #709A42;
-            font-weight: 700;
-            font-size: 14px;
+        &:nth-child(3){
+            margin-right: 1%;
         }
         &:last-child{
             margin-right: 0;
         }
     }
 `;
-
 // Component
 class AffiliateRow extends Component {   
 
@@ -72,34 +102,35 @@ class AffiliateRow extends Component {
             background: url('${props => props.backgroundimage}') no-repeat center center; 
             background-size: cover;
             display: block;
-            height: 155px;
-            width: 100%; 
+            height: 100px;
+            width: 100px; 
             margin: 0 auto;
+            @media (max-width: ${props => props.theme.phone}) {
+                height: 125px;
+                width: 125px;  
+            }
         `;
 
         let affiliates = <Spinner/>;
         if ( !this.props.loading ) {
             affiliates = this.props.afrow.map( a => (
-                <div key={a.id} className="n_amazon">
+                <AmazonItem key={a.id} to={a.link} target="_blank" >
                     <AmazonImage backgroundimage={a.image}/>
                     <div className="n_amazon_gift-description">{a.name}</div>
                     <div className="n_amazon_gift-price">${a.price.toFixed(2)}</div>
-                </div> 
+                </AmazonItem> 
             ))
         }
-        /*
-                    <Container>
-                        <ContainerTitle>
-                            Popular baby gifts on Amazon
-                        </ContainerTitle>
-                        <AmazonItems>
-                            {affiliates}
-                        </AmazonItems>
-                    </Container>
-        */
 
         return(
-            ""
+            <Container>
+                <ContainerTitle>
+                    Popular baby gifts on Amazon
+                </ContainerTitle>
+                <AmazonItems>
+                    {affiliates}
+                </AmazonItems>
+            </Container>
         );
     }
 }
