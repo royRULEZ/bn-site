@@ -20,6 +20,31 @@ export const Rectangle = (props) => {
     );
 }
 
+
+// -------------------------------------------------------------------------------------------------------------------------
+// Rockabye Ad - 728x90
+// -------------------------------------------------------------------------------------------------------------------------
+export const Rockabye = (props) => {
+    const RectangleAd = styled.div`
+        height: 90px;
+        margin: 2rem auto 0 auto;
+        width: 728px;
+        display: none;
+        @media (min-width: ${props => props.theme.tablet}) {
+            display: block;
+        }
+    `;
+
+    return(
+        <RectangleAd>
+            <a href="http://www.dpbolvw.net/click-8831924-13264687" target="_blank">
+                <img src="http://www.awltovhc.com/image-8831924-13264687" width="728" height="90" alt="" border="0"/>
+            </a>
+        </RectangleAd>
+    );
+}
+
+
 // -------------------------------------------------------------------------------------------------------------------------
 // Big Banner Ad - 970x250
 // -------------------------------------------------------------------------------------------------------------------------

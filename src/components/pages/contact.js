@@ -4,13 +4,17 @@ import styled from 'styled-components';
 
 //CSS
 const Main = styled.article`
-    max-width: 640px;
+    max-width: 768px;
     width: 95%;
     margin: 0 auto;   
     .ht_description{
-        font-size: 1.125rem;
         line-height: 1.5rem;  
-        margin-bottom: 2rem;  
+        padding: 0 .5rem 2rem .5rem;
+        box-sizing: border-box;
+        @media (min-width: ${props => props.theme.tablet}) {
+            line-height: 1.5rem;  
+            padding: 0;
+        }  
     } 
 `;
 const Title = styled.h1`
@@ -57,7 +61,7 @@ class Contact extends Component {
                 <Title>Contact Us</Title>
                 <div className="ht_description">
                     <EmailLink href="mailto:babynamr@gmail.com">Email Us</EmailLink>
-                    As a website the specializes in baby names, we often get asked - How do I choose a name? As new parents it can be a daunting task. We interviewed countless couples and compiled some tips, some tricks, and some things to look out for. 
+                    Questions about the site? Send us an email and we'll try to get back to you as soon as possible.
                 </div>
             </Main>
         );

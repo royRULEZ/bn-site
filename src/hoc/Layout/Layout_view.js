@@ -8,6 +8,7 @@
 // Imports
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'; // TODO: Navlink
+
 // Components
 import Home from '../../containers/Home/Home';
 import Explore from '../../containers/Explore/Explore';
@@ -17,6 +18,10 @@ import Inspired from '../../containers/Inspired/Inspired';
 import Collection from '../../containers/Collection/Collection';
 import About from '../../components/pages/aboutus';
 import Contact from '../../components/pages/contact';
+
+// Specialized Views
+import Instagram from '../../containers/Name/Instagram';
+import Infographic from '../../containers/Name/Infographic';
 
 // Persistent Page Components 
 import Toolbar from '../../components/toolbar/toolbar';
@@ -55,6 +60,8 @@ class Layout extends Component {
                         <Route path="/explore" component={Explore} />
                         <Route path="/about" component={About} />
                         <Route path="/contact" component={Contact} />
+                        <Route path="/name-of-the-day" component={Instagram} />
+                        <Route path="/infographic" component={Infographic} />
                         <Route path="/" exact component={Home} />
                     </Switch>
                 <Footer />

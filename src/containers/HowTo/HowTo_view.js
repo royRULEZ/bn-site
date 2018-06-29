@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Aux from '../../hoc/Aux';
-import { Rectangle as Ad} from '../../components/ad/ad_factory';
-import OfferCluster from '../../components/ad/offerCluster';
+import OfferCluster from '../../components/ad/amazonFour';
 
 //CSS
 const Main = styled.article`
@@ -12,20 +11,36 @@ const Main = styled.article`
     width: 95%;
     margin: 0 auto;   
     .ht_description{
-        line-height: 1.5rem;    
+        line-height: 1.5rem;  
+        padding: 0 .5rem;
+        box-sizing: border-box;
+        @media (min-width: ${props => props.theme.tablet}) {
+            line-height: 1.5rem;  
+            padding: 0;
+        }  
     } 
 `;
 const Title = styled.h1`
     margin: 0;
-    padding: 3rem 0 5rem 0;
-    font-size: 7.5rem;
-    line-height: 7.5rem;
+    padding: 3rem 0;
+    font-size: 3rem;
+    line-height: 3rem;
     font-family: ${props => props.theme.font_nixie};
     text-align: center;
     font-weight: 100;
     background: linear-gradient(to right, #d5617f 0%, #4a7f98 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @media (min-width: ${props => props.theme.tablet}) {
+        padding: 3rem;
+        font-size: 4rem;
+        line-height: 4rem;         
+    }
+    @media (min-width: ${props => props.theme.big_tablet}) {
+        padding: 3rem 0 5rem 0;
+        font-size: 7.5rem;
+        line-height: 7.5rem;         
+    }
 `;
 
 let girlColor = "rgba(213, 97, 127, 0.8)";
@@ -33,26 +48,37 @@ let boyColor = "rgba(74, 127, 152, 0.8)";
 
 const Section = styled.div`
     margin-top: 3rem;
-    padding-right: 3rem;
     h2{
-        font-family: $Muli;
-        font-size: 24px;
+        font-size: 1.25rem;
         font-weight: 600;
-        color: $color-accent-1;
-        padding-bottom: 12.5px;
+        padding-bottom: .875rem;
     }
     .ht-text{
-        font-size: 18px;
-        line-height: 28px;        
-        margin-bottom: 10px;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
     }
     .ht-quote{
-        background-color: darken($color-background, 2%);
-        border-bottom: 2px solid darken($color-background, 5%);
-        padding: 25px;
-        line-height: normal;
-        margin: 0 0 25px 0;
+        padding: .5rem 1rem 1rem 1rem;
+        margin-bottom: 1rem;
         font-style: italic;
+    }
+    @media (min-width: ${props => props.theme.tablet}) {
+        padding-right: 3rem;
+        h2{
+            font-size: 1.5rem;
+        }
+        .ht-quote{
+            padding: .5rem 1.5rem 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        .ht-text{
+            font-size: 1.125rem;
+            line-height: 1.75rem;        
+            margin-bottom: 1rem;
+        }
     }
 `;
 
@@ -62,7 +88,6 @@ class HowToView extends Component {
         return (
             <Aux>
                 <Main>
-                    <Ad />
                     <Title>How to choose a baby name</Title>
                     <div className="ht_description">
                         As a website the specializes in baby names, we often get asked - How do I choose a name? As new parents it can be a daunting task. We interviewed countless couples and compiled some tips, some tricks, and some things to look out for. 
@@ -99,10 +124,6 @@ class HowToView extends Component {
                     </Section>
 
                     <Section>
-                        <Ad />
-                    </Section>
-
-                    <Section>
                         <h2>4. A Namesake</h2>
                         <div className="ht-quote">
                             "Our family comes from a long line of Catholics. It was important to us that our kids inherit some aspect of that faith."
@@ -130,10 +151,6 @@ class HowToView extends Component {
                         <div className="ht-text">
                             This is probably our favorite idea in this list. Nothing beats living with a name for a while. And there's almost nothing better than printing it out and putting it somewhere where you have to look at it every day. We recommend printing the name out combined with the last name of the child. Then post these around your home in places like a bathroom mirror or on the refrigerator. After a couple of weeks you might find that some names no longer hold the same place they once did and that others now just “feel right”.
                         </div>
-                    </Section>
-
-                    <Section>
-                        <Ad />
                     </Section>
 
                     <Section>

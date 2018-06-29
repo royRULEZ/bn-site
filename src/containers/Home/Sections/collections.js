@@ -64,12 +64,13 @@ class Collections extends Component {
         const Collection = styled(Link)`
             width: 32.6666%;
             margin-bottom: 1%;
+            padding: 1rem;
             height: 200px;
             font-size: 2rem;
             font-weight: 100;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${props => props.backgroundimage}') no-repeat center center; 
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${props => props.backgroundimage}') no-repeat center center; 
             background-size: cover;
-            boxing-sizing: border-box;
+            box-sizing: border-box;
             color: #FFF;
             display: flex;
             text-align: center;
@@ -99,7 +100,7 @@ class Collections extends Component {
         
         if ( !this.props.loading ) {
             collections = this.props.HCollections.map( hc => (
-                <Collection key={hc.name} to={"/collection/"+hc.url} backgroundimage={require('../../../assets/collections/'+hc.id+'_400.jpg')}>
+                <Collection key={hc.name} to={"/collection/"+hc.url} backgroundimage={"/images/collections/"+hc.id+"_400.jpg"}>
                     <div>{hc.name}</div>
                 </Collection>
             ) )

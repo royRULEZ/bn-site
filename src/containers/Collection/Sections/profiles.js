@@ -33,12 +33,20 @@ const ListItem = styled.div`
             padding-top: .25rem;
             font-size: .875rem;
             line-height: 1.25rem;
-        }            
+        }    
+        .c_Bio-source{
+            a{
+                color: inherit;
+                font-size: .75rem;
+                color: ${props => props.theme.color_lightgrey};
+                font-style: italic;
+            }
+        }        
     }
     @media (min-width: ${props => props.theme.tablet}) {
         flex-wrap: wrap;
         flex-direction: row;
-        margin-bottom: 4rem;
+        margin-bottom: 5rem;
         .c_Bio{
             width: 50%;
             padding: 0 3rem 3rem 3rem;
@@ -52,7 +60,6 @@ const ListItem = styled.div`
         }   
     }
     @media (min-width: ${props => props.theme.big_tablet}) {
-        margin-bottom: 3rem;
         .c_Bio{
             padding: 3rem;
             .c_Bio-bio{
@@ -61,15 +68,30 @@ const ListItem = styled.div`
         }
     }
 `;
-const Container = styled.div`
+const Container = styled.article`
     margin: 0 auto;
     max-width: 1200px;
 `;
 const FirstName = styled(Link)`
     color: ${props => props.theme.color_accent};
-    text-decoration: underline;
+    text-decoration: none;
     &:hover{
         text-decoration: underline;
+    }
+`;
+const InfoGraphic = styled.div`
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    padding: 2rem 0;
+    h2{
+        text-align: center;
+        font-family: ${props => props.theme.font_nixie};
+    }
+    img{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
     }
 `;
 
@@ -101,10 +123,12 @@ class CollectionProfiles extends Component {
         // Array of Names
         profiles = this.props.collectionProfiles.map( p => (
             <ListItem key={p.id}>
-                <ListPhoto backgroundimage={require('../../../assets/collections/profiles/'+this.props.id+'/'+p.image+'.jpg')}  />
+                <ListPhoto backgroundimage={"/images/profiles/"+this.props.id+"/"+p.image+".jpg"}  />
+                
                 <div className="c_Bio">
-                    <div className="c_Bio-name"><FirstName to={"/name/"+p.firstname}>{p.firstname}</FirstName> {p.lastname}</div>
-                    <div className="c_Bio-bio">{p.description}</div>
+                    <div className="c_Bio-name">{p.sequence}. <FirstName to={"/name/"+p.firstname}>{p.firstname}</FirstName> {p.lastname}</div>
+                    <div className="c_Bio-bio">{p.description} <span className="c_Bio-source">{p.source === "" ? "" : <a href={p.source} target="_blank">Bio Source</a>}</span></div>
+                    
                 </div>
             </ListItem>
         ));
@@ -113,8 +137,15 @@ class CollectionProfiles extends Component {
         return(
             <Container>
                 {profiles}
+                {this.props.infographic === 1 ?
+                <InfoGraphic>
+                    <h2>{this.props.name} Infographic</h2>
+                    <img src={"/images/profiles/"+this.props.id+"/infographic.jpg"}  />
+                </InfoGraphic>
+                : "" }
             </Container>
         );
+
 
 
     }

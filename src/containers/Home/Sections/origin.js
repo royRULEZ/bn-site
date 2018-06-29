@@ -69,7 +69,7 @@ class alphabet extends Component {
         let oArr = ["African", "American", "Arabic", "Celtic", "Chinese", "Czech", "Danish", "Dutch", "Egyptian", "English", "Finnish", "French", "German", "Greek", "Hebrew", "Hungarian", "Irish", "Italian", "Japanese", "Latin", "Norse", "Polish", "Portuguese", "Russian", "Scandinavian", "Scottish", "Slavic", "Spanish", "Swedish", "Welsh", "Yiddish"];
         let origins = <p>Something went terribly wrong!</p>;
         origins = oArr.map( o => (
-            <Origin key={o} to={"/collection/"+o}>{o}</Origin>
+            <Origin key={o} to={"/collection/"+o+"-baby-names"}>{o}</Origin>
         ));
 
         //

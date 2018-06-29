@@ -75,6 +75,8 @@ class Popular extends Component {
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            padding: 1rem;
+            box-sizing: border-box;
             &:nth-child(2n+1){
                 margin: 0 2% 2% 0;
             }
@@ -83,7 +85,7 @@ class Popular extends Component {
         let popularItems = <Spinner/>        
         if(this.props.collectionpopular){
             popularItems = this.props.collectionpopular.map( i => (
-                <PopularItem key={i.id} to={"/collection/"+i.url} backgroundimage={require('../../../assets/collections/'+i.id+'_400.jpg')}>{i.name}</PopularItem>
+                <PopularItem key={i.id} to={"/collection/"+i.url} backgroundimage={"/images/collections/"+i.id+"_400.jpg"}>{i.name}</PopularItem>
             ))
             
         }
@@ -91,7 +93,7 @@ class Popular extends Component {
         return(
                 /* Title: Recently Added Collections */
                 <Main>
-                    <h2>Popular Collections</h2>
+                    <h2>Popular Baby Name Collections</h2>
                     <PopularItems>
                         {popularItems}
                     </PopularItems> 

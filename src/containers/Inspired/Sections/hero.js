@@ -103,14 +103,13 @@ class Hero extends Component {
 
             collections = 
                 <Aux>
-                    <Primary to={"/collection/"+this.props.HCollections[0].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[0].id+'_1100.jpg')} >{this.props.HCollections[0].name}</Primary>
+                    <Primary to={"/collection/"+this.props.HCollections[0].url} backgroundimage={"/images/collections/"+this.props.HCollections[0].id+"_1100.jpg"} >{this.props.HCollections[0].name}</Primary>
                     <Secondary>
-                        <SecondaryItem to={"/collection/"+this.props.HCollections[1].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[1].id+'_1100.jpg')} >{this.props.HCollections[1].name}</SecondaryItem>
-                        <SecondaryItem to={"/collection/"+this.props.HCollections[2].url} backgroundimage={require('../../../assets/collections/'+this.props.HCollections[2].id+'_1100.jpg')} >{this.props.HCollections[2].name}</SecondaryItem>
+                        <SecondaryItem to={"/collection/"+this.props.HCollections[1].url} backgroundimage={"/images/collections/"+this.props.HCollections[1].id+"_1100.jpg"} >{this.props.HCollections[1].name}</SecondaryItem>
+                        <SecondaryItem to={"/collection/"+this.props.HCollections[2].url} backgroundimage={"/images/collections/"+this.props.HCollections[2].id+"_1100.jpg"} >{this.props.HCollections[2].name}</SecondaryItem>
                     </Secondary>
                 </Aux>
             ;
-
         }
 
         return(

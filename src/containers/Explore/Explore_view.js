@@ -62,12 +62,12 @@ class ExploreView extends Component {
     changeAlphaHandler = (a) => {
         let char = '';
         typeof a === 'object' ? char = a.value : char = a;
-        char === "Clear" ? char = "" : "";
+        if(char === "Clear"){char = ""};
         this.props.onChangeAlpha(this.props.bundle, char);
     }
 
     changeLengthHandler = (l) => {
-        l.value === "Clear" ? l.value = "" : "";
+        if(l.value === "Clear"){l.value = ""};
         this.props.onChangeLength(this.props.bundle, l.value);
     }
 
@@ -92,7 +92,7 @@ class ExploreView extends Component {
     
     render () {
 
-        let names = <p>Something went terribly wrong!</p>;
+        let names = <Spinner/>;
         if ( !this.props.loading ) {
             names = this.props.allNames.map( (n, i) => (
                 <Aux key={n.name}>

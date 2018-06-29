@@ -112,9 +112,9 @@ class Personalized extends Component {
         ];
         const items = personalized.map( p => (
             <div key={p.id} className="n_gift">
-                <div className="n_gift-photo"><img src={p.src} /></div>
-                <div className="n_gift-description">Heart Pendant</div>
-                <div className="n_gift-price">$24.79</div>
+                <div className="n_gift-photo"><img alt="" src={p.src} /></div>
+                <div className="n_gift-description">{p.name}</div>
+                <div className="n_gift-price">{p.price}</div>
             </div>
         ));
     

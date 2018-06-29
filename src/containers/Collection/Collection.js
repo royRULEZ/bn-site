@@ -19,6 +19,10 @@ class Collection extends Component {
         let view = <Spinner/>; //TODO Fix
         if(this.props.collection[0]){
 
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let date = new Date(this.props.collection[0].date_added);
+            let published = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear(); 
+            
             view = 
             <CollectionView
                 collection={this.props.collection[0].name}
@@ -27,6 +31,8 @@ class Collection extends Component {
                 id={this.props.collection[0].id}
                 url={this.props.collection[0].url}
                 key={this.props.collection[0].id}
+                infographic={this.props.collection[0].infographic}
+                published={published}
             />;
 
         }

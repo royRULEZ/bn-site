@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Hero from './Sections/hero';
-import { Rectangle as Ad} from '../../components/ad/ad_factory';
+import { Rockabye as Ad} from '../../components/ad/ad_factory';
 import AmazonFour from '../../components/ad/amazonFour';
 import RandomNames from './Sections/randomNames';
 import Collections from './Sections/collections';
@@ -14,7 +14,7 @@ import Origins from './Sections/origin';
 const Main = styled.div`
 `;
 const PageInfo = styled.div`
-    margin: 4rem auto;
+    margin: 3rem auto 4rem auto;
     max-width: 768px;
     width: 95%;
     line-height: ${props => props.theme.text_lineheight};
@@ -53,7 +53,7 @@ class HomeView extends Component {
                 <Ad />
                 <PageInfo>
                     <div className="h_InfoTitle">A Unique Name.</div>
-                    <div className="h_Info">We've taken a different approach to creating a Baby Name website. We're focused on the uncommon, original, and unique names. It can be hard to select a name for your child that fits your aspirations and your family identity. We've designed a site to help you learn more about the names you’ve selected and discover that one name to fit your child best.</div>
+                    <div className="h_Info">At BabyNamr, we've taken a different approach to creating a Baby Name website. We’re focused on the uncommon, original, and unique baby names. It’s hard to find a name for your child that fits your aspirations and your family identity. With that in mind, we set out to design a website help you select and discover that one perfect baby name that feels right.</div>
                 </PageInfo>
                 <Collections />
                 <RandomNames />

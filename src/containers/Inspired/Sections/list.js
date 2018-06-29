@@ -72,6 +72,7 @@ const ListContainer = styled.div`
             display: block;
             width: 100%;
             padding: 1rem 1rem;
+            box-sizing: border-box;
             border-bottom: 1px solid #DDD;
             text-decoration: none;
             color: inherit;
@@ -109,7 +110,7 @@ class List extends Component {
 
         return(
                 <Main>
-                    <h2>Search Collections</h2>
+                    <h2>Search All Baby Name Collections</h2>
                     <ListContainer>
                         <ListSearch
                             placeholder="Search..."

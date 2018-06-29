@@ -123,7 +123,7 @@ export class Pagination extends Component {
 
     goBackward = () => {
         let num = this.props.page;
-        if(num != 1){
+        if(num !== 1){
             console.log("Num: ", num);
             this.props.changePage(num-1);
         }

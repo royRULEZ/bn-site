@@ -20,7 +20,7 @@ const Main = styled.div`
         text-align: center;
         font-family: ${props => props.theme.font_nixie};
         font-size: 0.8rem;
-        color: #888;
+        color: ${props => props.theme.color_lightgrey};
     }
 `;
 
@@ -42,12 +42,20 @@ class CollectionView extends Component {
             font-size: ${(props => props.size)-1};
             text-transform: capitalize;
             font-family: ${props => props.theme.font_nixie};
-            ${this.props.type != 'origin' ? "padding: 0 0 1rem 0;" : "padding-top: 1rem"};
+            ${this.props.type != 'origin' ? "padding: 0 0 0 0;" : "padding-top: 1rem"};
             ${this.props.type != 'origin' ? "" : "margin: 0"};
             font-weight: 100;
             @media (min-width: ${props => props.theme.tablet}) {
                 font-size: ${props => props.size};
             }
+        `;
+        const Published = styled.div`
+            width: 100%;
+            text-align: center;
+            font-size: .75rem;
+            color: ${props => props.theme.color_lightgrey};
+            font-style: italic;
+            padding-bottom: 1rem;
         `;
         const Description = styled.div`
             margin: 2rem auto;
@@ -66,19 +74,21 @@ class CollectionView extends Component {
 
         let names = <Spinner/>;
         if(this.props.type === "profiles"){
-            names = <Profiles id={this.props.id} />
+            names = <Profiles id={this.props.id} name={this.props.collection} infographic={this.props.infographic} />
         }else{
             names = <Names url={this.props.url} id={this.props.id} />
         }
 
         let size = (this.props.type === 'origin' ? "6rem" : "3rem");
  
+        console.log(this.props.infographic);
         return (
             <Aux>
                 <Main>
                     <div className="c_descriptor">{this.props.type === 'origin' ? "Origin" : "Collection"}</div>
                     <Name size={size}>{this.props.collection}</Name>
-                    {this.props.type != 'origin' ?  <Hero backgroundimage={require('../../assets/collections/'+this.props.id+'_1100.jpg')} /> : "" }
+                    <Published>{this.props.published}</Published>
+                    {this.props.type != 'origin' ?  <Hero backgroundimage={"/images/collections/"+this.props.id+"_1100.jpg"} /> : "" }
                     <Description>
                         <div className="c_descriptor">Description</div>
                         {this.props.description}
@@ -92,3 +102,24 @@ class CollectionView extends Component {
 }
 
 export default CollectionView;
+
+/*
+
+INSERT INTO `babynamr`.`collection`
+(
+`name`,
+`description`,
+`type`,
+`url`,
+`date_added`,
+`featured`)
+VALUES(
+"15 Iconic Male Fashion Designers",
+"Description",
+"profiles",
+"15-iconic-male-fashion-designers",
+CURRENT_TIMESTAMP,
+0);
+
+
+*/
