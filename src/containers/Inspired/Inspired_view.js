@@ -11,6 +11,7 @@ import Eight from './Sections/eight';
 import Popular from './Sections/popular';
 import List from './Sections/list';
 import Origins from '../Home/Sections/origin';
+import Profiles from './Sections/profiles';
 
 //CSS
 const Main = styled.div`
@@ -23,8 +24,16 @@ const Headline = styled.h1`
     padding: 1rem 0;
     font-weight: normal;
     font-family: ${props => props.theme.font_nixie};
+    background: linear-gradient(to right, #d5617f 0%, #4a7f98 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     @media (min-width: ${props => props.theme.big_phone}) {
-        font-size: 2rem;
+        font-size: 4rem;
+        text-align: center;
+        max-width: 768px;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
 `;
 const Section = styled.div`
@@ -35,6 +44,9 @@ const Section = styled.div`
     flex-direction: column;
     @media (min-width: ${props => props.theme.big_phone}) {
         flex-direction: row;
+        margin-top: 5rem;
+        padding-top: 3rem;
+        border-top: 1px solid #DDD;
     }
 `;
 
@@ -45,14 +57,18 @@ class InspiredView extends Component {
             <Aux>
                 <Ad/>
                 <Main>
-                    <Headline>Get inspired by our unqiue collections</Headline>
+                    <Headline>Be inspired by our unqiue collections</Headline>
                 </Main>
                 <Hero />
                 <Section>
                     <List/>
                     <Popular/>
                 </Section>
-                                {/*}
+                {/*}
+                <Section>
+                    <Profiles />
+                </Section>
+                                
                 <Origins/>                
                 <OfferCluster/>
         */}

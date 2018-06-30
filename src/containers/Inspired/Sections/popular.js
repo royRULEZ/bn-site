@@ -19,7 +19,7 @@ import { fetchCollectionsPopular } from '../../../store/actions/index';
 const Main = styled.div`
     order: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
     box-sizing: border-box;
     h2{
         display: block;
@@ -33,10 +33,8 @@ const Main = styled.div`
     }
     @media (min-width: ${props => props.theme.tablet}) {
         order: 1;
-        padding: 2rem 0;
+        padding: 0 0;
         width: 1100px;
-        margin: 0 auto;
-        max-width: 95%;
     }
 `;
 
@@ -46,7 +44,7 @@ const PopularItems = styled.div`
     display: flex;
     flex-wrap: wrap;
     @media (min-width: ${props => props.theme.tablet}) {
-        padding: 0 1rem;
+        padding: 0 0 0 2rem;
     }
 `;
 

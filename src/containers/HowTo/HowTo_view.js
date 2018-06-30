@@ -38,8 +38,8 @@ const Title = styled.h1`
     }
     @media (min-width: ${props => props.theme.big_tablet}) {
         padding: 3rem 0 5rem 0;
-        font-size: 7.5rem;
-        line-height: 7.5rem;         
+        font-size: 6.5rem;
+        line-height: 6.5rem;         
     }
 `;
 
@@ -88,7 +88,7 @@ class HowToView extends Component {
         return (
             <Aux>
                 <Main>
-                    <Title>How to choose a baby name</Title>
+                    <Title>7 Steps for choosing the perfect baby name</Title>
                     <div className="ht_description">
                         As a website the specializes in baby names, we often get asked - How do I choose a name? As new parents it can be a daunting task. We interviewed countless couples and compiled some tips, some tricks, and some things to look out for. 
                     </div>

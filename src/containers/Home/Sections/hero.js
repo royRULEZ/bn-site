@@ -15,7 +15,6 @@ import { fetchRandom } from '../../../store/actions/index';
 
 import LineChart from '../../../components/charts/random';
 
-import bck_img from '../../../assets/hero_bck.jpg';
 
 
 //CSS

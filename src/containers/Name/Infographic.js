@@ -1,9 +1,11 @@
 //Imports
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import styled from 'styled-components';
 
 import RecentHistory from './Infographic/history';
 import MFChart from '../../components/charts/infographic_mf';
+import Aux from '../../hoc/Aux';
 
 import { connect } from 'react-redux';
 import { fetchRandom } from '../../store/actions/index';
@@ -142,7 +144,12 @@ class Instagram extends Component {
         }
 
         return (
-            infographic
+            <Aux>
+                <Helmet>
+                    <title>Infographic</title>
+                </Helmet>
+                {infographic}
+            </Aux>
         );
     }
 }

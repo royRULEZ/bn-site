@@ -46,10 +46,11 @@ export const fetchCollection = (name) => {
 // --------------------------------------------------------------------------------------------------------------------------
 // Collection Names
 // --------------------------------------------------------------------------------------------------------------------------
-export const fetchCollectionNamesSuccess = ( collectionNames ) => {
+export const fetchCollectionNamesSuccess = ( collectionResults ) => {
     return {
         type: actionTypes.FETCH_COLLECTIONNAMES_SUCCESS,
-        collectionNames: collectionNames
+        collectionNames: collectionResults.names,
+        pageCount: collectionResults.count
     };
 };
 
@@ -66,19 +67,83 @@ export const fetchCollectionNamesStart = () => {
     };
 };
 
+export const updateCollectionNamesPage = ( page ) => {
+    return {
+        type: actionTypes.UPDATE_COLLECTIONNAMES_PAGE,
+        page: page,
+    };
+};
+
 export const fetchCollectionNames = (id) => {
-    let qStr = 'collection-names/'+id+'';
+    let qStr = 'collection-names?cid='+id+'';
     return dispatch => {
         
         dispatch(fetchCollectionNamesStart());
         axios.get( qStr )
             .then( res => {
-                dispatch(fetchCollectionNamesSuccess(res.data));
+                let collectionResults = {
+                    names : res.data.allnames,
+                    count : res.data.pagecount
+                }
+                dispatch(fetchCollectionNamesSuccess(collectionResults));
             } )
             .catch( err => {
                 console.log('[FETCH_COLLECTIONNAMES_FAIL]', err);
                 dispatch(fetchCollectionNamesFail(err));
             } );
+    };
+};
+
+/*
+export const fetchAllNames = (bundle) => {
+    let qStr = 'explore-names?p='+bundle.popularity+'&g='+bundle.gender+'&a='+bundle.alpha+'&l='+bundle.length+'';
+    return dispatch => {
+        
+        dispatch(fetchAllNamesStart());
+        axios.get( qStr )
+            .then( res => {
+                const fetchedNames = [];
+                for ( let key in res.data.allnames ) {
+                    fetchedNames.push( {
+                        ...res.data.allnames[key],
+                        id: key
+                    } );
+                }
+                let exploreResults = {
+                    names : fetchedNames,
+                    count : res.data.pagecount
+                }
+                //console.log("Results 1 ", exploreResults);
+                dispatch(fetchAllNamesSuccess(exploreResults));
+            } )
+            .catch( err => {
+                console.log('[FETCH_ALLNAMES_FAIL]', err);
+                dispatch(fetchAllNamesFail(err));
+            } );
+    };
+};
+*/
+
+export const changeCollectionNamesPage = (cid, page) => {
+    console.log("CID", cid);
+    let qStr = 'collection-names?cid='+cid+''+'&page='+page+'';
+    return dispatch => {
+
+        dispatch(fetchCollectionNamesStart());
+        axios.get( qStr )
+            .then( res => {
+                let collectionResults = {
+                    names : res.data.allnames,
+                    count : res.data.pagecount
+                }
+                dispatch(updateCollectionNamesPage(page));
+                dispatch(fetchCollectionNamesSuccess(collectionResults));
+            } )
+            .catch( err => {
+                console.log('[FETCH_COLLECTIONNAMES_FAIL]', err);
+                dispatch(fetchCollectionNamesFail(err));
+            } );
+
     };
 };
 

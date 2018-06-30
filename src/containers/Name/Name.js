@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import styled from 'styled-components';
 import NameView from './Name_view';
 import Spinner from '../../components/spinner/spinner';
+import Aux from '../../hoc/Aux';
+import NotFound from './NotFound/NotFound';
 
 import { connect } from 'react-redux';
 import { fetchNameInfo, fetchRecentHistory, fetchHistory, fetchTrends } from '../../store/actions/index';
@@ -36,8 +39,8 @@ class Name extends Component {
         //if(this.props.info[0] === undefined){console.log("Didn't Find")}else{console.log("Found")}
         
         //if(this.props.info[0] === undefined){console.log("HEY")}
-        //console.log(this.props.nofind);
-
+        console.log(this.props.nofind);
+        let helmet = "";
         if(this.props.info[0] && this.props.history[0] && (this.props.info[0].name === this.props.match.params.n)){
             
             //GENDER
@@ -69,10 +72,36 @@ class Name extends Component {
                             trends={this.props.trends}
                             key={this.props.match.params.n}
                         />
+
+            let gender_ = (gender === "F" ? "Girl" : "Boy");
+            let meta_description = this.props.match.params.n + ": Discover the Meaning, Popularity, Origin, Celebrity Namesakes, Trending Data and more! Beautifully designed, BabyNamr is a different approach to the cluttered Baby Name website!";
+            let meta_keywords = this.props.match.params.n + " baby name, baby names, baby "+{gender_}+" names, uncommon baby "+{gender_}+" names, uncommon baby names, unique "+{gender_}+" names, cute baby "+{gender_}+" names, nerdy baby "+{gender_}+" names, original baby "+{gender_}+" names";
+            helmet = 
+                <Helmet>
+                    <title>{this.props.match.params.n} - {gender_} Name Meaning, Origin, and Popularity Statistics | BabyNamr</title>
+                    <meta name="description" content={meta_description} />
+                    <meta name="keywords" content={meta_keywords} />
+                    <meta property="og:title" content={this.props.match.params.n+" - {gender_} Name Meaning, Origin, and Popularity Statistics | BabyNamr"} />
+                    <meta property="og:description" content={meta_description} />
+                    <meta property="og:url" content={"http://babynamr.com/name/"+this.props.match.params.n} />
+                </Helmet>
+            ;
+        }else{
+            helmet = 
+            <Helmet>
+                <title>We couldn't find it! | BabyNamr</title>
+            </Helmet> 
+            ;
+            container = 
+            <NotFound name={this.props.match.params.n} />
+            ;          
         }
 
         return (
-            container
+            <Aux>
+                {helmet}
+                {container}
+            </Aux>
         );
     }
 }

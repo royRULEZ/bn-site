@@ -36,7 +36,7 @@ const Main = styled.div`
     }
     @media (min-width: ${props => props.theme.tablet}) {
         order: 0;
-        padding: 2rem 0;
+        padding: 0 0;
         width: 1100px;
         margin: 0 auto;
         max-width: 95%;

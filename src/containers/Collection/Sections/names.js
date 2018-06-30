@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 import Spinner from '../../../components/spinner/spinner';
 
 import { connect } from 'react-redux';
-import { fetchCollectionNames } from '../../../store/actions/index';
+import { fetchCollectionNames, changeCollectionNamesPage } from '../../../store/actions/index';
+import { Pagination } from '../../../components/pagination/pagination';
 
 
  // CSS
@@ -62,6 +63,10 @@ class CollectionNames extends Component {
         this.props.onFetchCollectionNames(this.props.id);
     }
 
+    changePageHandler = (p) => {
+        this.props.onChangeCollectionNamesPage(this.props.id, p);
+    }
+
     render () {
    
         let names = <Spinner/>;
@@ -78,6 +83,11 @@ class CollectionNames extends Component {
                 <Container>
                     {names}
                 </Container>
+                <Pagination
+                        pageCount = {this.props.pageCount}
+                        changePage = {this.changePageHandler}
+                        page = {this.props.page}
+                    />
             </NamesContainer>
         );
         
@@ -87,6 +97,8 @@ class CollectionNames extends Component {
 const mapStateToProps = state => {
     return {
         collectionNames: state.collection.collectionNames,
+        pageCount: state.collection.pageCount,
+        page: state.collection.page,
         loading: state.collection.loading
     };
 };
@@ -94,6 +106,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchCollectionNames: (id) => dispatch ( fetchCollectionNames(id) ),
+        onChangeCollectionNamesPage: (id, page) => dispatch( changeCollectionNamesPage(id, page) ),
     };
 };
 

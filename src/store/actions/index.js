@@ -31,7 +31,8 @@ export {
     fetchCollectionNames,
     fetchCollectionProfiles,
     fetchCollections,
-    fetchCollectionsPopular
+    fetchCollectionsPopular,
+    changeCollectionNamesPage
 } from './collection';
 
 

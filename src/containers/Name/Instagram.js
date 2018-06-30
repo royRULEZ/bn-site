@@ -63,17 +63,17 @@ class Instagram extends Component {
             }
         `;
         const Text = styled.textarea`
-            margin: 200px auto;
+            margin: 100px auto 0 auto;
             width: 400px;
             display: block;
         `;
 
-        const text_ = "Name of the day: "+this.props.randomName.name+"\r" +
+        const text_1 = "Name of the day: "+this.props.randomName.name+"\r" +
             "MEANING\r" +
             "Follow us for unique and uncommon baby names each day!\r\r" +
-            "@babynamr #"+this.props.randomName.name+"\r" +
-            "#babynames #mom #babyfever #baby #babynamesuggestion #beautiful #girl #boy #itsagirl #itsaboy #child #children #childrens #cute #family #gorgeous #happy #kid #kids #mymid #myfamily #babyshower #babygirl #babyboy"
+            "@babynamr #"+this.props.randomName.name+"\r"
         ;
+        const text_2 = "#babynames #mom #babyfever #baby #babynamesuggestion #beautiful #girl #boy #itsagirl #itsaboy #child #children #childrens #cute #family #gorgeous #happy #kid #kids #mymid #myfamily #babyshower #babygirl #babyboy";
         return (
             <Aux>
                 <Main backgroundimage={"/images/square/"+(Math.floor(Math.random() * 6) + 1)+".jpg"}>
@@ -81,9 +81,8 @@ class Instagram extends Component {
                     <Name>{this.props.randomName.name}</Name>
                     <Website>@BabyNamr  |  www.babynamr.com</Website>
                 </Main>
-                <Text rows="10" defaultValue={text_}>
-
-                </Text>
+                <Text rows="10" defaultValue={text_1}></Text>
+                <Text rows="10" defaultValue={text_2}></Text>
             </Aux>
         );
     }

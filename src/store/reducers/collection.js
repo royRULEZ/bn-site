@@ -24,6 +24,7 @@ import {
     FETCH_COLLECTIONSPOPULAR_SUCCESS,
     FETCH_COLLECTIONSPOPULAR_FAIL,
     //
+    UPDATE_COLLECTIONNAMES_PAGE
 } from '../actions/_actionTypes';
 import { updateObject } from '../utility';
 
@@ -34,6 +35,8 @@ const initialState = {
     collectionProfiles: [],
     collections: [],
     collectionspopular: [],
+    pageCount: 0,
+    page: 1,
     loading: false
 };
 
@@ -73,6 +76,7 @@ const fetchCollectionNamesStart = ( state, action ) => {
 const fetchCollectionNamesSuccess = ( state, action ) => {
     return updateObject( state, {
         collectionNames: action.collectionNames,
+        pageCount: action.pageCount,
         loading: false
     });
 };
@@ -81,6 +85,12 @@ const fetchCollectionNamesFail = ( state, action ) => {
     return updateObject( state, { 
         loading: false 
     });
+};
+
+const updateCollectionNamesPage = ( state, action ) => {
+    return updateObject( state, {
+        page: action.page,
+    } );
 };
 
 
@@ -180,6 +190,8 @@ export const collectionReducer = ( state = initialState, action ) => {
         case FETCH_COLLECTIONSPOPULAR_SUCCESS: return fetchCollectionsPopularSuccess( state, action );
         case FETCH_COLLECTIONSPOPULAR_FAIL: return fetchCollectionsPopularFail( state, action );
         //
+        //
+        case UPDATE_COLLECTIONNAMES_PAGE: return updateCollectionNamesPage( state, action );
         default: return state;
     }
 };
